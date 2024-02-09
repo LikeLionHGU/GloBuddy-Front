@@ -4,6 +4,17 @@ import { useSetRecoilState } from "recoil";
 import jwtDecode from "jwt-decode";
 import { GoogleLogin } from "@react-oauth/google";
 import { IsLoginState } from "../../store/atom";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  padding: 20px 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid lightgray;
+  color: gray;
+  background: yellow;
+`;
 
 export default function GoogleButton() {
   const setLogin = useSetRecoilState(IsLoginState);
@@ -26,8 +37,15 @@ export default function GoogleButton() {
   };
 
   return (
-    <>
-      <GoogleLogin onSuccess={handleSuccess} onFailure={handleFailure} />
-    </>
+    <StyledButton>
+      구글 로그인
+      <div style={{ opacity: 0, margin: "-20px", height: "60px" }}>
+        <GoogleLogin
+          onSuccess={handleSuccess}
+          onFailure={handleFailure}
+          cookiePolicy={"single_host_origin"}
+        />
+      </div>
+    </StyledButton>
   );
 }
