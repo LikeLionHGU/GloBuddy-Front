@@ -3,21 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import jwtDecode from "jwt-decode";
 import { GoogleLogin } from "@react-oauth/google";
-import { IsLoginState } from "../../store/atom";
+import { UserTokenState } from "../../store/atom";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  padding: 20px 10px;
+  padding: 0px 10px;
   border-radius: 8px;
   font-size: 1rem;
   line-height: 1.5;
   border: 1px solid lightgray;
-  color: gray;
-  background: yellow;
+  color: white;
+  background: black;
 `;
 
 export default function GoogleButton() {
-  const setLogin = useSetRecoilState(IsLoginState);
+  const setUserToken = useSetRecoilState(UserTokenState);
   const navigate = useNavigate();
   const handleSuccess = (res) => {
     const decodedToken = jwtDecode(res.credential);
@@ -28,7 +28,7 @@ export default function GoogleButton() {
       return;
     }
     console.log(decodedToken);
-    setLogin(true);
+    setUserToken(res.credential);
     navigate("/GloBuddy");
   };
 
@@ -39,7 +39,7 @@ export default function GoogleButton() {
   return (
     <StyledButton>
       구글 로그인
-      <div style={{ opacity: 0, margin: "-20px", height: "60px" }}>
+      <div style={{ opacity: 0 }}>
         <GoogleLogin
           onSuccess={handleSuccess}
           onFailure={handleFailure}

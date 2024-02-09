@@ -6,8 +6,8 @@ const { persistAtom } = recoilPersist({
   storage: localStorage,
 });
 
-export const IsLoginState = atom({
-  key: "IsLoginState",
-  default: false,
+export const UserTokenState = atom({
+  key: "userToken",
+  default: "",
   effects_UNSTABLE: [persistAtom],
 });
