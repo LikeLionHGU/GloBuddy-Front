@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+## GloBuddy 🌎
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 💻 프로젝트 소개
+#### 당신의 글로벌을 더하여주는, GloBuddy를 통해 캠퍼스에서 나의 버디를 찾아보세요!
 
-## Available Scripts
+## 🖥️ 배포 주소
+[GloBuddy 방문하기📂](#)
 
-In the project directory, you can run:
+## 🕰️ 개발 기간
+24.02.8일 ~ (진행중)
 
-### `npm start`
+## 🎆 멋사 해커톤 Demoday
+24.02.24일
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🧑‍🤝‍🧑 자랑스러운 GloBuddy 맴버구성
+|  기획자   |     기획자     |    디자이너     | 프론트엔드 개발자     | 프론트엔드 개발자     | 백엔드 개발자     | 백엔드 개발자     | 
+|   :--------:   |    :--------:    | :--------:    | :--------:    | :--------:    | :--------:    | :--------:    |
+|   전정재  |  조예환    | 정성은    | 김하은    | 이한나    | 오세훈    | 김민혁    | 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ✨프론트 개발자들 개인 깃허브 소개✨
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+|  Leehannaa   |     HAEOII     | 
+|   :--------:   |    :--------:    |
+|   <a href="https://github.com/LeeHannaa"><img src="https://github.com/LikeLionHGU/12th-frontend/blob/main/img/%EC%9D%B4%ED%95%9C%EB%82%98.png?raw=true" width="250" height="230"></a>  |  <a href="https://github.com/HAEOII"><img src="https://github.com/LikeLionHGU/12th-frontend/blob/main/img/%EA%B9%80%ED%95%98%EC%9D%80.jpg" width="250" height="230"></a>    | 
