@@ -1,7 +1,6 @@
 import { UserTokenState } from "../../store/atom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import jwtDecode from "jwt-decode";
 import styled from "styled-components";
 
 const LogoutButton = styled.button`
@@ -12,19 +11,8 @@ const LogoutButton = styled.button`
   background: white;
 `;
 
-const data = {
-  name: "",
-  email: "",
-  picture: "",
-};
-
-function HomeComponent() {
-  const [userToken, setUserToken] = useRecoilState(UserTokenState);
-  const decodedToken = jwtDecode(userToken);
-  data.name = decodedToken.name;
-  data.email = decodedToken.email;
-  data.picture = decodedToken.picture;
-  // console.log(decodedToken);
+function HomeComponent({ userInfo }) {
+  const setUserToken = useSetRecoilState(UserTokenState);
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -34,9 +22,12 @@ function HomeComponent() {
   return (
     <>
       GloBuddy Let's Go~!
-      <h1>Welcome, {data.name}</h1>
-      <p>Email 정보 : {data.email}</p>
-      <img src={data.picture} alt="user profile" />
+      <h3>{userInfo.name}</h3>
+      <h3>{userInfo.type}</h3>
+      <h3>{userInfo.gender}</h3>
+      <h3>{userInfo.propensity}</h3>
+      <h3>{userInfo.needs}</h3>
+      <h3>{userInfo.picture}</h3>
       <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
     </>
   );

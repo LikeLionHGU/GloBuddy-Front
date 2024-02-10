@@ -29,7 +29,11 @@ export default function GoogleButton() {
     }
     console.log(decodedToken);
     setUserToken(res.credential);
-    navigate("/GloBuddy");
+    // Todo: 여기서 api post 호출 '유저 저장'
+    // 첫 로그인 시 프로필 설정 이동
+    navigate("/GloBuddy/Profile");
+    // 첫 로그인 아닌 경우 메인 화면으로 이동
+    // navigate("/GloBuddy");
   };
 
   const handleFailure = (err) => {
