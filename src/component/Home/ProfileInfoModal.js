@@ -57,6 +57,15 @@ const SaveBT = styled.button`
   font-weight: 20px;
 `;
 
+const profileData = {
+  name: "이한나",
+  type: "국내 더미",
+  gender: "여자 더미",
+  propensity: "차분함 더미",
+  needs: "친구 더미",
+  picture: "더미 사진 링크",
+};
+
 function Modal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -78,7 +87,7 @@ function Modal() {
             <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>프로필</h1>
             <Horizontal>
               <Text>국내/국제</Text>
-              <InputText type="text" placeholder="내용을 입력하세요." />
+              <InputText type="text" value={profileData.type} />
             </Horizontal>
             <Horizontal>
               <Text>성별</Text>
