@@ -3,6 +3,7 @@ import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import PersonalProfile from "./pages/PersonalProfile";
+import Alarm from "./pages/Alarm";
 import PrivateRoute from "./lib/PrivateRoute";
 
 export default function Router() {
@@ -14,6 +15,7 @@ export default function Router() {
           <Route path="/GloBuddy" element={<Home />} />
           <Route path="/GloBuddy/Profile" element={<Profile />} />
           <Route path="/GloBuddy/ProfileFrom" element={<PersonalProfile />} />
+          <Route path="/GloBuddy/Alarm" element={<Alarm />} />
         </Route>
       </Routes>
     </BrowserRouter>
