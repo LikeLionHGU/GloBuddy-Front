@@ -23,13 +23,21 @@ export const NextButton = styled.button`
 `;
 
 export const Horizontal = styled.div`
+  //가로 정렬
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Vertical = styled.div`
+  //세로 정렬
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+export const Box20 = styled.div`
+  //margin
+  margin-top: 20px;
 `;
