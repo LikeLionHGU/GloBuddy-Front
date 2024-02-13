@@ -23,6 +23,9 @@ function ProfileBtComponent() {
   const handleNavigateProfile = () => {
     navigate("/GloBuddy/ProfileFrom");
   };
+  const handleNavigateMyPost = () => {
+    navigate("/GloBuddy/MyPost");
+  };
   const handleLogout = () => {
     setUserToken(null);
     navigate("/");
@@ -47,7 +50,7 @@ function ProfileBtComponent() {
         }}
       >
         <MenuItem onClick={handleNavigateProfile}>프로필 수정</MenuItem>
-        <MenuItem onClick={handleClose}>내 게시물</MenuItem>
+        <MenuItem onClick={handleNavigateMyPost}>내 게시물</MenuItem>
         <MenuItem onClick={handleLogout}>로그아웃</MenuItem>
       </Menu>
     </>
