@@ -4,6 +4,7 @@ import ProfileBtComponent from "../component/Home/ProfileBtComponent";
 import MailBtComponent from "../component/Mailbox/MailBtComponent";
 import { Horizontal, Vertical } from "../styles/StyledComponents";
 import PostCardComponent from "../component/Home/PostComponent/PostCardComponent";
+import PostCreateBtComponent from "../component/Home/PostCreateComponent/PostCreateBtComponent";
 
 const postData = [
   {
@@ -82,6 +83,7 @@ function Home() {
         <MailBtComponent />
       </Horizontal>
       <HomeComponent userInfo={state} />
+      <PostCreateBtComponent />
       <PostCardComponent postData={postData} />
     </Vertical>
   );
