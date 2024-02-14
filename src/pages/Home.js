@@ -2,8 +2,9 @@ import { useLocation } from "react-router";
 import HomeComponent from "../component/Home/HomeComponent";
 import ProfileBtComponent from "../component/Home/ProfileBtComponent";
 import MailBtComponent from "../component/Mailbox/MailBtComponent";
-import { Horizontal } from "../styles/StyledComponents";
+import { Horizontal, Vertical } from "../styles/StyledComponents";
 import PostCardComponent from "../component/Home/PostComponent/PostCardComponent";
+import PostCreateBtComponent from "../component/Home/PostCreateComponent/PostCreateBtComponent";
 
 const postData = [
   {
@@ -70,19 +71,21 @@ const postData = [
     title: "영어 같이 할 사람",
   },
 ];
+
 function Home() {
   const { state } = useLocation(); // navigate state
   // ToDo: post api 연결
 
   return (
-    <>
+    <Vertical>
       <Horizontal>
         <ProfileBtComponent />
         <MailBtComponent />
       </Horizontal>
       <HomeComponent userInfo={state} />
+      <PostCreateBtComponent />
       <PostCardComponent postData={postData} />
-    </>
+    </Vertical>
   );
 }
 
