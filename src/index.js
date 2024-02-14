@@ -8,7 +8,7 @@ const Div = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 98vw;
-  height: 98vh;
+  /* height: 98vh; */
   align-items: center;
 `;
 
