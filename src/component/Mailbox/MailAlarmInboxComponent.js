@@ -6,7 +6,7 @@ const MailAlarmBox = styled.div`
   display: flex;
   border-radius: 8px;
   height: 30px;
-  width: 500px;
+  width: 700px;
   text-align: center; //가로
   border: 1px solid lightgray;
   margin-top: 10px;
@@ -18,13 +18,23 @@ const ButtonWrapper = styled.div`
   flex: 1;
   margin-right: auto 0;
 `;
-const CheckBT = styled.button`
+const ConfirmBT = styled.button`
   border: 1px solid lightgray;
   background: yellow;
   cursor: pointer;
 `;
+const AcceptedBT = styled.button`
+  border: 1px solid lightgray;
+  background: red;
+  cursor: pointer;
+`;
+const RedjectedBT = styled.button`
+  border: 1px solid lightgray;
+  background: skyblue;
+  cursor: pointer;
+`;
 
-function MailAlarmComponent({ chatData }) {
+function MailAlarmInboxComponent({ chatData }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedChatData, setSelectedChatData] = useState(null);
 
@@ -34,16 +44,27 @@ function MailAlarmComponent({ chatData }) {
     setSelectedChatData(data);
     setIsOpen(!isOpen);
   };
+  const handleAccept = () => {
+    //ToDo: 추후 카카오링크 모달 띄우는 곳으로 연결
+    alert("카카오톡 링크 보이는 모달 띄울 예정 백엔드 연결 후 ");
+  };
 
   return (
     <>
       {chatData.map((data, index) => (
         <MailAlarmBox key={index}>
           <Text>
-            {data.name} 에게 편지가 도착했습니다. 얼른 확인해보세요~^^
+            A letter from {data.name} has arrived for you. Go ahead and check it
+            out!
           </Text>
           <ButtonWrapper>
-            <CheckBT onClick={() => handleCheck(data)}>확인</CheckBT>
+            {index === 1 ? (
+              <AcceptedBT onClick={() => handleAccept()}>Accepted</AcceptedBT>
+            ) : index === 2 ? (
+              <RedjectedBT>Redjected</RedjectedBT>
+            ) : (
+              <ConfirmBT onClick={() => handleCheck(data)}>Confirm</ConfirmBT>
+            )}
           </ButtonWrapper>
         </MailAlarmBox>
       ))}
@@ -59,4 +80,4 @@ function MailAlarmComponent({ chatData }) {
   );
 }
 
-export default MailAlarmComponent;
+export default MailAlarmInboxComponent;

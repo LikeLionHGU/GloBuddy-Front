@@ -7,6 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { AiOutlineLink } from "react-icons/ai";
 import { Horizontal } from "../../styles/StyledComponents";
 
 const LeftContent = styled.div`
@@ -23,7 +24,7 @@ const RightContent = styled.div`
 `;
 
 export default function ChatInfoCheckDialog({ chatData, open, onRejectClick }) {
-  const [accept, setAccept] = useState(false);
+  const [accept, setAccept] = useState(false); // ToDo: 추후 chatData에 있는 변수로 설정
   const handleAcceptClick = () => {
     setAccept(true);
     // ToDo: 거절 승인 api 연결하기
@@ -36,19 +37,22 @@ export default function ChatInfoCheckDialog({ chatData, open, onRejectClick }) {
           <>
             <DialogTitle>
               <p>
-                {chatData.name}님과 버디가 되었습니다. 링크에 접속하여 대화를
-                나눠보세요 !
+                Congrats ! You're now Global buddy with {chatData.name}, join
+                his chat room to chat!
               </p>
             </DialogTitle>
             <DialogContent>
               <p>
-                <a
-                  href={chatData.kakao}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  카카오톡 링크
-                </a>
+                <Horizontal>
+                  <AiOutlineLink />
+                  <a
+                    href={chatData.kakao}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Link to KakaoTalk chat room
+                  </a>
+                </Horizontal>
               </p>
             </DialogContent>
             <Button
@@ -62,7 +66,7 @@ export default function ChatInfoCheckDialog({ chatData, open, onRejectClick }) {
         ) : (
           <>
             <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
-              신청자 정보 프로필 확인하기
+              Buddy Request
             </DialogTitle>
             <DialogContent>
               <Horizontal>
@@ -88,14 +92,14 @@ export default function ChatInfoCheckDialog({ chatData, open, onRejectClick }) {
                 color="secondary"
                 style={{ fontFamily: "TheJamsilRegular" }}
               >
-                거절
+                Reject
               </Button>
               <Button
                 onClick={handleAcceptClick}
                 color="warning"
                 style={{ fontFamily: "TheJamsilRegular" }}
               >
-                수락
+                Accept
               </Button>
             </DialogActions>
           </>
