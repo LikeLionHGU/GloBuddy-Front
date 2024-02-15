@@ -8,8 +8,12 @@ const MailButton = styled.button`
   cursor: pointer;
 `;
 
+// inbox : 0은 미확인 , 1은 수락, 2는 거절 (IfMatched)
+// send : IfChecked | true는 확인 / false는 미확인
 const chatData = [
   {
+    send: true, // 일단 보낸 편지함
+    inbox: 2,
     name: "오세훈",
     type: "국내 더미",
     gender: "여자 더미",
@@ -20,6 +24,8 @@ const chatData = [
     kakao: "https://github.com/LikeLionHGU/GloBuddy-Front/issues/11",
   },
   {
+    send: true, // 일단 보낸 편지함
+    inbox: 1,
     name: "이한나",
     type: "국내 더미",
     gender: "여자 더미",
@@ -30,6 +36,8 @@ const chatData = [
     kakao: "https://github.com/LikeLionHGU/GloBuddy-Front/issues/11",
   },
   {
+    send: true, // 일단 보낸 편지함
+    inbox: 1,
     name: "정정재",
     type: "국내 더미",
     gender: "남자 더미",
@@ -40,6 +48,8 @@ const chatData = [
     kakao: "https://github.com/LikeLionHGU/GloBuddy-Front/issues/11",
   },
   {
+    send: false, // 일단 보낸 편지함
+    inbox: 0,
     name: "김민혁",
     type: "꺄호",
     gender: "여자 더미",
@@ -50,6 +60,8 @@ const chatData = [
     kakao: "https://github.com/LikeLionHGU/GloBuddy-Front/issues/11",
   },
   {
+    send: false, // 일단 보낸 편지함
+    inbox: 1,
     name: "조예환",
     type: "뭐",
     gender: "커피",

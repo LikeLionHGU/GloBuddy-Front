@@ -6,7 +6,7 @@ const MailAlarmBox = styled.div`
   display: flex;
   border-radius: 8px;
   height: 30px;
-  width: 500px;
+  width: 700px;
   text-align: center; //가로
   border: 1px solid lightgray;
   margin-top: 10px;
@@ -24,7 +24,7 @@ const CheckBT = styled.button`
   cursor: pointer;
 `;
 
-function MailAlarmComponent({ chatData }) {
+function MailAlarmInboxComponent({ chatData }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedChatData, setSelectedChatData] = useState(null);
 
@@ -40,10 +40,11 @@ function MailAlarmComponent({ chatData }) {
       {chatData.map((data, index) => (
         <MailAlarmBox key={index}>
           <Text>
-            {data.name} 에게 편지가 도착했습니다. 얼른 확인해보세요~^^
+            A letter from {data.name} has arrived for you. Go ahead and check it
+            out!
           </Text>
           <ButtonWrapper>
-            <CheckBT onClick={() => handleCheck(data)}>확인</CheckBT>
+            <CheckBT onClick={() => handleCheck(data)}>Confirm</CheckBT>
           </ButtonWrapper>
         </MailAlarmBox>
       ))}
@@ -59,4 +60,4 @@ function MailAlarmComponent({ chatData }) {
   );
 }
 
-export default MailAlarmComponent;
+export default MailAlarmInboxComponent;
