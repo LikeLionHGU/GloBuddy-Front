@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import ProfileComponent1 from "../component/Profile/ProfileComponent1";
 import ProfileComponent2 from "../component/Profile/ProfileComponent2";
 import ProfileComponent3 from "../component/Profile/ProfileComponent3";
-import ProfileComponent4 from "../component/Profile/ProfileComponent4";
-import ProfileComponent5 from "../component/Profile/ProfileComponent5";
 
 function Profile() {
   const userToken = useRecoilValue(UserTokenState);
@@ -17,7 +15,6 @@ function Profile() {
     type: "",
     gender: "",
     propensity: "",
-    needs: "",
     picture: decodedToken.picture,
   });
   const [pageNumber, setPageNumber] = useState(1);
@@ -46,16 +43,6 @@ function Profile() {
       );
       break;
     case 4:
-      currentComponent = (
-        <ProfileComponent4 userInfo={selectedUserInfo} onNext={handleNext} />
-      );
-      break;
-    case 5:
-      currentComponent = (
-        <ProfileComponent5 userInfo={selectedUserInfo} onNext={handleNext} />
-      );
-      break;
-    case 6:
       // Todo: 여기서 api post 호출 '유저 정보 저장'
       navigate("/GloBuddy", { state: selectedUserInfo });
       break;
