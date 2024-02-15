@@ -20,19 +20,19 @@ function ProfileComponent2({ userInfo, onNext }) {
 
   return (
     <>
-      <h2>당신의 성별은?</h2>
+      <h2>What is your gender?</h2>
       <Horizontal>
         <FromButton
           onClick={() => handleGender("남자")}
           active={gender === "남자"}
         >
-          남자
+          Male
         </FromButton>
         <FromButton
           onClick={() => handleGender("여자")}
           active={gender === "여자"}
         >
-          여자
+          Female
         </FromButton>
       </Horizontal>
       <Box />
@@ -40,7 +40,7 @@ function ProfileComponent2({ userInfo, onNext }) {
         onClick={() => onNext({ ...userInfo, gender })}
         disabled={nextButtonDisabled}
       >
-        다음 2/5
+        Next 2/3
       </NextButton>
     </>
   );

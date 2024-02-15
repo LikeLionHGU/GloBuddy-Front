@@ -20,20 +20,20 @@ function ProfileComponent1({ userInfo, onNext }) {
 
   return (
     <>
-      <h1>Welcome, {userInfo.name} 님!</h1>
-      <h2>당신은 어떤 학생입니까?</h2>
+      <h1>Welcome, {userInfo.name}</h1>
+      <h2>What is your nationality?</h2>
       <Horizontal>
         <FromButton
-          onClick={() => handleType("국제 학생")}
-          active={type === "국제 학생"}
+          onClick={() => handleType("Korean")}
+          active={type === "Korean"}
         >
-          국제 학생
+          Korean
         </FromButton>
         <FromButton
-          onClick={() => handleType("국내 학생")}
-          active={type === "국내 학생"}
+          onClick={() => handleType("International")}
+          active={type === "International"}
         >
-          국내 학생
+          International
         </FromButton>
       </Horizontal>
       <Box />
@@ -41,7 +41,7 @@ function ProfileComponent1({ userInfo, onNext }) {
         onClick={() => onNext({ ...userInfo, type })}
         disabled={nextButtonDisabled}
       >
-        다음 1/5
+        Next 1/3
       </NextButton>
     </>
   );

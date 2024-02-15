@@ -10,6 +10,25 @@ const Box = styled.div`
   margin-top: 300px;
 `;
 
+const mbtiData = [
+  "ESTP",
+  "ESTJ",
+  "ENFJ",
+  "ENTJ",
+  "ISTP",
+  "ISTJ",
+  "INFJ",
+  "INTJ",
+  "ESFP",
+  "ESFJ",
+  "ENFP",
+  "ENTP",
+  "ISFP",
+  "ISFJ",
+  "INFP",
+  "INTP",
+];
+
 function ProfileComponent3({ userInfo, onNext }) {
   const [propensity, setPropensity] = useState(null);
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
@@ -20,27 +39,24 @@ function ProfileComponent3({ userInfo, onNext }) {
 
   return (
     <>
-      <h2>당신의 성향은?</h2>
+      <h2>Your MBTI</h2>
       <Horizontal>
-        <FromButton
-          onClick={() => handlePropensity("밝은")}
-          active={propensity === "밝은"}
-        >
-          밝은
-        </FromButton>
-        <FromButton
-          onClick={() => handlePropensity("어두운")}
-          active={propensity === "어두운"}
-        >
-          어두운
-        </FromButton>
+        {mbtiData.map((data, index) => (
+          <FromButton
+            key={index}
+            onClick={() => handlePropensity(data)}
+            active={propensity === data}
+          >
+            {data}
+          </FromButton>
+        ))}
       </Horizontal>
       <Box />
       <NextButton
         onClick={() => onNext({ ...userInfo, propensity })}
         disabled={nextButtonDisabled}
       >
-        다음 3/5
+        Go GloB 3/3
       </NextButton>
     </>
   );
