@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import PostCardImg from "../../../img/PostCard.png";
 
 const DetailButton = styled.button`
   border-radius: 8px;
@@ -63,6 +64,14 @@ const SubmitButton = styled.button`
   color: black;
   background: white;
 `;
+const CardImg = styled.img`
+  width: 200px;
+`;
+const Font = styled.p`
+  /* font-size: 15px; */
+  margin: 0;
+  font-family: Body2; // Global Style 적용해줘서 이렇게 사용 가능
+`;
 
 function PostCardComponent({ postData }) {
   const [showPopup, setShowPopup] = useState(false);
@@ -109,12 +118,13 @@ function PostCardComponent({ postData }) {
       <CardContainer>
         {postData.map((data, index) => (
           <Card key={index}>
-            <h1>{data.title}</h1>
-            <h3>
+            <h3>{data.title}</h3>
+            <CardImg src={PostCardImg} alt="defalut" />
+            <Font>
               이름 {data.name} / 국내|국제 {data.type}
-            </h3>
-            <h3>{data.gender}</h3>
-            <h3>{data.needs}</h3>
+            </Font>
+            <Font>{data.gender}</Font>
+            <Font>{data.needs}</Font>
             <DetailButton>자세히보기</DetailButton>
             <button onClick={handleApplyClick}>신청하기</button>
           </Card>
