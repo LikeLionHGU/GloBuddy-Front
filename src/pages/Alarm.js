@@ -39,6 +39,23 @@ const OrnageBox = styled.div`
   font-size: 27px;
   color: #48524b;
 `;
+const OrnageMailBox = styled.div`
+  width: 825px;
+  height: 478px;
+  background-color: #ffe2c1;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 0 40px 45px 150px;
+  font-family: Subtitle2;
+  font-size: 15px;
+  color: black;
+  overflow-y: auto;
+  padding: 30px;
+`;
 const LetterText = styled.p`
   font-family: Subtitle3;
   font-size: 30px;
@@ -105,9 +122,13 @@ function Alarm() {
               <LetterImg src={LetterBoxImg} alt="letterbox" />
             </OrnageBox>
           ) : show ? (
-            <MailAlarmInboxComponent chatData={state} />
+            <OrnageMailBox>
+              <MailAlarmInboxComponent chatData={state} />
+            </OrnageMailBox>
           ) : (
-            <MailAlarmSentItemsComponent chatData={state} />
+            <OrnageMailBox>
+              <MailAlarmSentItemsComponent chatData={state} />
+            </OrnageMailBox>
           )}
         </Vertical>
       </NoCenterVertical>
