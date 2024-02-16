@@ -68,8 +68,9 @@ const CardImg = styled.img`
   width: 200px;
 `;
 const Font = styled.p`
-  font-size: 15px;
+  /* font-size: 15px; */
   margin: 0;
+  font-family: Body2; // Global Style 적용해줘서 이렇게 사용 가능
 `;
 
 function PostCardComponent({ postData }) {
