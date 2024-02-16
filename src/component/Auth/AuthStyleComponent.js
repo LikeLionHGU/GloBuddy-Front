@@ -7,6 +7,11 @@ import Connection1Img from "../../img/Connection1.png";
 import GroupImg from "../../img/Group.png";
 import Worldwide1Img from "../../img/Worldwide1.png";
 import LogoImg from "../../img/Logo.png";
+import LogoWhiteImg from "../../img/LogoWhite.png";
+import LikelionImg from "../../img/Likelion.png";
+import HGULogoImg from "../../img/HGULogo.png";
+import KakaoImg from "../../img/Kakao.png";
+import InstaImg from "../../img/Insta.png";
 
 export default function AuthStyleComponent() {
   return (
@@ -414,8 +419,107 @@ export default function AuthStyleComponent() {
           backgroundColor: "#1C1C1C",
           position: "absolute",
           marginTop: "6160px",
+          zIndex: 1,
         }}
-      ></div>
+      >
+        <img
+          src={LogoWhiteImg}
+          alt="로고"
+          style={{
+            width: "200px",
+            height: "113.92px",
+            position: "absolute",
+            top: "40px",
+            left: "110px",
+            zIndex: 2,
+          }}
+        />
+        <p
+          style={{
+            fontSize: "1.0em",
+            color: "#FFFFFF",
+            top: "50px",
+            left: "350px",
+            position: "absolute",
+            zIndex: 2,
+          }}
+        >
+          (주)멋쟁이사자처럼 | 한동대학교
+        </p>
+        <img
+          src={LikelionImg}
+          alt="로고"
+          style={{
+            width: "20px",
+            height: "15px",
+            position: "absolute",
+            top: "105px",
+            left: "360px",
+            zIndex: 2,
+          }}
+        />
+        <img
+          src={HGULogoImg}
+          alt="로고"
+          style={{
+            width: "26px",
+            height: "26px",
+            position: "absolute",
+            top: "99px",
+            left: "390px",
+            zIndex: 2,
+          }}
+        />
+        <p
+          style={{
+            fontSize: "1.0em",
+            color: "#FFFFFF",
+            top: "50px",
+            left: "650px",
+            position: "absolute",
+            zIndex: 2,
+          }}
+        >
+          GloB SNS | 소개 | FAQ | Contact
+        </p>
+        <img
+          src={InstaImg}
+          alt="로고"
+          style={{
+            width: "26px",
+            height: "26px",
+            position: "absolute",
+            top: "99px",
+            left: "660px",
+            zIndex: 2,
+          }}
+        />
+        <img
+          src={KakaoImg}
+          alt="로고"
+          style={{
+            width: "26px",
+            height: "26px",
+            position: "absolute",
+            top: "99px",
+            left: "697px",
+            zIndex: 2,
+          }}
+        />
+
+        <p
+          style={{
+            fontSize: "1.0em",
+            color: "#FFFFFF",
+            top: "50px",
+            left: "950px",
+            position: "absolute",
+            zIndex: 2,
+          }}
+        >
+          jaies2316@gmail.com
+        </p>
+      </div>
     </>
   );
 }
