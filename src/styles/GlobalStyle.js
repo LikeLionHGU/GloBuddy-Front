@@ -10,7 +10,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 @font-face {
     font-family: 'Slogan';
-    font-size: 70px;
     font-style: normal;
     src: url('OswaldBold');
     src: url(${OswaldBold}) format('embedded-opentype'),
@@ -21,7 +20,6 @@ export const GlobalStyle = createGlobalStyle`
 } 
 @font-face {
     font-family: 'Header';
-    font-size: 24px;
     font-style: normal;
     src: url('PretendardBold');
     src: url(${PretendardBold}) format('opentype');
@@ -29,7 +27,6 @@ export const GlobalStyle = createGlobalStyle`
 } 
 @font-face {
     font-family: 'Title1';
-    font-size: 44px;
     src: url('PretendardBold');
     src: url(${PretendardBold}) format('opentype');
     font-weight: normal;
@@ -37,7 +34,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 @font-face {
     font-family: 'Body1';
-    font-size: 16px;
     src: url('PretendardSemiBold');
     src: url(${PretendardSemiBold}) format('opentype');
     font-weight: normal;
@@ -45,7 +41,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 @font-face {
     font-family: 'Body2';
-    font-size: 14px;
     src: url('PretendardSemiBold');
     src: url(${PretendardSemiBold}) format('opentype');
     font-weight: normal;
@@ -53,7 +48,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 @font-face {
     font-family: 'Button1';
-    font-size: 28px;
     src: url('PretendardBold');
     src: url(${PretendardBold}) format('opentype');
     font-weight: normal;
@@ -61,7 +55,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 @font-face {
     font-family: 'Subtitle1';
-    font-size: 36px;
     src: url('PretendardBold');
     src: url(${PretendardBold}) format('opentype');
     font-weight: normal;
@@ -69,7 +62,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 @font-face {
     font-family: 'Subtitle2';
-    font-size: 24px;
     src: url('PretendardBold');
     src: url(${PretendardBold}) format('opentype');
     font-weight: normal;
@@ -77,7 +69,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 @font-face {
     font-family: 'Subtitle3';
-    font-size: 36px;
     src: url('PretendardSemiBold');
     src: url(${PretendardSemiBold}) format('opentype');
     font-weight: normal;
@@ -85,10 +76,24 @@ export const GlobalStyle = createGlobalStyle`
 }
 @font-face {
     font-family: 'Button2';
-    font-size: 28px;
     src: url('PretendardSemiBold');
     src: url(${PretendardSemiBold}) format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 `;
+
+// export const theme = {
+//   Web_fontSizes: {
+//     Slogan: "70px",
+//     Header: "24px",
+//     Title1: "44px",
+//     Body1: "16px",
+//     Body2: "14px",
+//     Button1: "28px",
+//     Subtitle1: "36px",
+//     Subtitle2: "24px",
+//     Subtitle3: "36px",
+//     Button2: "28px",
+//   },
+// };
