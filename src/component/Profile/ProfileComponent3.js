@@ -56,7 +56,7 @@ function ProfileComponent3({ userInfo, onNext }) {
         onClick={() => onNext({ ...userInfo, propensity })}
         disabled={nextButtonDisabled}
       >
-        Go GloB 3/3
+        Go GloB 2/2
       </NextButton>
     </>
   );

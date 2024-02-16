@@ -4,7 +4,6 @@ import jwtDecode from "jwt-decode";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 import ProfileComponent1 from "../component/Profile/ProfileComponent1";
-import ProfileComponent2 from "../component/Profile/ProfileComponent2";
 import ProfileComponent3 from "../component/Profile/ProfileComponent3";
 
 function Profile() {
@@ -34,15 +33,10 @@ function Profile() {
       break;
     case 2:
       currentComponent = (
-        <ProfileComponent2 userInfo={selectedUserInfo} onNext={handleNext} />
-      );
-      break;
-    case 3:
-      currentComponent = (
         <ProfileComponent3 userInfo={selectedUserInfo} onNext={handleNext} />
       );
       break;
-    case 4:
+    case 3:
       // Todo: 여기서 api post 호출 '유저 정보 저장'
       navigate("/GloBuddy", { state: selectedUserInfo });
       break;
