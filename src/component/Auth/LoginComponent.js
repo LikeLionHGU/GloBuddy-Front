@@ -8,14 +8,11 @@ import styled from "styled-components";
 import FindBuddyBTImg from "../../img/FindBuddyBT.png";
 
 const StyledButton = styled.button`
-  position: relative; /* 추가: 위치 조정을 위해 position 속성 추가 */
   padding: 0px;
   border: none;
   background: url(${FindBuddyBTImg}) no-repeat;
   width: 500px;
   height: 150px;
-  top: 200px;
-  right: 500px;
   display: flex;
   align-items: center;
   justify-content: center;

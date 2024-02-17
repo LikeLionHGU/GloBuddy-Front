@@ -41,3 +41,104 @@ export const Box20 = styled.div`
   //margin
   margin-top: 20px;
 `;
+
+export const TitleComp = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Header = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Right = styled.div``;
+export const Earth = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+`;
+export const Candy = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+export const EN = styled.div``;
+export const ET = styled.div``;
+export const EC = styled.div``;
+export const Circle = styled.div``;
+export const MS = styled.div``;
+export const CN = styled.div``;
+export const CT = styled.div``;
+export const CC = styled.div`
+  //margin
+`;
+export const Banner = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+export const Scroll = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+export const All = styled.div`
+  display: flex;
+  width: 98vw;
+  height: 98vh;
+  flex-direction: column;
+`;
+export const Left = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const Green = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+export const SN = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+export const ST = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+export const SC = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+export const Grid = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+`;
+export const Title = styled.div`
+  width: 100%;
+  display: flex;
+  zindex: 2;
+  align-content: space-around;
+  flex-direction: row-reverse;
+  justify-content: center;
+`;
+export const Three = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+export const Tree = styled.div`
+  display: flex;
+  width: 100%;
+  align-content: stretch;
+  justify-content: space-around;
+`;
+export const To = styled.div`
+  display: flex;
+  width: 100%;
+`;
