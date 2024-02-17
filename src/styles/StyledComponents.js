@@ -59,12 +59,13 @@ export const Right = styled.div``;
 export const Earth = styled.div`
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 export const Candy = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-top: 300px;
 `;
 export const EN = styled.div``;
 export const ET = styled.div``;
@@ -94,7 +95,7 @@ export const All = styled.div`
 `;
 export const Left = styled.div`
   display: flex;
-  justify-content: space-around;
+  align-items: center;
 `;
 
 export const Green = styled.div`
@@ -103,7 +104,8 @@ export const Green = styled.div`
 `;
 export const SN = styled.div`
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 export const ST = styled.div`
   display: flex;
@@ -135,10 +137,16 @@ export const Three = styled.div`
 export const Tree = styled.div`
   display: flex;
   width: 100%;
-  align-content: stretch;
   justify-content: space-around;
 `;
 export const To = styled.div`
   display: flex;
   width: 100%;
+`;
+export const Content = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
 `;

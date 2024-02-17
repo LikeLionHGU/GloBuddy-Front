@@ -41,6 +41,7 @@ import {
   Three,
   Tree,
   To,
+  Content,
 } from "../../styles/StyledComponents";
 import GoogleLoginButton from "./LoginComponent";
 
@@ -128,11 +129,95 @@ export default function AuthStyleComponent() {
             }}
           />
         </Scroll>
+        <Content>
+          <Right>
+            <Earth>
+              <EN>
+                <ET>
+                  <h1
+                    style={{
+                      fontSize: "2.5em",
+                      color: "rgba(0, 0, 0, 1)",
+                    }}
+                  >
+                    {" "}
+                    Are you global?
+                  </h1>
+                </ET>
+                <EC>
+                  <p
+                    style={{
+                      fontSize: "1.15em",
+                      textAlign: "left",
+                      color: "rgba(0, 0, 0, 1)",
+                    }}
+                  >
+                    Handong Global University, we attend a global university.
+                    <br></br> The union between domestic and international
+                    students
+                    <br></br> generates special synergy.<br></br>
+                    However, the gap between them tends to widen over time.{" "}
+                    <br></br>How many foreign friends do you have around you?
+                  </p>
+                </EC>
+              </EN>
+              <Circle>
+                <img
+                  src={Worldwide1Img}
+                  alt="버튼"
+                  style={{
+                    width: "179.18px",
+                    height: "171px",
+                  }}
+                />
+              </Circle>
+            </Earth>
 
-        <Right>
-          <Earth>
-            <EN>
-              <ET>
+            <Candy>
+              <CN>
+                <CT>
+                  <h1
+                    style={{
+                      fontSize: "2.5em",
+                      color: "rgba(0, 0, 0, 1)",
+                    }}
+                  >
+                    {" "}
+                    Why should you choose GloB?
+                  </h1>
+                </CT>
+                <CC>
+                  <p
+                    style={{
+                      fontSize: "1.15em",
+                      textAlign: "left",
+                      color: "rgba(0, 0, 0, 1)",
+                    }}
+                  >
+                    On the foundation of the value of global connectivity,{" "}
+                    <br></br>
+                    we can share information and culture beyond language
+                    <br></br> barriers.GloB is the optimal solution. Meet your
+                    ideal
+                    <br></br> Global Buddy through our service.
+                  </p>
+                </CC>
+              </CN>
+              <MS>
+                <img
+                  src={Connection1Img}
+                  alt="버튼"
+                  style={{
+                    width: "179.18px",
+                    height: "171px",
+                  }}
+                />
+              </MS>
+            </Candy>
+          </Right>
+          <Left>
+            <SN>
+              <ST>
                 <h1
                   style={{
                     fontSize: "2.5em",
@@ -140,10 +225,10 @@ export default function AuthStyleComponent() {
                   }}
                 >
                   {" "}
-                  Are you global?
+                  We don't have a pretext.
                 </h1>
-              </ET>
-              <EC>
+              </ST>
+              <SC>
                 <p
                   style={{
                     fontSize: "1.15em",
@@ -151,109 +236,27 @@ export default function AuthStyleComponent() {
                     color: "rgba(0, 0, 0, 1)",
                   }}
                 >
-                  Handong Global University, we attend a global university.
-                  <br></br> The union between domestic and international
-                  students
-                  <br></br> generates special synergy.<br></br>
-                  However, the gap between them tends to widen over time.{" "}
-                  <br></br>How many foreign friends do you have around you?
+                  We find ourselves in many environments conducive to <br></br>
+                  interaction such as international exchange events, English
+                  <br></br> classes, and more. However, that's not always
+                  enough. Our <br></br>
+                  service provides a platform for sharing your ‘Needs’ and
+                  <br></br> initiating communication!
                 </p>
-              </EC>
-            </EN>
-            <Circle>
+              </SC>
+            </SN>
+            <Green>
               <img
-                src={Worldwide1Img}
+                src={Chat1Img}
                 alt="버튼"
                 style={{
-                  width: "179.18px",
+                  width: "181.17px",
                   height: "171px",
                 }}
               />
-            </Circle>
-          </Earth>
-
-          <Candy>
-            <CN>
-              <CT>
-                <h1
-                  style={{
-                    fontSize: "2.5em",
-                    color: "rgba(0, 0, 0, 1)",
-                  }}
-                >
-                  {" "}
-                  Why should you choose GloB?
-                </h1>
-              </CT>
-              <CC>
-                <p
-                  style={{
-                    fontSize: "1.15em",
-                    textAlign: "left",
-                    color: "rgba(0, 0, 0, 1)",
-                  }}
-                >
-                  On the foundation of the value of global connectivity,{" "}
-                  <br></br>
-                  we can share information and culture beyond language<br></br>{" "}
-                  barriers.GloB is the optimal solution. Meet your ideal
-                  <br></br> Global Buddy through our service.
-                </p>
-              </CC>
-            </CN>
-            <MS>
-              <img
-                src={Connection1Img}
-                alt="버튼"
-                style={{
-                  width: "179.18px",
-                  height: "171px",
-                }}
-              />
-            </MS>
-          </Candy>
-        </Right>
-        <Left>
-          <SN>
-            <ST>
-              <h1
-                style={{
-                  fontSize: "2.5em",
-                  color: "rgba(0, 0, 0, 1)",
-                }}
-              >
-                {" "}
-                We don't have a pretext.
-              </h1>
-            </ST>
-            <SC>
-              <p
-                style={{
-                  fontSize: "1.15em",
-                  textAlign: "left",
-                  color: "rgba(0, 0, 0, 1)",
-                }}
-              >
-                We find ourselves in many environments conducive to <br></br>
-                interaction such as international exchange events, English
-                <br></br> classes, and more. However, that's not always enough.
-                Our <br></br>
-                service provides a platform for sharing your ‘Needs’ and
-                <br></br> initiating communication!
-              </p>
-            </SC>
-          </SN>
-          <Green>
-            <img
-              src={Chat1Img}
-              alt="버튼"
-              style={{
-                width: "181.17px",
-                height: "171px",
-              }}
-            />
-          </Green>
-        </Left>
+            </Green>
+          </Left>
+        </Content>
         <div
           style={{
             width: "100%",
@@ -307,43 +310,6 @@ export default function AuthStyleComponent() {
                 }}
               />
             </Three>
-            <Tree>
-              <img
-                src={UserIconImg}
-                alt="버튼"
-                style={{
-                  width: "240px",
-                  height: "240px",
-
-                  zIndex: 3,
-                }}
-              />
-              {/* 유저아이콘 삽입 */}
-
-              <img
-                src={VectorImg}
-                alt="버튼"
-                style={{
-                  width: "180px",
-                  height: "200px",
-
-                  zIndex: 3,
-                }}
-              />
-              {/* 벡터 아이콘 삽입 */}
-
-              <img
-                src={StorageImg}
-                alt="버튼"
-                style={{
-                  width: "240px",
-                  height: "240px",
-
-                  zIndex: 3,
-                }}
-              />
-              {/* 저장아이콘 삽입 */}
-            </Tree>
           </To>
         </Grid>
       </All>
