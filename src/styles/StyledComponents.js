@@ -128,6 +128,8 @@ export const Title = styled.div`
   align-content: space-around;
   flex-direction: row-reverse;
   justify-content: center;
+  margin-top: 70px;
+  margin-bottom: 60px;
 `;
 export const Three = styled.div`
   display: flex;
@@ -149,4 +151,30 @@ export const Content = styled.div`
   flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
+  margin-top: 200px;
+  margin-bottom: 200px;
+`;
+export const Text = styled.div`
+  display: flex;
+  width: 100%;
+  zindex: 3;
+  margin-top: 50px;
+`;
+export const First = styled.div`
+  display: flex;
+  width: 100%;
+  zindex: 3;
+  textalign: "left";
+  justify-content: space-around;
+`;
+export const Second = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  zindex: 3;
+  margin-bottom: 300px;
+`;
+export const Footer = styled.div`
+  display: flex;
+  width: 100%;
 `;

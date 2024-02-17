@@ -42,6 +42,10 @@ import {
   Tree,
   To,
   Content,
+  First,
+  Text,
+  Second,
+  Footer,
 } from "../../styles/StyledComponents";
 import GoogleLoginButton from "./LoginComponent";
 
@@ -257,19 +261,18 @@ export default function AuthStyleComponent() {
             </Green>
           </Left>
         </Content>
-        <div
-          style={{
-            width: "100%",
-            height: "960px",
-            backgroundColor: "#FF9F31",
-            opacity: 0.26,
-            position: "absolute",
-            marginTop: "1930px",
-            zIndex: 1,
-          }}
-        ></div>
 
         <Grid>
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#FF9F31",
+              opacity: 0.26,
+              position: "absolute",
+              zIndex: 1,
+            }}
+          ></div>
           <Title>
             <h1
               style={{
@@ -311,7 +314,163 @@ export default function AuthStyleComponent() {
               />
             </Three>
           </To>
+
+          <First>
+            <p
+              style={{
+                fontSize: "1.8em",
+
+                color: "rgba(0, 0, 0, 1)",
+              }}
+            >
+              Create a profile
+            </p>
+
+            <p
+              style={{
+                fontSize: "1.8em",
+                color: "rgba(0, 0, 0, 1)",
+              }}
+            >
+              Write & Explore posts
+            </p>
+            <p
+              style={{
+                fontSize: "1.8em",
+                color: "rgba(0, 0, 0, 1)",
+              }}
+            >
+              Apply & Connect
+            </p>
+          </First>
+          <Second>
+            <p
+              style={{
+                fontSize: "1.18em",
+                color: "rgba(0, 0, 0, 1)",
+
+                zIndex: 2,
+              }}
+            >
+              Easily sign up and create your <br></br>profile in no time.
+            </p>
+            <p
+              style={{
+                fontSize: "1.18em",
+                color: "rgba(0, 0, 0, 1)",
+                textalign: "center",
+                zIndex: 2,
+              }}
+            >
+              Your introduction will be <br></br>uploaded to the buddy posts.
+            </p>
+            <p
+              style={{
+                fontSize: "1.18em",
+                color: "rgba(0, 0, 0, 1)",
+
+                zIndex: 2,
+              }}
+            >
+              {" "}
+              Request the buddies you <br></br>want to join!
+            </p>
+          </Second>
         </Grid>
+        <Footer>
+          <div
+            style={{
+              width: "100%",
+              height: "140px",
+              backgroundColor: "#1C1C1C",
+              opacity: 0.26,
+              position: "absolute",
+              zIndex: 1,
+            }}
+          ></div>
+          <img
+            src={LogoWhiteImg}
+            alt="로고"
+            style={{
+              width: "200px",
+              height: "113.92px",
+
+              zIndex: 2,
+            }}
+          />
+          <p
+            style={{
+              fontSize: "1.0em",
+              color: "#FFFFFF",
+
+              zIndex: 2,
+            }}
+          >
+            (주)멋쟁이사자처럼 | 한동대학교
+          </p>
+          <img
+            src={LikelionImg}
+            alt="로고"
+            style={{
+              width: "20px",
+              height: "15px",
+
+              zIndex: 2,
+            }}
+            onClick={handleClicks}
+          />
+          <img
+            src={HGULogoImg}
+            alt="로고"
+            style={{
+              width: "26px",
+              height: "26px",
+
+              zIndex: 2,
+            }}
+            onClick={handleClick}
+          />
+          <p
+            style={{
+              fontSize: "1.0em",
+              color: "#FFFFFF",
+              zIndex: 2,
+            }}
+          >
+            GloB SNS | 소개 | FAQ | Contact
+          </p>
+          <img
+            src={InstaImg}
+            alt="로고"
+            style={{
+              width: "26px",
+              height: "26px",
+
+              zIndex: 2,
+            }}
+            onClick={handleClickse}
+          />
+          <img
+            src={KakaoImg}
+            alt="로고"
+            style={{
+              width: "26px",
+              height: "26px",
+              zIndex: 2,
+            }}
+          />
+
+          <p
+            style={{
+              fontSize: "1.0em",
+              color: "#FFFFFF",
+
+              zIndex: 2,
+            }}
+          >
+            jaies2316@gmail.com
+          </p>
+        </Footer>
       </All>
     </>
   );
