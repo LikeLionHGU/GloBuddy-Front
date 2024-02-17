@@ -5,15 +5,20 @@ import jwtDecode from "jwt-decode";
 import { GoogleLogin } from "@react-oauth/google";
 import { UserTokenState } from "../../store/atom";
 import styled from "styled-components";
+import FindBuddyBTImg from "../../img/FindBuddyBT.png";
 
 const StyledButton = styled.button`
-  padding: 0px 10px;
-  border-radius: 8px;
-  font-size: 1rem;
-  line-height: 1.5;
-  border: 1px solid lightgray;
-  color: white;
-  background: black;
+  position: relative; /* 추가: 위치 조정을 위해 position 속성 추가 */
+  padding: 0px;
+  border: none;
+  background: url(${FindBuddyBTImg}) no-repeat;
+  width: 500px;
+  height: 150px;
+  top: 200px;
+  right: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default function GoogleButton() {
@@ -42,7 +47,6 @@ export default function GoogleButton() {
 
   return (
     <StyledButton>
-      구글 로그인
       <div style={{ opacity: 0 }}>
         <GoogleLogin
           onSuccess={handleSuccess}

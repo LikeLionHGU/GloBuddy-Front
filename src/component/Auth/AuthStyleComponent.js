@@ -1,6 +1,5 @@
 import React from "react";
 import MainImg from "../../img/main.png";
-import FindBuddyBTImg from "../../img/FindBuddyBT.png";
 import ScrollImg from "../../img/Scroll.png";
 import Chat1Img from "../../img/Chat1.png";
 import Connection1Img from "../../img/Connection1.png";
@@ -12,8 +11,20 @@ import LikelionImg from "../../img/Likelion.png";
 import HGULogoImg from "../../img/HGULogo.png";
 import KakaoImg from "../../img/Kakao.png";
 import InstaImg from "../../img/Insta.png";
+import UserIconImg from "../../img/UserIcon.png";
+import VectorImg from "../../img/Vector.png";
+import StorageImg from "../../img/Storage.png";
 
 export default function AuthStyleComponent() {
+  const handleClick = () => {
+    window.location.href = "https://www.handong.edu/";
+  };
+  const handleClicks = () => {
+    window.location.href = "https://hgulikelion.web.app/";
+  };
+  const handleClickse = () => {
+    window.location.href = "https://www.instagram.com/glob_webservice/";
+  };
   return (
     <>
       <p
@@ -77,17 +88,7 @@ export default function AuthStyleComponent() {
           right: "384px",
         }}
       />
-      <img
-        src={FindBuddyBTImg}
-        alt="버튼"
-        style={{
-          width: "438px",
-          height: "120px",
-          position: "absolute",
-          top: "610.67px",
-          left: "195px",
-        }}
-      />
+
       <img
         src={ScrollImg}
         alt="버튼"
@@ -287,6 +288,18 @@ export default function AuthStyleComponent() {
           zIndex: 2,
         }}
       />
+      <img
+        src={UserIconImg}
+        alt="버튼"
+        style={{
+          width: "240px",
+          height: "240px",
+          position: "absolute",
+          top: "2819px",
+          left: "330px",
+          zIndex: 3,
+        }}
+      />
       {/* 유저아이콘 삽입 */}
       <img
         src={GroupImg}
@@ -300,6 +313,18 @@ export default function AuthStyleComponent() {
           zIndex: 2,
         }}
       />
+      <img
+        src={VectorImg}
+        alt="버튼"
+        style={{
+          width: "190px",
+          height: "218px",
+          position: "absolute",
+          top: "2833px",
+          left: "850px",
+          zIndex: 3,
+        }}
+      />
       {/* 벡터 아이콘 삽입 */}
       <img
         src={GroupImg}
@@ -311,6 +336,18 @@ export default function AuthStyleComponent() {
           top: "2800px",
           left: "1300px",
           zIndex: 2,
+        }}
+      />
+      <img
+        src={StorageImg}
+        alt="버튼"
+        style={{
+          width: "275px",
+          height: "275px",
+          position: "absolute",
+          top: "2800px",
+          right: "370px",
+          zIndex: 3,
         }}
       />
       {/* 저장아이콘 삽입 */}
@@ -457,6 +494,7 @@ export default function AuthStyleComponent() {
             left: "360px",
             zIndex: 2,
           }}
+          onClick={handleClicks}
         />
         <img
           src={HGULogoImg}
@@ -469,6 +507,7 @@ export default function AuthStyleComponent() {
             left: "390px",
             zIndex: 2,
           }}
+          onClick={handleClick}
         />
         <p
           style={{
@@ -493,6 +532,7 @@ export default function AuthStyleComponent() {
             left: "660px",
             zIndex: 2,
           }}
+          onClick={handleClickse}
         />
         <img
           src={KakaoImg}
