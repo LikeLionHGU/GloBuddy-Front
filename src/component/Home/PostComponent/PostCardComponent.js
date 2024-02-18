@@ -2,31 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PostCardImg from "../../../img/PostCard.png";
 
-const DetailButton = styled.button`
-  border-radius: 8px;
-  font-size: 1rem;
-  border: 1px solid lightgray;
-  color: black;
-  background: white;
-`;
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  height: 300px;
-  border: 1px solid lightgray;
-  margin: 20px;
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
 const Popup = styled.div`
   position: fixed;
   top: 50%;
@@ -73,6 +48,47 @@ const Font = styled.p`
   font-family: Body2; // Global Style 적용해줘서 이렇게 사용 가능
 `;
 
+const Cards = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: 0.4s;
+  transform-style: preserve-3d;
+`;
+const Flip = styled.div`
+  width: 200px;
+  height: 250px;
+  position: relative;
+  perspective: 1100px;
+  &:hover ${Cards} {
+    transform: rotateY(180deg);
+  }
+  margin: 2rem;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const Front = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: red;
+`;
+
+const Back = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: royalblue;
+  transform: rotateY(180deg);
+`;
+
 function PostCardComponent({ postData }) {
   const [showPopup, setShowPopup] = useState(false);
   const [requestText, setRequestText] = useState("");
@@ -117,17 +133,24 @@ function PostCardComponent({ postData }) {
     <div>
       <CardContainer>
         {postData.map((data, index) => (
-          <Card key={index}>
-            <h3>{data.title}</h3>
-            <CardImg src={PostCardImg} alt="defalut" />
-            <Font>
-              이름 {data.name} / 국내|국제 {data.type}
-            </Font>
-            <Font>{data.gender}</Font>
-            <Font>{data.needs}</Font>
-            <DetailButton>자세히보기</DetailButton>
-            <button onClick={handleApplyClick}>신청하기</button>
-          </Card>
+          <Flip key={index}>
+            {" "}
+            <Cards>
+              <Front>
+                <h3>{data.title}</h3>
+                <CardImg src={PostCardImg} alt="defalut" />
+                <Font>
+                  이름 {data.name} / 국내|국제 {data.type}
+                </Font>
+                <Font>{data.gender}</Font>
+                <Font>{data.needs}</Font>
+              </Front>
+
+              <Back>
+                <button onClick={handleApplyClick}>신청하기</button>
+              </Back>
+            </Cards>
+          </Flip>
         ))}
       </CardContainer>
       {showPopup && (
