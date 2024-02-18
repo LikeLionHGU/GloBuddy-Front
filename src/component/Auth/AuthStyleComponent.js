@@ -269,7 +269,7 @@ export default function AuthStyleComponent() {
               height: "100%",
               backgroundColor: "#FF9F31",
               opacity: 0.26,
-              position: "absolute",
+
               zIndex: 1,
             }}
           ></div>
@@ -384,7 +384,7 @@ export default function AuthStyleComponent() {
               height: "140px",
               backgroundColor: "#1C1C1C",
               opacity: 0.26,
-              position: "absolute",
+
               zIndex: 1,
             }}
           ></div>
