@@ -1,26 +1,43 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Horizontal } from "../../styles/StyledComponents";
+import UserPiconImg from "../../img/UserPicon.png";
 
 const MailAlarmBox = styled.div`
   display: flex;
-  border-radius: 8px;
-  height: 30px;
-  width: 700px;
+  border-radius: 15px;
+  height: 85px;
+  width: 600px;
   text-align: center; //가로
-  border: 1px solid lightgray;
-  margin-top: 10px;
+  align-items: center; //세로
+  border: none;
+  background-color: white;
+  margin-top: 20px;
+  padding: 15px;
+`;
+const UserImg = styled.img`
+  width: 75px;
+  height: 75px;
+  margin-right: 25px;
 `;
 const Text = styled.div`
-  flex: 3;
+  flex: 4;
+  font-size: 15px;
+  font-family: Subtitle3;
 `;
 const ButtonWrapper = styled.div`
   flex: 1;
   margin-right: auto 0;
 `;
 const CheckBT = styled.button`
-  border: 1px solid lightgray;
-  background: yellow;
+  width: 80px;
+  height: 50px;
+  border: none;
+  background: #ffce96;
   cursor: pointer;
+  border-radius: 15px;
+  font-size: 13px;
+  font-family: Body1;
 `;
 
 function MailAlarmSentItemsComponent({ chatData }) {
@@ -41,24 +58,27 @@ function MailAlarmSentItemsComponent({ chatData }) {
       {chatDataState.map(
         (data, index) =>
           (data.inbox === 1 || data.inbox === 2) && (
-            <MailAlarmBox key={index}>
-              {data.inbox === 1 ? (
-                <Text>
-                  Congrats ! You're now Global buddy with {data.name}, join your
-                  chat room to chat!
-                </Text>
-              ) : data.inbox === 2 ? (
-                <Text>
-                  Sorry, you're not a global buddy with {data.name}, find
-                  another buddy for you !
-                </Text>
-              ) : null}
-              {!data.send && ( // Check if data.send is false
-                <ButtonWrapper>
-                  <CheckBT onClick={() => handleCheck(index)}>Read</CheckBT>
-                </ButtonWrapper>
-              )}
-            </MailAlarmBox>
+            <Horizontal>
+              <UserImg src={UserPiconImg} alt="userIcon" />
+              <MailAlarmBox key={index}>
+                {data.inbox === 1 ? (
+                  <Text>
+                    Congrats ! You're now Global buddy with {data.name}, join
+                    your chat room to chat!
+                  </Text>
+                ) : data.inbox === 2 ? (
+                  <Text>
+                    Sorry, you're not a global buddy with {data.name}, find
+                    another buddy for you !
+                  </Text>
+                ) : null}
+                {!data.send && ( // Check if data.send is false
+                  <ButtonWrapper>
+                    <CheckBT onClick={() => handleCheck(index)}>Read</CheckBT>
+                  </ButtonWrapper>
+                )}
+              </MailAlarmBox>
+            </Horizontal>
           )
       )}
     </>

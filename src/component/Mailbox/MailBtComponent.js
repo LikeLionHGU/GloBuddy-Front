@@ -38,7 +38,7 @@ const chatData = [
   },
   {
     send: true, // 일단 보낸 편지함
-    inbox: 0,
+    inbox: 1,
     name: "정정재",
     type: "국내 더미",
     gender: "남자 더미",
@@ -50,7 +50,7 @@ const chatData = [
   },
   {
     send: false, // 일단 보낸 편지함
-    inbox: 0,
+    inbox: 1,
     name: "김민혁",
     type: "꺄호",
     gender: "여자 더미",
@@ -61,7 +61,7 @@ const chatData = [
     kakao: "https://github.com/LikeLionHGU/GloBuddy-Front/issues/11",
   },
   {
-    send: false, // 일단 보낸 편지함
+    send: true, // 일단 보낸 편지함
     inbox: 2,
     name: "조예환",
     type: "뭐",
@@ -70,6 +70,18 @@ const chatData = [
     needs: "친구 더미",
     picture: "더미 사진 링크",
     text: "버디를 요청합니다. 이유는 재밌어보여서 입니다.",
+    kakao: "https://github.com/LikeLionHGU/GloBuddy-Front/issues/11",
+  },
+  {
+    send: true, // 일단 보낸 편지함
+    inbox: 2,
+    name: "짱구",
+    type: "배고파",
+    gender: "남자",
+    propensity: "꺄호",
+    needs: "친구 더미",
+    picture: "더미 사진 링크",
+    text: "배고프다 진짜",
     kakao: "https://github.com/LikeLionHGU/GloBuddy-Front/issues/11",
   },
 ];
