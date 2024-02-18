@@ -10,7 +10,7 @@ import LetterBoxImg from "../img/LetterBox.png";
 const BT = styled.button`
   border: none;
   border-radius: 15px;
-  background: #ffd4a3;
+  background: ${({ active }) => (active ? "#FFCE96" : "#FFE2C1")};
   width: 150px;
   height: 60px;
   font-size: 18px;
@@ -48,13 +48,13 @@ const OrnageMailBox = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: center;
+  justify-content: flex-start; /* 첫 번째 요소가 항상 위에 위치하도록 수정 */
   margin: 0 40px 45px 150px;
   font-family: Subtitle2;
   font-size: 15px;
   color: black;
   overflow-y: auto;
-  padding: 30px;
+  padding: 20px;
 `;
 const LetterText = styled.p`
   font-family: Subtitle3;
@@ -88,22 +88,32 @@ export const NoCenterHorizontal = styled.div`
 function Alarm() {
   const { state } = useLocation();
   const [show, setShow] = useState(true);
+  const [inboxActive, setInboxActive] = useState(true);
+  const [sentItemsActive, setSentItemsActive] = useState(false);
 
   const handleShowInbox = () => {
     setShow(true); // Inbox 보이기
+    setInboxActive(true);
+    setSentItemsActive(false);
   };
 
   const handleShowSentItems = () => {
     setShow(false); // Sent Items 보이기
+    setInboxActive(false);
+    setSentItemsActive(true);
   };
   const isEmptyInbox = state.every((data) => data.inbox === 0);
 
   return (
     <Horizontal>
       <Vertical>
-        <BT onClick={handleShowInbox}>Inbox</BT>
+        <BT active={inboxActive} onClick={handleShowInbox}>
+          Inbox
+        </BT>
         <DetailText>Who wants to meet me</DetailText>
-        <BT onClick={handleShowSentItems}>Sent Items</BT>
+        <BT active={sentItemsActive} onClick={handleShowSentItems}>
+          Sent Items
+        </BT>
         <DetailText>Who I want to meet</DetailText>
       </Vertical>
       <NoCenterVertical>
