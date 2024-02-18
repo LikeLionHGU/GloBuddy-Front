@@ -178,3 +178,89 @@ export const Footer = styled.div`
   display: flex;
   width: 100%;
 `;
+
+export const Person = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
+
+export const PC = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+export const PW = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
+export const PWF = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+export const PWS = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+export const Note = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
+
+export const NC = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+export const NW = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
+export const NWF = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+export const NWS = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+export const Out = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
+export const OC = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+export const OW = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
+export const OCF = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+export const OCS = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+export const Final = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+`;

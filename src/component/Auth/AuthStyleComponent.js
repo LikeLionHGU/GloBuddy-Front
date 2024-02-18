@@ -46,6 +46,22 @@ import {
   Text,
   Second,
   Footer,
+  Person,
+  PC,
+  PW,
+  PWF,
+  PWS,
+  NC,
+  Note,
+  NW,
+  NWF,
+  NWS,
+  Out,
+  OC,
+  OW,
+  OCF,
+  OCS,
+  Final,
 } from "../../styles/StyledComponents";
 import GoogleLoginButton from "./LoginComponent";
 
@@ -135,6 +151,7 @@ export default function AuthStyleComponent() {
         </Scroll>
         <Content>
           <Right>
+            \
             <Earth>
               <EN>
                 <ET>
@@ -176,7 +193,6 @@ export default function AuthStyleComponent() {
                 />
               </Circle>
             </Earth>
-
             <Candy>
               <CN>
                 <CT>
@@ -266,116 +282,141 @@ export default function AuthStyleComponent() {
           <div
             style={{
               width: "100%",
-              height: "100%",
+              height: "900px",
               backgroundColor: "#FF9F31",
               opacity: 0.26,
-
+              position: "relative",
               zIndex: 1,
             }}
-          ></div>
-          <Title>
-            <h1
-              style={{
-                fontSize: "2.5em",
-                color: "rgba(0, 0, 0, 1)",
-              }}
-            >
-              How?
-            </h1>
-          </Title>
-          <To>
-            <Three>
-              <img
-                src={GroupImg}
-                alt="버튼"
+          >
+            <Title>
+              <h1
                 style={{
-                  width: "300px",
-                  height: "300px",
-                  zIndex: 2,
+                  fontSize: "2.5em",
+                  color: "rgba(0, 0, 0, 1)",
                 }}
-              />
-              <img
-                src={GroupImg}
-                alt="버튼"
-                style={{
-                  width: "300px",
-                  height: "300px",
-                  zIndex: 2,
-                }}
-              />
-              <img
-                src={GroupImg}
-                alt="버튼"
-                style={{
-                  width: "300px",
-                  height: "300px",
-                  zIndex: 2,
-                }}
-              />
-            </Three>
-          </To>
+              >
+                How?
+              </h1>
+            </Title>
+            <Final>
+              <Person>
+                <PC>
+                  <img
+                    src={GroupImg}
+                    alt="버튼"
+                    style={{
+                      width: "300px",
+                      height: "300px",
+                      zIndex: 2,
+                    }}
+                  />
+                </PC>
+                <PW>
+                  <PWF>
+                    <p
+                      style={{
+                        fontSize: "1.8em",
 
-          <First>
-            <p
-              style={{
-                fontSize: "1.8em",
+                        color: "rgba(0, 0, 0, 1)",
+                      }}
+                    >
+                      Create a profile
+                    </p>
+                  </PWF>
+                  <PWS>
+                    <p
+                      style={{
+                        fontSize: "1.18em",
+                        color: "rgba(0, 0, 0, 1)",
 
-                color: "rgba(0, 0, 0, 1)",
-              }}
-            >
-              Create a profile
-            </p>
+                        zIndex: 2,
+                      }}
+                    >
+                      Easily sign up and create your <br></br>profile in no
+                      time.
+                    </p>
+                  </PWS>
+                </PW>
+              </Person>
+              <Note>
+                <NC>
+                  <img
+                    src={GroupImg}
+                    alt="버튼"
+                    style={{
+                      width: "300px",
+                      height: "300px",
+                      zIndex: 2,
+                    }}
+                  />
+                </NC>
+                <NW>
+                  <NWF>
+                    <p
+                      style={{
+                        fontSize: "1.8em",
+                        color: "rgba(0, 0, 0, 1)",
+                      }}
+                    >
+                      Write & Explore posts
+                    </p>
+                  </NWF>
+                  <NWS>
+                    <p
+                      style={{
+                        fontSize: "1.18em",
+                        color: "rgba(0, 0, 0, 1)",
+                        textalign: "center",
+                        zIndex: 2,
+                      }}
+                    >
+                      Your introduction will be <br></br>uploaded to the buddy
+                      posts.
+                    </p>
+                  </NWS>
+                </NW>
+              </Note>
+              <Out>
+                <OC>
+                  <img
+                    src={GroupImg}
+                    alt="버튼"
+                    style={{
+                      width: "300px",
+                      height: "300px",
+                      zIndex: 2,
+                    }}
+                  />
+                </OC>
+                <OW>
+                  <OCF>
+                    <p
+                      style={{
+                        fontSize: "1.8em",
+                        color: "rgba(0, 0, 0, 1)",
+                      }}
+                    >
+                      Apply & Connect
+                    </p>
+                  </OCF>
+                  <OCS>
+                    <p
+                      style={{
+                        fontSize: "1.18em",
+                        color: "rgba(0, 0, 0, 1)",
 
-            <p
-              style={{
-                fontSize: "1.8em",
-                color: "rgba(0, 0, 0, 1)",
-              }}
-            >
-              Write & Explore posts
-            </p>
-            <p
-              style={{
-                fontSize: "1.8em",
-                color: "rgba(0, 0, 0, 1)",
-              }}
-            >
-              Apply & Connect
-            </p>
-          </First>
-          <Second>
-            <p
-              style={{
-                fontSize: "1.18em",
-                color: "rgba(0, 0, 0, 1)",
-
-                zIndex: 2,
-              }}
-            >
-              Easily sign up and create your <br></br>profile in no time.
-            </p>
-            <p
-              style={{
-                fontSize: "1.18em",
-                color: "rgba(0, 0, 0, 1)",
-                textalign: "center",
-                zIndex: 2,
-              }}
-            >
-              Your introduction will be <br></br>uploaded to the buddy posts.
-            </p>
-            <p
-              style={{
-                fontSize: "1.18em",
-                color: "rgba(0, 0, 0, 1)",
-
-                zIndex: 2,
-              }}
-            >
-              {" "}
-              Request the buddies you <br></br>want to join!
-            </p>
-          </Second>
+                        zIndex: 2,
+                      }}
+                    >
+                      {" "}
+                      Request the buddies you <br></br>want to join!
+                    </p>
+                  </OCS>
+                </OW>
+              </Out>
+            </Final>
+          </div>
         </Grid>
         <Footer>
           <div
@@ -387,89 +428,90 @@ export default function AuthStyleComponent() {
 
               zIndex: 1,
             }}
-          ></div>
-          <img
-            src={LogoWhiteImg}
-            alt="로고"
-            style={{
-              width: "200px",
-              height: "113.92px",
-
-              zIndex: 2,
-            }}
-          />
-          <p
-            style={{
-              fontSize: "1.0em",
-              color: "#FFFFFF",
-
-              zIndex: 2,
-            }}
           >
-            (주)멋쟁이사자처럼 | 한동대학교
-          </p>
-          <img
-            src={LikelionImg}
-            alt="로고"
-            style={{
-              width: "20px",
-              height: "15px",
+            <img
+              src={LogoWhiteImg}
+              alt="로고"
+              style={{
+                width: "200px",
+                height: "113.92px",
 
-              zIndex: 2,
-            }}
-            onClick={handleClicks}
-          />
-          <img
-            src={HGULogoImg}
-            alt="로고"
-            style={{
-              width: "26px",
-              height: "26px",
+                zIndex: 2,
+              }}
+            />
+            <p
+              style={{
+                fontSize: "1.0em",
+                color: "#FFFFFF",
 
-              zIndex: 2,
-            }}
-            onClick={handleClick}
-          />
-          <p
-            style={{
-              fontSize: "1.0em",
-              color: "#FFFFFF",
-              zIndex: 2,
-            }}
-          >
-            GloB SNS | 소개 | FAQ | Contact
-          </p>
-          <img
-            src={InstaImg}
-            alt="로고"
-            style={{
-              width: "26px",
-              height: "26px",
+                zIndex: 2,
+              }}
+            >
+              (주)멋쟁이사자처럼 | 한동대학교
+            </p>
+            <img
+              src={LikelionImg}
+              alt="로고"
+              style={{
+                width: "20px",
+                height: "15px",
 
-              zIndex: 2,
-            }}
-            onClick={handleClickse}
-          />
-          <img
-            src={KakaoImg}
-            alt="로고"
-            style={{
-              width: "26px",
-              height: "26px",
-              zIndex: 2,
-            }}
-          />
+                zIndex: 2,
+              }}
+              onClick={handleClicks}
+            />
+            <img
+              src={HGULogoImg}
+              alt="로고"
+              style={{
+                width: "26px",
+                height: "26px",
 
-          <p
-            style={{
-              fontSize: "1.0em",
-              color: "#FFFFFF",
+                zIndex: 2,
+              }}
+              onClick={handleClick}
+            />
+            <p
+              style={{
+                fontSize: "1.0em",
+                color: "#FFFFFF",
+                zIndex: 2,
+              }}
+            >
+              GloB SNS | 소개 | FAQ | Contact
+            </p>
+            <img
+              src={InstaImg}
+              alt="로고"
+              style={{
+                width: "26px",
+                height: "26px",
 
-              zIndex: 2,
-            }}
-          >
-            jaies2316@gmail.com
-          </p>
+                zIndex: 2,
+              }}
+              onClick={handleClickse}
+            />
+            <img
+              src={KakaoImg}
+              alt="로고"
+              style={{
+                width: "26px",
+                height: "26px",
+                zIndex: 2,
+              }}
+            />
+
+            <p
+              style={{
+                fontSize: "1.0em",
+                color: "#FFFFFF",
+
+                zIndex: 2,
+              }}
+            >
+              jaies2316@gmail.com
+            </p>
+          </div>
         </Footer>
       </All>
     </>
