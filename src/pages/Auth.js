@@ -1,12 +1,9 @@
-import GoogleLoginButton from "../component/Auth/LoginComponent";
-import ProfileInfoModal from "../component/Home/ProfileInfoModal";
+import AuthStyleComponent from "../component/Auth/AuthStyleComponent";
 
 function Auth() {
   return (
     <>
-      <GoogleLoginButton />
-      <br></br>
-      <ProfileInfoModal />
+      <AuthStyleComponent />
     </>
   );
 }
