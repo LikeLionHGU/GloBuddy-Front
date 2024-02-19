@@ -6,6 +6,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { UserTokenState } from "../../store/atom";
 import styled from "styled-components";
 import FindBuddyBTImg from "../../img/FindBuddyBT.png";
+import axios from "axios";
 
 const StyledButton = styled.button`
   padding: 0px;
@@ -32,10 +33,25 @@ export default function GoogleButton() {
     console.log(decodedToken);
     setUserToken(res.credential);
     // Todo: 여기서 api post 호출 '유저 저장'
-    // 첫 로그인 시 프로필 설정 이동
-    navigate("/GloBuddy/Profile");
+    // 첫 로그인 시 프로필 설정 이동 ||
+    axios
+      .post("http://localhost:8080/member", {
+        name: decodedToken.name,
+        email: decodedToken.email,
+        picture: decodedToken.picture,
+      })
+      .then(function (response) {
+        // response Action
+        if (response)
+          navigate("/GloBuddy"); // 반환 값이 true면 등록되어 있는 사람
+        else navigate("/GloBuddy/Profile"); // false면 처음 가입한 사람
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
     // 첫 로그인 아닌 경우 메인 화면으로 이동
-    // navigate("/GloBuddy");
+    //
   };
 
   const handleFailure = (err) => {
