@@ -41,9 +41,10 @@ export default function GoogleButton() {
       })
       .then(function (response) {
         // ToDo: 백엔드 t/f에 따라 이동 경로 변경해주기
-        if (response)
-          navigate("/GloBuddy"); // 반환 값이 true면 등록되어 있는 사람
-        else navigate("/GloBuddy/Profile"); // false면 처음 가입한 사람
+        // if (response)
+        //   navigate("/GloBuddy"); // 반환 값이 true면 등록되어 있는 사람
+        // else navigate("/GloBuddy/Profile"); // false면 처음 가입한 사람
+        navigate("/GloBuddy/Profile"); // false면 처음 가입한 사람
         console.log("response", response);
       })
       .catch(function (error) {

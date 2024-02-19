@@ -66,6 +66,8 @@ function MailAlarmInboxComponent({ chatData }) {
   const [selectedChatData, setSelectedChatData] = useState(null);
   const [kakao, setKakao] = useState(false);
 
+  //Todo: sendId를 받아 그 사람의 신청 정보를 받는 api 연결
+
   //ToDo: 메일 확인 api 요청 후 확인 버튼 ui 선택
   const handleCheck = (data) => {
     console.log(data);
