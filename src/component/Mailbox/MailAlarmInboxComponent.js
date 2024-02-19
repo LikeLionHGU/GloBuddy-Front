@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ChatInfoCheckDialog from "./ChatInfoCheckDialog";
 import { Horizontal } from "../../styles/StyledComponents";
 import UserPiconImg from "../../img/UserPicon.png";
+import axios from "axios";
 
 const MailAlarmBox = styled.div`
   display: flex;
@@ -65,6 +66,23 @@ function MailAlarmInboxComponent({ chatData }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedChatData, setSelectedChatData] = useState(null);
   const [kakao, setKakao] = useState(false);
+  const memberId = 1; // 멤버 아이디 수정
+
+  // useEffect(() => {
+  //   handleNavigateAlarm();
+  // }, [isOpen]); // 알림 api 리렌더링 시 호출
+  // const handleNavigateAlarm = () => {
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_HOST_URL}/matching/notification/receive/${memberId}`
+  //     )
+  //     .then((response) => {
+  //       console.log("response", response.data.receiveMailResponseList);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error", error);
+  //     });
+  // };
 
   //Todo: sendId를 받아 그 사람의 신청 정보를 받는 api 연결
 
@@ -83,6 +101,26 @@ function MailAlarmInboxComponent({ chatData }) {
     setKakao(true);
     console.log("lkaklago", kakao);
   };
+  //ToDo: 버디 신청 요청 거절 시 api 요청
+  const handleReject = (data) => {
+    setSelectedChatData(data);
+    console.log(selectedChatData, "data");
+    axios
+      .patch(
+        `${process.env.REACT_APP_HOST_URL}/matching/notification/receive/${memberId}/choice/${selectedChatData.matchingId}`,
+        {
+          ifMatched: 2, //거절
+        }
+      )
+      .then(function (response) {
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setIsOpen(!isOpen);
+    setKakao(false);
+  };
 
   return (
     <>
@@ -91,8 +129,8 @@ function MailAlarmInboxComponent({ chatData }) {
           <UserImg src={UserPiconImg} alt="userIcon" />
           <MailAlarmBox key={index}>
             <Text>
-              A letter from {data.name} has arrived for you. Go ahead and check
-              it out!
+              A letter from {data.senderName} has arrived for you. Go ahead and
+              check it out!
             </Text>
             <ButtonWrapper>
               {data.ifMatched === 1 ? (
@@ -113,7 +151,7 @@ function MailAlarmInboxComponent({ chatData }) {
         <ChatInfoCheckDialog
           chatData={selectedChatData}
           open={isOpen}
-          onRejectClick={handleCheck}
+          onRejectClick={handleReject}
           kakao={kakao}
         />
       )}

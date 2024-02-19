@@ -11,6 +11,7 @@ import { AiOutlineLink } from "react-icons/ai";
 import { Horizontal, Vertical } from "../../styles/StyledComponents";
 import LetterDialogImg from "../../img/LetterDialog.png";
 import UserPiconImg from "../../img/UserPicon.png";
+import axios from "axios";
 
 const StyledPaper = styled(Paper)`
   width: 580px;
@@ -125,11 +126,24 @@ export default function ChatInfoCheckDialog({
   onRejectClick,
   kakao,
 }) {
+  const memberId = 1; // 멤버 아이디 수정
   const [accept, setAccept] = useState(false); // ToDo: 추후 chatData에 있는 변수로 설정
   const handleAcceptClick = () => {
     setAccept(true);
     // ToDo: 거절 승인 api 연결하기
-
+    axios
+      .patch(
+        `${process.env.REACT_APP_HOST_URL}/matching/notification/receive/${memberId}/choice/${chatData.matchingId}`,
+        {
+          ifMatched: 1, //수락
+        }
+      )
+      .then(function (response) {
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     // ToDo: 거절 승인 미확인 읽어오는 api 연결
   };
   return (
@@ -140,8 +154,8 @@ export default function ChatInfoCheckDialog({
             <CancelBT onClick={onRejectClick}>X</CancelBT>
             <DialogTitle>
               <CongratsText>
-                Congrats ! You're now Global buddy with {chatData.name}, join
-                his chat room to chat!
+                Congrats ! You're now Global buddy with {chatData.senderName},
+                join his chat room to chat!
               </CongratsText>
             </DialogTitle>
             <DialogContent>
@@ -175,13 +189,13 @@ export default function ChatInfoCheckDialog({
                 </Vertical>
                 <NoCenterVertical>
                   <SomeCenterHorizontal>
-                    Gender <InfoBox>{chatData.gender}</InfoBox>
+                    Gender <InfoBox>{chatData.senderGender}</InfoBox>
                   </SomeCenterHorizontal>
                   <SomeCenterHorizontal>
-                    Nationality <InfoBox>{chatData.type}</InfoBox>
+                    Nationality <InfoBox>{chatData.senderNation}</InfoBox>
                   </SomeCenterHorizontal>
                   <SomeCenterHorizontal>
-                    MBTI <InfoBox>{chatData.propensity}</InfoBox>
+                    MBTI <InfoBox>{chatData.senderMbti}</InfoBox>
                   </SomeCenterHorizontal>
                 </NoCenterVertical>
               </NoCenterHorizontal>
