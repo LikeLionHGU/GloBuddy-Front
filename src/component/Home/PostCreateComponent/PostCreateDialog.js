@@ -119,9 +119,9 @@ function PostCreateDialog({ open, setIsOpen }) {
   };
   const postClickModal = () => {
     setOpenCheck(openCheck === 1 ? 2 : 1); // 확인 모달
-    // ToDo: 글을 등록하는 부분 & 데이터 확인 및 api 연결
+    // ToDo: 멤버 아이디 받은거 가지고 있는 코드 작성 후 적용
     axios
-      .post("http://localhost:8080/posts", {
+      .post(`${process.env.REACT_APP_HOST_URL}/posts`, {
         memberId: 1,
         title: title,
         content: content,

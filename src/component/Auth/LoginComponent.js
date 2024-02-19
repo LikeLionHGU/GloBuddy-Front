@@ -34,7 +34,7 @@ export default function GoogleButton() {
     setUserToken(res.credential);
     // 첫 로그인 시 프로필 설정 이동 ||
     axios
-      .post("http://localhost:8080/member", {
+      .post(`${process.env.REACT_APP_HOST_URL}/member`, {
         name: decodedToken.name,
         email: decodedToken.email,
         picture: decodedToken.picture,
