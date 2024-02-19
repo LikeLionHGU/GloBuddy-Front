@@ -68,6 +68,7 @@ function MailAlarmInboxComponent({ chatData }) {
   const [kakao, setKakao] = useState(false);
   const memberId = 1; // 멤버 아이디 수정
 
+  // ToDo: 리렌더링 시 버튼 글자 적용 필요 (ERROR)
   // useEffect(() => {
   //   handleNavigateAlarm();
   // }, [isOpen]); // 알림 api 리렌더링 시 호출
