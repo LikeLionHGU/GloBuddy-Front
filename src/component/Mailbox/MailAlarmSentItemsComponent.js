@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Horizontal } from "../../styles/StyledComponents";
 import UserPiconImg from "../../img/UserPicon.png";
+import axios from "axios";
 
 const MailAlarmBox = styled.div`
   display: flex;
@@ -41,38 +42,53 @@ const CheckBT = styled.button`
 `;
 
 function MailAlarmSentItemsComponent({ chatData }) {
-  // useState사용을 통해 send 값이 바뀔때마다 리렌더링
+  // useState사용을 통해 ifChecked 값이 바뀔때마다 리렌더링
   const [chatDataState, setChatDataState] = useState(chatData);
   //ToDo: 메일 확인 api 요청 후 확인 버튼 ui 선택
+  const memberId = 1; // 멤버 아이디 수정
   const handleCheck = (index) => {
     // ToDo: 확인 버튼 누르면 확인되었다고 api 연결
     setChatDataState((prevState) => {
       const updatedChatData = [...prevState];
-      updatedChatData[index].send = true;
+      updatedChatData[index].ifChecked = true;
       return updatedChatData; // setChatDataSate 함수 내 updatedChatData 배열을 반환 -> React는 상태가 업데이트되었음을 감지하고 해당 컴포넌트를 리렌더링
     });
+    console.log("wlrma dlwjdofijwoeijf;lw kjf;lw", chatDataState[index]);
+    axios
+      .patch(
+        `${process.env.REACT_APP_HOST_URL}/matching/notification/sent/${memberId}/check/${chatDataState[index].matchingId}`,
+        {
+          ifChecked: true, // 답변 확인
+        }
+      )
+      .then(function (response) {
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
     <>
       {chatDataState.map(
         (data, index) =>
-          (data.inbox === 1 || data.inbox === 2) && (
+          (data.ifMatched === 1 || data.ifMatched === 2) && (
             <Horizontal>
               <UserImg src={UserPiconImg} alt="userIcon" />
               <MailAlarmBox key={index}>
-                {data.inbox === 1 ? (
+                {data.ifMatched === 1 ? (
                   <Text>
                     Congrats ! You're now Global buddy with {data.name}, join
                     your chat room to chat!
                   </Text>
-                ) : data.inbox === 2 ? (
+                ) : data.ifMatched === 2 ? (
                   <Text>
                     Sorry, you're not a global buddy with {data.name}, find
                     another buddy for you !
                   </Text>
                 ) : null}
-                {!data.send && ( // Check if data.send is false
+                {!data.ifChecked && ( // Check if data.ifChecked is false
                   <ButtonWrapper>
                     <CheckBT onClick={() => handleCheck(index)}>Read</CheckBT>
                   </ButtonWrapper>

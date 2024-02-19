@@ -25,7 +25,7 @@ const DetailText = styled.p`
 `;
 const OrnageBox = styled.div`
   width: 825px;
-  height: 408px;
+  height: 478px;
   background-color: #ffe2c1;
   border-radius: 40px;
   display: flex;
@@ -38,6 +38,7 @@ const OrnageBox = styled.div`
   font-family: Subtitle2;
   font-size: 27px;
   color: #48524b;
+  padding: 20px;
 `;
 const OrnageMailBox = styled.div`
   width: 825px;
@@ -102,7 +103,7 @@ function Alarm() {
     setInboxActive(false);
     setSentItemsActive(true);
   };
-  const isEmptyInbox = state.every((data) => data.inbox === 0);
+  const isEmptyInbox = state.every((data) => data.ifMatched === 0) && !show;
 
   return (
     <Horizontal>
@@ -128,7 +129,6 @@ function Alarm() {
           {isEmptyInbox ? (
             <OrnageBox>
               Your Letterbox is empty!
-              <br /> Meet more global buddies from the buddy request !
               <LetterImg src={LetterBoxImg} alt="letterbox" />
             </OrnageBox>
           ) : show ? (

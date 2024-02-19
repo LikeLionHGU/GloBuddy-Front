@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 import ProfileComponent1 from "../component/Profile/ProfileComponent1";
 import ProfileComponent3 from "../component/Profile/ProfileComponent3";
+import axios from "axios";
 
 function Profile() {
   const userToken = useRecoilValue(UserTokenState);
@@ -38,6 +39,20 @@ function Profile() {
       break;
     case 3:
       // Todo: 여기서 api post 호출 '유저 정보 저장'
+      axios
+        .post(`${process.env.REACT_APP_HOST_URL}/memberDetail`, {
+          memberId: 1,
+          gender: selectedUserInfo.gender,
+          nation: selectedUserInfo.type,
+          mbti: selectedUserInfo.propensity,
+        })
+        .then(function (response) {
+          console.log("response", response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
       navigate("/GloBuddy", { state: selectedUserInfo });
       break;
     default:
