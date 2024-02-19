@@ -118,8 +118,6 @@ export const SC = styled.div`
 export const Grid = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: column;
-  align-items: center;
 `;
 export const Title = styled.div`
   width: 100%;
@@ -178,11 +176,16 @@ export const Footer = styled.div`
   display: flex;
   width: 100%;
 `;
+export const Fall = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+`;
 
 export const Person = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: column;
+  justify-content: space-around;
 `;
 
 export const PC = styled.div`
@@ -209,7 +212,7 @@ export const PWS = styled.div`
 export const Note = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: column;
+  justify-content: center;
 `;
 
 export const NC = styled.div`
@@ -236,7 +239,7 @@ export const NWS = styled.div`
 export const Out = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: column;
+  justify-content: space-around;
 `;
 export const OC = styled.div`
   display: flex;
@@ -262,5 +265,42 @@ export const OCS = styled.div`
 export const Final = styled.div`
   display: flex;
   width: 100%;
-  flex-direction: row;
+`;
+
+export const Flog = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const FF = styled.div`
+  display: flex;
+  width: 30%;
+  align-items: center;
+`;
+export const FFF = styled.div`
+  display: flex;
+  width: 100%;
+`;
+export const FFS = styled.div`
+  display: flex;
+  width: 100%;
+`;
+export const FS = styled.div`
+  display: flex;
+  width: 50%;
+`;
+
+export const FSF = styled.div`
+  display: flex;
+  width: 30%;
+  align-items: center;
+`;
+export const FSS = styled.div`
+  display: flex;
+  width: 30%;
+  align-items: center;
+`;
+export const FT = styled.div`
+  display: flex;
+  width: 100%;
 `;
