@@ -77,7 +77,8 @@ const Front = styled.div`
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background: red;
+  background: white;
+  border: 1px solid black;
 `;
 
 const Back = styled.div`
