@@ -47,6 +47,7 @@ const BuddyRequestText = styled.div`
   align-items: center; //세로
   justify-content: center; //세로
   margin-top: 5px;
+  padding: 10px;
 `;
 const RejectBT = styled.button`
   width: 100px;
@@ -128,6 +129,7 @@ export default function ChatInfoCheckDialog({
   const handleAcceptClick = () => {
     setAccept(true);
     // ToDo: 거절 승인 api 연결하기
+
     // ToDo: 거절 승인 미확인 읽어오는 api 연결
   };
   return (
@@ -151,7 +153,7 @@ export default function ChatInfoCheckDialog({
                       style={{ width: "37px", height: "78px", margin: 0 }}
                     />
                     <LinkText
-                      href={chatData.kakao}
+                      href={chatData.chatLink}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -194,7 +196,7 @@ export default function ChatInfoCheckDialog({
                 Buddy Request
               </DialogTitle>
               <DialogContentText>
-                <BuddyRequestText>{chatData.text}</BuddyRequestText>
+                <BuddyRequestText>{chatData.message}</BuddyRequestText>
               </DialogContentText>
             </DialogContent>
             <DialogActions>

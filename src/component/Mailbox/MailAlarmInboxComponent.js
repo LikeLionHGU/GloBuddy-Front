@@ -95,11 +95,11 @@ function MailAlarmInboxComponent({ chatData }) {
               it out!
             </Text>
             <ButtonWrapper>
-              {index === 1 ? (
+              {data.ifMatched === 1 ? (
                 <AcceptedBT onClick={() => handleAccept(data)}>
                   Accepted
                 </AcceptedBT>
-              ) : index === 2 ? (
+              ) : data.ifMatched === 2 ? (
                 <RedjectedBT>Redjected</RedjectedBT>
               ) : (
                 <ConfirmBT onClick={() => handleCheck(data)}>Confirm</ConfirmBT>

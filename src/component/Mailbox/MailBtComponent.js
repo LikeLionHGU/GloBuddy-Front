@@ -9,7 +9,7 @@ const MailButton = styled.button`
   cursor: pointer;
 `;
 
-// inbox : 0은 미확인 , 1은 수락, 2는 거절 (IfMatched)
+// inbox : 0은 미확인 , 1은 수락, 2는 거절 (ifMatched)
 // send : IfChecked | true는 확인 / false는 미확인
 // inbox가 1,2이면서 send가 false일때만 응답 받은 편지함에 보이기
 // TODO: chatData 넘기는 api 연결
