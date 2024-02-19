@@ -3,7 +3,6 @@ import MainImg from "../../img/main.png";
 import ScrollImg from "../../img/Scroll.png";
 import 설명1Img from "../../img/설명1.png";
 import 설명2Img from "../../img/설명2.png";
-
 import 설명3Img from "../../img/설명3.png";
 import LogoWhiteImg from "../../img/LogoWhite.png";
 import LogoImg from "../../img/Logo.png";
@@ -18,50 +17,20 @@ import 세번째단계Img from "../../img/세번째단계.png";
 import {
   All,
   Banner,
-  CC,
-  CN,
-  CT,
   Candy,
-  Circle,
   Right,
-  EC,
-  EN,
-  ET,
   Earth,
   Header,
-  MS,
   Scroll,
   TitleComp,
   Left,
-  SN,
-  ST,
-  SC,
-  Green,
   Grid,
   Title,
-  Three,
-  Tree,
-  To,
   Content,
-  First,
-  Text,
-  Second,
   Footer,
   Person,
-  PC,
-  PW,
-  PWF,
-  PWS,
-  NC,
   Note,
-  NW,
-  NWF,
-  NWS,
   Out,
-  OC,
-  OW,
-  OCF,
-  OCS,
   Final,
   Flog,
   FF,
@@ -85,12 +54,6 @@ export default function AuthStyleComponent() {
   };
   const handleClickse = () => {
     window.location.href = "https://www.instagram.com/glob_webservice/";
-  };
-  const style = {
-    backgroundColor: "red",
-    border: "1px solid black",
-    width: "100%",
-    height: "1000px",
   };
 
   return (
