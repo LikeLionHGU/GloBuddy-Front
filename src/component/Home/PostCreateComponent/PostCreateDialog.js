@@ -8,6 +8,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Vertical, Horizontal } from "../../../styles/StyledComponents";
+import axios from "axios";
 
 const StyledPaper = styled(Paper)`
   height: 516px;
@@ -39,7 +40,12 @@ const QuestionText = styled.p`
   padding: 0;
   margin: 0;
 `;
-const PostText = styled.input`
+const TitleText = styled.input`
+  width: 400px;
+  height: 50px;
+  margin-bottom: 10px;
+`;
+const ContentText = styled.input`
   width: 400px;
   height: 200px;
 `;
@@ -90,9 +96,13 @@ const needTags = [
 function PostCreateDialog({ open, setIsOpen }) {
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
   const [needTag, setNeedTag] = useState("");
-  const [post, setPost] = useState("");
-  const handleChange = (e) => {
-    setPost(e.target.value);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
   };
   // 등록 확인 성공 모달
   const [openCheck, setOpenCheck] = useState(0);
@@ -110,7 +120,19 @@ function PostCreateDialog({ open, setIsOpen }) {
   const postClickModal = () => {
     setOpenCheck(openCheck === 1 ? 2 : 1); // 확인 모달
     // ToDo: 글을 등록하는 부분 & 데이터 확인 및 api 연결
-    console.log(needTag, post);
+    axios
+      .post("http://localhost:8080/posts", {
+        memberId: 1,
+        title: title,
+        content: content,
+      })
+      .then(function (response) {
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    console.log(needTag, title, content);
   };
   const handleNeed = (needTag) => {
     setNeedTag(needTag);
@@ -152,13 +174,26 @@ function PostCreateDialog({ open, setIsOpen }) {
                 글 등록하기 모달임
               </DialogTitle>
               <DialogContent>
-                <PostText
-                  type="text"
-                  id="post"
-                  name="post"
-                  value={post}
-                  onChange={handleChange}
-                />
+                <Vertical>
+                  제목
+                  <TitleText
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={title}
+                    onChange={handleTitleChange}
+                  />
+                </Vertical>
+                <Vertical>
+                  내용
+                  <ContentText
+                    type="text"
+                    id="content"
+                    name="content"
+                    value={content}
+                    onChange={handleContentChange}
+                  />
+                </Vertical>
               </DialogContent>
               <DialogActions>
                 <Button onClick={handlePreviousStep}>Prev</Button>
