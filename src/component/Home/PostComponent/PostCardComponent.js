@@ -52,6 +52,7 @@ const Cards = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+
   transition: 0.4s;
   transform-style: preserve-3d;
 `;
@@ -76,6 +77,7 @@ const Front = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 8px;
   backface-visibility: hidden;
   background: white;
   border: 1px solid black;
@@ -138,13 +140,16 @@ function PostCardComponent({ postData }) {
             {" "}
             <Cards>
               <Front>
-                <h3>{data.title}</h3>
+                <h3>
+                  TITLE:
+                  {data.title}
+                </h3>
                 <CardImg src={PostCardImg} alt="defalut" />
                 <Font>
-                  이름 {data.name} / 국내|국제 {data.type}
+                  Name: {data.name} / 국내|국제 {data.type}
                 </Font>
                 <Font>{data.gender}</Font>
-                <Font>{data.needs}</Font>
+                <Font>Needs: {data.needs}</Font>
               </Front>
 
               <Back>
