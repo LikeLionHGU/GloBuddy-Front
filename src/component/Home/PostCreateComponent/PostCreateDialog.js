@@ -10,6 +10,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { MemberIdState } from "../../../store/atom";
 import { Vertical, Horizontal } from "../../../styles/StyledComponents";
+import UserPiconImg from "../../../img/UserPicon.png";
 import axios from "axios";
 
 const StyledPaper = styled(Paper)`
@@ -42,14 +43,24 @@ const QuestionText = styled.p`
   padding: 0;
   margin: 0;
 `;
+const UserImg = styled.img`
+  width: 70px;
+  height: 70px;
+  margin-right: 35px;
+`;
 const TitleText = styled.input`
-  width: 400px;
-  height: 50px;
+  width: 470px;
+  height: 40px;
+  margin-top: 20px;
   margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
 `;
 const ContentText = styled.input`
-  width: 400px;
-  height: 200px;
+  width: 470px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 4px;
 `;
 const ChooseText = styled.p`
   font-size: 27px;
@@ -76,29 +87,46 @@ const NextBT = styled.button`
   font-size: 24px;
   font-family: Subtitle3;
 `;
+const NoCenterHorizontal = styled.div`
+  //가로 정렬
+  display: flex;
+`;
 const TagBox = styled.button`
   width: 120px;
   height: 45px;
   border-radius: 15px;
-  border: 1px solid black;
-  background: ${({ active }) => (active ? "#FBAD83" : "white")};
+  border: none;
+  background: ${({ color }) => color};
+  opacity: ${({ active }) => (active ? 1 : 0.5)};
   margin-left: 36px;
   margin-right: 18px;
   margin-top: 36px;
 `;
+const NextTagBox = styled.button`
+  width: 90px;
+  height: 45px;
+  border-radius: 12px;
+  border: none;
+  background: ${({ color }) => color};
+  margin-left: -10px;
+  margin-right: 25px;
+  margin-top: 10px;
+  font-size: 12px;
+`;
 const needTags = [
-  "#Culture",
-  "#Class",
-  "#Language",
-  "#Friends",
-  "#Exercise",
-  "#Information about HGU",
+  { need: "#Culture", color: "#FBAD83" },
+  { need: "#Class", color: "#FED966" },
+  { need: "#Language", color: "#E8D9EC" },
+  { need: "#Friends", color: "#FAEEE0" },
+  { need: "#Exercise", color: "#D3D477" },
+  { need: "#Information about HGU", color: "#9DC9EE" },
 ];
 
 function PostCreateDialog({ open, setIsOpen }) {
   const memberId = useRecoilValue(MemberIdState);
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
   const [needTag, setNeedTag] = useState("");
+  const [needColor, setNeedColor] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const handleTitleChange = (e) => {
@@ -120,25 +148,29 @@ function PostCreateDialog({ open, setIsOpen }) {
   const cancleClick = () => {
     setIsOpen(false);
   };
+  const isFormValid = () => {
+    return title.trim() !== "" && content.trim() !== "";
+  };
   const postClickModal = () => {
     setOpenCheck(openCheck === 1 ? 2 : 1); // 확인 모달
     // ToDo: 멤버 아이디 받은거 가지고 있는 코드 작성 후 적용
-    axios
-      .post(`${process.env.REACT_APP_HOST_URL}/posts`, {
-        memberId: memberId,
-        title: title,
-        content: content,
-      })
-      .then(function (response) {
-        console.log("response", response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .post(`${process.env.REACT_APP_HOST_URL}/posts`, {
+    //     memberId: memberId,
+    //     title: title,
+    //     content: content,
+    //   })
+    //   .then(function (response) {
+    //     console.log("response", response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
     console.log(needTag, title, content);
   };
   const handleNeed = (needTag) => {
-    setNeedTag(needTag);
+    setNeedTag(needTag.need);
+    setNeedColor(needTag.color);
     setNextButtonDisabled(false);
   };
 
@@ -151,13 +183,14 @@ function PostCreateDialog({ open, setIsOpen }) {
               <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
               <QuestionText>What are your needs?</QuestionText>
               <DialogContent>
-                {needTags.map((need, index) => (
+                {needTags.map((item, index) => (
                   <TagBox
                     key={index}
-                    onClick={() => handleNeed(need)}
-                    active={needTag === need}
+                    onClick={() => handleNeed(item)}
+                    active={needTag === item.need}
+                    color={item.color}
                   >
-                    {need}
+                    {item.need}
                   </TagBox>
                 ))}
                 <ChooseText>Choose your own needs!</ChooseText>
@@ -173,34 +206,39 @@ function PostCreateDialog({ open, setIsOpen }) {
           {openCheck === 1 && (
             <Vertical>
               <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
-              <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
-                글 등록하기 모달임
-              </DialogTitle>
               <DialogContent>
-                <Vertical>
-                  제목
+                <Horizontal>
+                  <UserImg src={UserPiconImg} alt="userIcon" />
                   <TitleText
                     type="text"
                     id="title"
                     name="title"
+                    placeholder="Title"
                     value={title}
                     onChange={handleTitleChange}
+                    required
                   />
-                </Vertical>
-                <Vertical>
-                  내용
-                  <ContentText
-                    type="text"
-                    id="content"
-                    name="content"
-                    value={content}
-                    onChange={handleContentChange}
-                  />
-                </Vertical>
+                </Horizontal>
+                <Horizontal>
+                  <NoCenterHorizontal>
+                    <NextTagBox color={needColor}>{needTag}</NextTagBox>
+                    <ContentText
+                      type="text"
+                      id="content"
+                      name="content"
+                      value={content}
+                      placeholder="Please type in"
+                      onChange={handleContentChange}
+                      required
+                    />
+                  </NoCenterHorizontal>
+                </Horizontal>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handlePreviousStep}>Prev</Button>
-                <Button onClick={postClickModal}>Post</Button>
+                <CancelBT onClick={handlePreviousStep}>Before</CancelBT>
+                <NextBT onClick={postClickModal} disabled={!isFormValid()}>
+                  Post
+                </NextBT>
               </DialogActions>
             </Vertical>
           )}
