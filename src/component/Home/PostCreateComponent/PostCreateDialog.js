@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { useRecoilValue } from "recoil";
 import Paper from "@mui/material/Paper";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
@@ -7,6 +8,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { MemberIdState } from "../../../store/atom";
 import { Vertical, Horizontal } from "../../../styles/StyledComponents";
 import axios from "axios";
 
@@ -94,6 +96,7 @@ const needTags = [
 ];
 
 function PostCreateDialog({ open, setIsOpen }) {
+  const memberId = useRecoilValue(MemberIdState);
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
   const [needTag, setNeedTag] = useState("");
   const [title, setTitle] = useState("");
@@ -122,7 +125,7 @@ function PostCreateDialog({ open, setIsOpen }) {
     // ToDo: 멤버 아이디 받은거 가지고 있는 코드 작성 후 적용
     axios
       .post(`${process.env.REACT_APP_HOST_URL}/posts`, {
-        memberId: 1,
+        memberId: memberId,
         title: title,
         content: content,
       })

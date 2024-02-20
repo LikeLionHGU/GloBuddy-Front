@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { UserTokenState } from "../store/atom";
-import jwtDecode from "jwt-decode";
 import { useRecoilValue } from "recoil";
+import { UserTokenState, MemberIdState } from "../store/atom";
+import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import ProfileComponent1 from "../component/Profile/ProfileComponent1";
 import ProfileComponent3 from "../component/Profile/ProfileComponent3";
@@ -9,6 +9,7 @@ import axios from "axios";
 
 function Profile() {
   const userToken = useRecoilValue(UserTokenState);
+  const memberId = useRecoilValue(MemberIdState);
   const decodedToken = jwtDecode(userToken);
   const [selectedUserInfo, setSelectedUserInfo] = useState({
     name: decodedToken.name,
@@ -41,7 +42,7 @@ function Profile() {
       // Todo: 여기서 api post 호출 '유저 정보 저장'
       axios
         .post(`${process.env.REACT_APP_HOST_URL}/memberDetail`, {
-          memberId: 1,
+          memberId: memberId,
           gender: selectedUserInfo.gender,
           nation: selectedUserInfo.type,
           mbti: selectedUserInfo.propensity,

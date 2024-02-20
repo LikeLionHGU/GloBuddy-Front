@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import ChatInfoCheckDialog from "./ChatInfoCheckDialog";
 import { Horizontal } from "../../styles/StyledComponents";
 import UserPiconImg from "../../img/UserPicon.png";
+import { MemberIdState } from "../../store/atom";
 import axios from "axios";
 
 const MailAlarmBox = styled.div`
@@ -66,7 +68,7 @@ function MailAlarmInboxComponent({ chatData }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedChatData, setSelectedChatData] = useState(null);
   const [kakao, setKakao] = useState(false);
-  const memberId = 1; // 멤버 아이디 수정
+  const memberId = useRecoilValue(MemberIdState);
 
   // ToDo: 리렌더링 시 버튼 글자 적용 필요 (ERROR)
   // useEffect(() => {
