@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import Paper from "@mui/material/Paper";
 import Dialog from "@mui/material/Dialog";
@@ -9,6 +10,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { AiOutlineLink } from "react-icons/ai";
 import { Horizontal, Vertical } from "../../styles/StyledComponents";
+import { MemberIdState } from "../../store/atom";
 import LetterDialogImg from "../../img/LetterDialog.png";
 import UserPiconImg from "../../img/UserPicon.png";
 import axios from "axios";
@@ -124,9 +126,10 @@ export default function ChatInfoCheckDialog({
   chatData,
   open,
   onRejectClick,
+  onHandleCancel,
   kakao,
 }) {
-  const memberId = 1; // 멤버 아이디 수정
+  const memberId = useRecoilValue(MemberIdState);
   const [accept, setAccept] = useState(false); // ToDo: 추후 chatData에 있는 변수로 설정
   const handleAcceptClick = () => {
     setAccept(true);
@@ -148,10 +151,10 @@ export default function ChatInfoCheckDialog({
   };
   return (
     <Fragment>
-      <Dialog open={open} onClose={onRejectClick} PaperComponent={StyledPaper}>
+      <Dialog open={open} onClose={onHandleCancel} PaperComponent={StyledPaper}>
         {accept || kakao ? (
           <>
-            <CancelBT onClick={onRejectClick}>X</CancelBT>
+            <CancelBT onClick={onHandleCancel}>X</CancelBT>
             <DialogTitle>
               <CongratsText>
                 Congrats ! You're now Global buddy with {chatData.senderName},
@@ -180,7 +183,7 @@ export default function ChatInfoCheckDialog({
           </>
         ) : (
           <>
-            <CancelBT onClick={onRejectClick}>X</CancelBT>
+            <CancelBT onClick={onHandleCancel}>X</CancelBT>
             <DialogContent>
               <NoCenterHorizontal>
                 <Vertical>

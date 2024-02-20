@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { Horizontal } from "../../styles/StyledComponents";
 import UserPiconImg from "../../img/UserPicon.png";
+import { MemberIdState } from "../../store/atom";
 import axios from "axios";
 
 const MailAlarmBox = styled.div`
@@ -45,7 +47,7 @@ function MailAlarmSentItemsComponent({ chatData }) {
   // useState사용을 통해 ifChecked 값이 바뀔때마다 리렌더링
   const [chatDataState, setChatDataState] = useState(chatData);
   //ToDo: 메일 확인 api 요청 후 확인 버튼 ui 선택
-  const memberId = 1; // 멤버 아이디 수정
+  const memberId = useRecoilValue(MemberIdState);
   const handleCheck = (index) => {
     // ToDo: 확인 버튼 누르면 확인되었다고 api 연결
     setChatDataState((prevState) => {

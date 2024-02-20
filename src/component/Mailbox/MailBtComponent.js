@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { IoIosMail } from "react-icons/io";
+import { MemberIdState } from "../../store/atom";
 import axios from "axios";
 
 const MailButton = styled.button`
@@ -89,7 +91,7 @@ const MailButton = styled.button`
 // ];
 
 function MailBtComponent() {
-  const memberId = 1; // ToDo: memberId 받아서 넘기기
+  const memberId = useRecoilValue(MemberIdState);
   const navigate = useNavigate();
   const handleNavigateAlarm = () => {
     axios

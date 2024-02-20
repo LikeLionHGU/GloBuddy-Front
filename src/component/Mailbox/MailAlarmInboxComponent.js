@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import ChatInfoCheckDialog from "./ChatInfoCheckDialog";
 import { Horizontal } from "../../styles/StyledComponents";
 import UserPiconImg from "../../img/UserPicon.png";
+import { MemberIdState } from "../../store/atom";
 import axios from "axios";
 
 const MailAlarmBox = styled.div`
@@ -52,7 +54,7 @@ const AcceptedBT = styled.button`
   font-size: 13px;
   font-family: Body1;
 `;
-const RedjectedBT = styled.button`
+const RejectedBT = styled.button`
   width: 80px;
   height: 50px;
   border: none;
@@ -66,7 +68,7 @@ function MailAlarmInboxComponent({ chatData }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedChatData, setSelectedChatData] = useState(null);
   const [kakao, setKakao] = useState(false);
-  const memberId = 1; // 멤버 아이디 수정
+  const memberId = useRecoilValue(MemberIdState);
 
   // ToDo: 리렌더링 시 버튼 글자 적용 필요 (ERROR)
   // useEffect(() => {
@@ -101,6 +103,9 @@ function MailAlarmInboxComponent({ chatData }) {
     setIsOpen(!isOpen);
     setKakao(true);
     console.log("lkaklago", kakao);
+  };
+  const handleCancel = () => {
+    setIsOpen(!isOpen);
   };
   //ToDo: 버디 신청 요청 거절 시 api 요청
   const handleReject = (data) => {
@@ -139,7 +144,7 @@ function MailAlarmInboxComponent({ chatData }) {
                   Accepted
                 </AcceptedBT>
               ) : data.ifMatched === 2 ? (
-                <RedjectedBT>Redjected</RedjectedBT>
+                <RejectedBT>Rejected</RejectedBT>
               ) : (
                 <ConfirmBT onClick={() => handleCheck(data)}>Confirm</ConfirmBT>
               )}
@@ -153,6 +158,7 @@ function MailAlarmInboxComponent({ chatData }) {
           chatData={selectedChatData}
           open={isOpen}
           onRejectClick={handleReject}
+          onHandleCancel={handleCancel}
           kakao={kakao}
         />
       )}

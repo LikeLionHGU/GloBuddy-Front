@@ -11,3 +11,9 @@ export const UserTokenState = atom({
   default: "",
   effects_UNSTABLE: [persistAtom],
 });
+
+export const MemberIdState = atom({
+  key: "memberId",
+  depault: "",
+  effects_UNSTABLE: [persistAtom],
+});
