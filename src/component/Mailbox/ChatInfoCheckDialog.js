@@ -124,6 +124,7 @@ export default function ChatInfoCheckDialog({
   chatData,
   open,
   onRejectClick,
+  onHandleCancel,
   kakao,
 }) {
   const memberId = 1; // 멤버 아이디 수정
@@ -148,10 +149,10 @@ export default function ChatInfoCheckDialog({
   };
   return (
     <Fragment>
-      <Dialog open={open} onClose={onRejectClick} PaperComponent={StyledPaper}>
+      <Dialog open={open} onClose={onHandleCancel} PaperComponent={StyledPaper}>
         {accept || kakao ? (
           <>
-            <CancelBT onClick={onRejectClick}>X</CancelBT>
+            <CancelBT onClick={onHandleCancel}>X</CancelBT>
             <DialogTitle>
               <CongratsText>
                 Congrats ! You're now Global buddy with {chatData.senderName},
@@ -180,7 +181,7 @@ export default function ChatInfoCheckDialog({
           </>
         ) : (
           <>
-            <CancelBT onClick={onRejectClick}>X</CancelBT>
+            <CancelBT onClick={onHandleCancel}>X</CancelBT>
             <DialogContent>
               <NoCenterHorizontal>
                 <Vertical>

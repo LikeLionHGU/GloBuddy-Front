@@ -52,7 +52,7 @@ const AcceptedBT = styled.button`
   font-size: 13px;
   font-family: Body1;
 `;
-const RedjectedBT = styled.button`
+const RejectedBT = styled.button`
   width: 80px;
   height: 50px;
   border: none;
@@ -102,6 +102,9 @@ function MailAlarmInboxComponent({ chatData }) {
     setKakao(true);
     console.log("lkaklago", kakao);
   };
+  const handleCancel = () => {
+    setIsOpen(!isOpen);
+  };
   //ToDo: 버디 신청 요청 거절 시 api 요청
   const handleReject = (data) => {
     setSelectedChatData(data);
@@ -139,7 +142,7 @@ function MailAlarmInboxComponent({ chatData }) {
                   Accepted
                 </AcceptedBT>
               ) : data.ifMatched === 2 ? (
-                <RedjectedBT>Redjected</RedjectedBT>
+                <RejectedBT>Rejected</RejectedBT>
               ) : (
                 <ConfirmBT onClick={() => handleCheck(data)}>Confirm</ConfirmBT>
               )}
@@ -153,6 +156,7 @@ function MailAlarmInboxComponent({ chatData }) {
           chatData={selectedChatData}
           open={isOpen}
           onRejectClick={handleReject}
+          onHandleCancel={handleCancel}
           kakao={kakao}
         />
       )}
