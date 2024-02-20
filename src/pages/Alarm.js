@@ -6,6 +6,7 @@ import MailAlarmSentItemsComponent from "../component/Mailbox/MailAlarmSentItems
 import { Vertical, Horizontal } from "../styles/StyledComponents";
 import { IoMailOutline } from "react-icons/io5";
 import LetterBoxImg from "../img/LetterBox.png";
+import HeaderContainer from "../component/MainHeader";
 
 const BT = styled.button`
   border: none;
@@ -107,6 +108,7 @@ function Alarm() {
 
   return (
     <Horizontal>
+      <HeaderContainer />
       <Vertical>
         <BT active={inboxActive} onClick={handleShowInbox}>
           Inbox
