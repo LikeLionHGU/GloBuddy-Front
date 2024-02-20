@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import LogoutDialog from "./LogoutDialog";
+import LogoImg from "../../img/Logo.png";
 
 function ProfileBtComponent() {
   const navigate = useNavigate();
@@ -29,7 +30,20 @@ function ProfileBtComponent() {
     setLogout(true);
   };
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        width: "100%",
+      }}
+    >
+      <img
+        src={LogoImg}
+        alt="로고"
+        style={{
+          width: "262px",
+          height: "131.92px",
+        }}
+      />
       <Button
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
@@ -53,7 +67,7 @@ function ProfileBtComponent() {
       </Menu>
 
       {logout && <LogoutDialog logout={logout} setLogout={setLogout} />}
-    </>
+    </div>
   );
 }
 
