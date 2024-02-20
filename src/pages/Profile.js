@@ -54,7 +54,7 @@ function Profile() {
           console.log(error);
         });
 
-      navigate("/GloBuddy", { state: selectedUserInfo });
+      navigate("/GloBuddy");
       break;
     default:
       console.log("default error");
