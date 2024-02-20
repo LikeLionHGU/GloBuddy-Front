@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { IoIosMail } from "react-icons/io";
 import { MemberIdState } from "../../store/atom";
 import axios from "axios";
+import SolarLetterImg from "../../img/SolarLetter.png";
+import LogoImg from "../../img/Logo.png";
 
 const MailButton = styled.button`
   border: none;
@@ -110,8 +112,31 @@ function MailBtComponent() {
   };
   return (
     <>
+      {" "}
+      <img
+        src={LogoImg}
+        alt="로고"
+        style={{
+          marginLeft: "78px",
+          marginRight: "860.13px",
+          margintop: "6px",
+          marginBottom: "39px",
+          width: "180px",
+          height: "90px",
+        }}
+      />
       <MailButton onClick={handleNavigateAlarm}>
-        <IoIosMail size="30" />
+        <img
+          src={SolarLetterImg}
+          alt="사용자버튼"
+          style={{
+            width: "52.5px",
+            height: "48.12px",
+            marginRight: "37.5px",
+            marginLeft: "37.5px",
+            display: "flex",
+          }}
+        />
       </MailButton>
     </>
   );

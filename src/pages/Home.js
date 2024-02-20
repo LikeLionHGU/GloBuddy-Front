@@ -78,10 +78,12 @@ function Home() {
 
   return (
     <Vertical>
-      <Horizontal>
-        <ProfileBtComponent />
-        <MailBtComponent />
-      </Horizontal>
+      <headerv>
+        <Horizontal>
+          <MailBtComponent />
+          <ProfileBtComponent />
+        </Horizontal>
+      </headerv>
       <HomeComponent userInfo={state} />
       <PostCreateBtComponent />
       <PostCardComponent postData={postData} />
