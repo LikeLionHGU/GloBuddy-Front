@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import LogoutDialog from "./LogoutDialog";
+import LogoImg from "../../img/Logo.png";
+import UserpicImg from "../../img/UserPicon.png"; // 새로운 이미지 파일을 import합니다.
 
 function ProfileBtComponent() {
   const navigate = useNavigate();
@@ -29,14 +31,38 @@ function ProfileBtComponent() {
     setLogout(true);
   };
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        width: "1440px",
+        justifyContent: "space-between",
+      }}
+    >
+      <img
+        src={LogoImg}
+        alt="로고"
+        style={{
+          marginLeft: "78px",
+          margintop: "6px",
+          marginBottom: "39px",
+          width: "180px",
+          height: "90px",
+        }}
+      />
       <Button
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <CgProfile size="30" />
+        <img
+          src={UserpicImg}
+          alt="사용자버튼"
+          style={{
+            width: "69.32px",
+            height: "67.63px",
+          }}
+        />
       </Button>
       <Menu
         id="basic-menu"
@@ -53,7 +79,7 @@ function ProfileBtComponent() {
       </Menu>
 
       {logout && <LogoutDialog logout={logout} setLogout={setLogout} />}
-    </>
+    </div>
   );
 }
 
