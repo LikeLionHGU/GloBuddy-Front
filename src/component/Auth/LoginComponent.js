@@ -10,10 +10,12 @@ import axios from "axios";
 
 const StyledButton = styled.button`
   padding: 0px;
+  margin-left: 80px;
   border: none;
   background: url(${FindBuddyBTImg}) no-repeat;
-  width: 500px;
-  height: 150px;
+  background-size: contain;
+  width: 360px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;

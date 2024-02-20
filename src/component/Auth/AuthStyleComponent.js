@@ -13,37 +13,94 @@ import InstaImg from "../../img/Insta.png";
 import 첫단계Img from "../../img/첫단계.png";
 import 두번째단계Img from "../../img/두번째단계.png";
 import 세번째단계Img from "../../img/세번째단계.png";
+import styled from "styled-components";
 
 import {
-  All,
   Banner,
-  Candy,
-  Right,
-  Earth,
-  Header,
   Scroll,
-  TitleComp,
-  Left,
-  Grid,
-  Title,
-  Content,
-  Footer,
-  Person,
-  Note,
-  Out,
-  Final,
-  Flog,
-  FF,
-  FFF,
-  FFS,
-  FS,
-  FSF,
-  FSS,
-  FT,
-  Fall,
+  Vertical,
+  Horizontal,
 } from "../../styles/StyledComponents";
 import GoogleLoginButton from "./LoginComponent";
 
+const Header = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+const BoxImg = styled.img`
+  width: 560px;
+  height: 300px;
+`;
+const FirstBoxImg = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 350px;
+  margin-top: 140px;
+`;
+const SecondBoxImg = styled.div`
+  width: 100%;
+  display: flex;
+  margin-left: 350px;
+  margin-top: -150px;
+`;
+const ThirdBoxImg = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -150px;
+  margin-right: 350px;
+  margin-bottom: 180px;
+`;
+const ThirdDiv = styled.div`
+  width: 100%;
+  height: 720px;
+  background-color: rgba(255, 159, 49, 0.26);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const HowText = styled.p`
+  font-size: 33px;
+  font-family: Title1;
+`;
+const HowImg = styled.img`
+  width: 225px;
+  height: 294px;
+  margin-left: 100px;
+  margin-right: 100px;
+`;
+const Footer = styled.div`
+  height: 150px;
+  background-color: #000000;
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
+const FooterText = styled.p`
+  font-size: 7.5px;
+  color: #ffffff;
+  margin-left: 50px;
+`;
+const FooterMailText = styled.p`
+  font-size: 7.5px;
+  color: #ffffff;
+  margin-top: -8px;
+  margin-left: 50px;
+`;
+const FooterLikeImg = styled.img`
+  width: 16px;
+  height: 8px;
+  margin-right: 7px;
+`;
+const FooterImg = styled.img`
+  width: 16px;
+  height: 16px;
+  margin-right: 7px;
+`;
 export default function AuthStyleComponent() {
   const handleClick = () => {
     window.location.href = "https://www.handong.edu/";
@@ -58,275 +115,125 @@ export default function AuthStyleComponent() {
 
   return (
     <>
-      <All>
-        <Header>
-          <>
-            <img
-              src={LogoImg}
+      <Header>
+        <img
+          src={LogoImg}
+          alt="로고"
+          style={{
+            marginLeft: "80px",
+            width: "180px",
+            height: "90px",
+          }}
+        />
+        <p
+          style={{
+            marginRight: "100px",
+            fontSize: "18px",
+            fontFamily: "Body2",
+            textAlign: "center",
+          }}
+        >
+          Login/Join
+        </p>
+      </Header>
+      <Vertical>
+        <p
+          style={{
+            fontSize: "52px",
+            fontFamily: "Slogan",
+            textAlign: "center",
+            margin: 0,
+            marginBottom: "10px",
+          }}
+        >
+          Enhancing Your Global!
+        </p>
+        <p
+          style={{
+            fontSize: "12px",
+            fontFamily: "Body2",
+            textAlign: "center",
+            margin: 0,
+          }}
+        >
+          Domestic/International Buddy Matching Website.
+        </p>
+      </Vertical>
+
+      <Banner>
+        <GoogleLoginButton />
+        <img
+          src={MainImg}
+          alt="메인 그림"
+          style={{
+            marginLeft: "100px",
+            width: "668px",
+            height: "525px",
+          }}
+        />
+      </Banner>
+      <Scroll>
+        <img
+          src={ScrollImg}
+          alt="버튼"
+          style={{
+            marginTop: "20px",
+            width: "26px",
+            height: "37px",
+          }}
+        />
+      </Scroll>
+
+      <FirstBoxImg>
+        <BoxImg src={설명1Img} alt="버튼" />
+      </FirstBoxImg>
+      <SecondBoxImg>
+        <BoxImg src={설명2Img} alt="버튼" />
+      </SecondBoxImg>
+      <ThirdBoxImg>
+        <BoxImg src={설명3Img} alt="버튼" />
+      </ThirdBoxImg>
+
+      <ThirdDiv>
+        <HowText>How?</HowText>
+        <Horizontal>
+          <HowImg src={첫단계Img} alt="버튼" />
+          <HowImg src={두번째단계Img} alt="버튼" />
+          <HowImg src={세번째단계Img} alt="버튼" />
+        </Horizontal>
+      </ThirdDiv>
+
+      <Footer>
+        <img
+          src={LogoWhiteImg}
+          alt="로고"
+          style={{
+            width: "105px",
+            height: "50px",
+            marginLeft: "132px",
+            marginRight: "40px",
+          }}
+        />
+        <Vertical>
+          <FooterText>(주)멋쟁이사자처럼 | 한동대학교</FooterText>
+          <Horizontal>
+            <FooterLikeImg
+              src={LikelionImg}
               alt="로고"
-              style={{
-                width: "262px",
-                height: "131.92px",
-              }}
+              onClick={handleClicks}
             />
-            <h1
-              style={{
-                fontSize: "20px",
-                fontFamily: "Arial",
-                textAlign: "center",
-              }}
-            >
-              Login/Join
-            </h1>
-          </>
-        </Header>
-        <TitleComp>
-          <p
-            style={{
-              fontSize: "70px",
-              fontFamily: "Arial",
-              textAlign: "center",
-            }}
-          >
-            Enhancing Your Global!
-          </p>
-          <p
-            style={{
-              fontSize: "20px",
-              fontFamily: "Arial",
-              textAlign: "center",
-            }}
-          >
-            Domestic/International Buddy Matching Website.
-          </p>
-        </TitleComp>
-
-        <Banner>
-          <GoogleLoginButton />
-          <img
-            src={MainImg}
-            alt="메인 그림"
-            style={{
-              width: "833px",
-              height: "665.33px",
-            }}
-          />
-        </Banner>
-        <Scroll>
-          <img
-            src={ScrollImg}
-            alt="버튼"
-            style={{
-              width: "34.85px",
-              height: "50px",
-            }}
-          />
-        </Scroll>
-        <Content>
-          <Right>
-            <Earth>
-              <img
-                src={설명1Img}
-                alt="버튼"
-                style={{
-                  width: "900px",
-                  height: "500px",
-                }}
-              />
-            </Earth>
-            <Candy>
-              <img
-                src={설명2Img}
-                alt="버튼"
-                style={{
-                  width: "900px",
-                  height: "500px",
-                }}
-              />
-            </Candy>
-          </Right>
-          <Left>
-            <img
-              src={설명3Img}
-              alt="버튼"
-              style={{
-                width: "900px",
-                height: "500px",
-              }}
-            />
-          </Left>
-        </Content>
-
-        <Grid>
-          <div
-            style={{
-              width: "100%",
-              height: "900px",
-              backgroundColor: "#FF9F31",
-              opacity: 0.26,
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            <Title>
-              <h1
-                style={{
-                  fontSize: "2.5em",
-                  color: "rgba(0, 0, 0, 1)",
-                }}
-              >
-                How?
-              </h1>
-            </Title>
-            <Final>
-              <Person>
-                <img
-                  src={첫단계Img}
-                  alt="버튼"
-                  style={{
-                    width: "340px",
-                    height: "420px",
-                    zIndex: 2,
-                  }}
-                />
-              </Person>
-              <Note>
-                <img
-                  src={두번째단계Img}
-                  alt="버튼"
-                  style={{
-                    width: "340px",
-                    height: "420px",
-                    zIndex: 2,
-                  }}
-                />
-              </Note>
-              <Out>
-                <img
-                  src={세번째단계Img}
-                  alt="버튼"
-                  style={{
-                    width: "340px",
-                    height: "420px",
-                    zIndex: 2,
-                  }}
-                />
-              </Out>
-            </Final>
-          </div>
-        </Grid>
-        <Footer>
-          <div
-            style={{
-              width: "100%",
-              height: "220px",
-              backgroundColor: "#000000",
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            <Fall>
-              <Flog>
-                <img
-                  src={LogoWhiteImg}
-                  alt="로고"
-                  style={{
-                    width: "200px",
-                    height: "113.92px",
-
-                    zIndex: 2,
-                  }}
-                />
-              </Flog>
-              <FF>
-                <FFF>
-                  <p
-                    style={{
-                      fontSize: "1.0em",
-                      color: "#FFFFFF",
-
-                      zIndex: 2,
-                    }}
-                  >
-                    (주)멋쟁이사자처럼 | 한동대학교
-                  </p>
-                </FFF>
-                <FFS>
-                  <img
-                    src={LikelionImg}
-                    alt="로고"
-                    style={{
-                      width: "20px",
-                      height: "15px",
-
-                      zIndex: 2,
-                    }}
-                    onClick={handleClicks}
-                  />
-                  <img
-                    src={HGULogoImg}
-                    alt="로고"
-                    style={{
-                      width: "26px",
-                      height: "26px",
-
-                      zIndex: 2,
-                    }}
-                    onClick={handleClick}
-                  />
-                </FFS>
-              </FF>
-              <FS>
-                <FSF>
-                  <p
-                    style={{
-                      fontSize: "1.0em",
-                      color: "#FFFFFF",
-                      zIndex: 2,
-                    }}
-                  >
-                    GloB SNS | 소개 | FAQ | Contact
-                  </p>
-                </FSF>
-                <FSS>
-                  <img
-                    src={InstaImg}
-                    alt="로고"
-                    style={{
-                      width: "23px",
-                      height: "23px",
-
-                      zIndex: 2,
-                    }}
-                    onClick={handleClickse}
-                  />
-                  <img
-                    src={KakaoImg}
-                    alt="로고"
-                    style={{
-                      width: "23px",
-                      height: "23px",
-                      zIndex: 2,
-                    }}
-                  />
-                </FSS>
-              </FS>
-              <FT>
-                <p
-                  style={{
-                    fontSize: "1.0em",
-                    color: "#FFFFFF",
-
-                    zIndex: 2,
-                  }}
-                >
-                  jaies2316@gmail.com
-                </p>
-              </FT>
-            </Fall>
-          </div>
-        </Footer>
-      </All>
+            <FooterImg src={HGULogoImg} alt="로고" onClick={handleClick} />
+          </Horizontal>
+        </Vertical>
+        <Vertical>
+          <FooterText>GloB SNS | 소개 | FAQ | Contact</FooterText>
+          <Horizontal>
+            <FooterImg src={InstaImg} alt="로고" onClick={handleClickse} />
+            <FooterImg src={KakaoImg} alt="로고" />
+          </Horizontal>
+        </Vertical>
+        <FooterMailText>jaies2316@gmail.com</FooterMailText>
+      </Footer>
     </>
   );
 }
