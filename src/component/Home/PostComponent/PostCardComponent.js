@@ -40,8 +40,11 @@ const SubmitButton = styled.button`
   background: white;
 `;
 const CardImg = styled.img`
-  width: 200px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
 `;
+
 const Font = styled.p`
   /* font-size: 15px; */
   margin: 0;
@@ -56,14 +59,15 @@ const Cards = styled.div`
   transform-style: preserve-3d;
 `;
 const Flip = styled.div`
-  width: 200px;
-  height: 250px;
+  width: 400px;
+  height: 400px;
   position: relative;
+
   perspective: 1100px;
   &:hover ${Cards} {
     transform: rotateY(180deg);
   }
-  margin: 2rem;
+  margin: 4rem;
 `;
 
 const CardContainer = styled.div`
@@ -76,6 +80,7 @@ const Front = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 8px;
   backface-visibility: hidden;
   background: white;
   border: 1px solid black;
@@ -86,7 +91,9 @@ const Back = styled.div`
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background: royalblue;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid black;
   transform: rotateY(180deg);
 `;
 
@@ -138,13 +145,16 @@ function PostCardComponent({ postData }) {
             {" "}
             <Cards>
               <Front>
-                <h3>{data.title}</h3>
+                <h3>
+                  TITLE:
+                  {data.title}
+                </h3>
                 <CardImg src={PostCardImg} alt="defalut" />
                 <Font>
-                  이름 {data.name} / 국내|국제 {data.type}
+                  Name: {data.name} / 국내|국제 {data.type}
                 </Font>
                 <Font>{data.gender}</Font>
-                <Font>{data.needs}</Font>
+                <Font>Needs: {data.needs}</Font>
               </Front>
 
               <Back>
