@@ -32,6 +32,16 @@ const ModalContainer = styled.div`
   z-index: 9999;
 `;
 
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+`;
+
 function ProfileFormComponent() {
   const userToken = useRecoilValue(UserTokenState);
   const decodedToken = jwtDecode(userToken);
@@ -53,6 +63,8 @@ function ProfileFormComponent() {
     }));
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleClickClose = () => {
     setIsOpen(false);
   };
@@ -64,35 +76,20 @@ function ProfileFormComponent() {
       [name]: value,
     }));
   };
-  // update check dialog
-  const [isOpen, setIsOpen] = useState(false);
+
   const handleClickUpdate = () => {
     setIsOpen(!isOpen);
   };
+
   const handleUpdate = () => {
-    //ToDo: 수정 api 연결
     console.log("수정된 정보들 확인", updateUserInfo);
-    //ToDo: 수정 성공 모달
     setIsOpen(!isOpen);
   };
 
   return (
     <>
       <ModalContainer>
-        <button
-          style={{
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            fontSize: "1rem",
-            border: "none",
-            background: "transparent",
-            cursor: "pointer",
-          }}
-          onClick={handleClickClose}
-        >
-          X
-        </button>
+        <CloseButton onClick={handleClickClose}>X</CloseButton>
         <h2>프로필 수정 폼</h2>
 
         <Vertical>
@@ -104,12 +101,13 @@ function ProfileFormComponent() {
         {isOpen && (
           <ProfileUpdateCheckDialog open={isOpen} onClick={handleClickUpdate} />
         )}
+
         <div>
           <div>
             <div style={{ display: "flex", marginBottom: "20px" }}>
               <div style={{ marginRight: "20px" }}>
                 <label htmlFor="name">Name</label>
-                <br></br>
+                <br />
                 <input
                   type="text"
                   id="name"
@@ -120,7 +118,7 @@ function ProfileFormComponent() {
               </div>
               <div>
                 <label htmlFor="gender">Gender</label>
-                <br></br>
+                <br />
                 <input
                   type="text"
                   id="gender"
@@ -128,12 +126,12 @@ function ProfileFormComponent() {
                   value={updateUserInfo.gender}
                   onChange={handleChange}
                 />
-              </div>{" "}
+              </div>
             </div>
             <div style={{ display: "flex", marginBottom: "20px" }}>
               <div>
                 <label htmlFor="propensity">Propensity</label>
-                <br></br>
+                <br />
                 <input
                   type="text"
                   id="propensity"
@@ -144,7 +142,7 @@ function ProfileFormComponent() {
               </div>
               <div>
                 <label htmlFor="needs">Needs</label>
-                <br></br>
+                <br />
                 <input
                   type="text"
                   id="needs"

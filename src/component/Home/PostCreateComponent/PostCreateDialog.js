@@ -68,6 +68,7 @@ const ChooseText = styled.p`
   text-align: center;
   padding-top: 10px;
 `;
+
 const CancelBT = styled.button`
   width: 100px;
   height: 45px;
