@@ -12,7 +12,12 @@ const PostButton = styled.button`
   height: 85px; /* 버튼의 높이 */
   cursor: pointer; /* 마우스 커서를 포인터로 변경 */
 `;
-
+const RequestForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+`;
 function PostCreateBtComponent() {
   const [isOpen, setIsOpen] = useState(false);
 
