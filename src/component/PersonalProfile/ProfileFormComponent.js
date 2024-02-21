@@ -15,6 +15,13 @@ const UpdateButton = styled.button`
   color: black;
   background: white;
 `;
+const Footer = styled.div`
+  height: 128px;
+  background-color: #ffe2c1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
 const UserImage = styled.img`
   width: 164px; /* 원하는 가로 크기로 설정 */
   height: 168px; /* 원하는 세로 크기로 설정 */
@@ -40,6 +47,14 @@ const ModalContainer = styled.div`
 const CloseImage = styled.img`
   width: 39px; /* 원하는 가로 크기로 설정 */
   height: 36px; /* 원하는 세로 크기로 설정 */
+`;
+const StyledInput = styled.input`
+  width: 243px;
+  height: 60px;
+  margin-bottom: 10px;
+  background-color: #faeee0;
+  border: none;
+  border-radius: 10px;
 `;
 
 const CloseButton = styled.button`
@@ -103,69 +118,75 @@ function ProfileFormComponent() {
         <CloseButton onClick={handleClickClose}>
           <CloseImage src={XButtonImg} alt="Close" />
         </CloseButton>
-
-        <Vertical>
-          <input type="file" accept="image/*" onChange={handlePicture} />
-          {selectedImage && <UserImage src={UserPiconImg} alt="Selected" />}
-        </Vertical>
-        <UpdateButton onClick={handleUpdate}>수정</UpdateButton>
-
-        {isOpen && (
-          <ProfileUpdateCheckDialog open={isOpen} onClick={handleClickUpdate} />
-        )}
-
-        <div>
+        <div style={{ display: "flex" }}>
           <div>
-            <div style={{ display: "flex", marginBottom: "20px" }}>
-              <div style={{ marginRight: "20px" }}>
-                <label htmlFor="name">Name</label>
-                <br />
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={updateUserInfo.name}
-                  onChange={handleChange}
-                />
+            <Vertical>
+              <input type="file" accept="image/*" onChange={handlePicture} />
+              {selectedImage && <UserImage src={UserPiconImg} alt="Selected" />}
+            </Vertical>
+            <UpdateButton onClick={handleUpdate}>수정</UpdateButton>
+
+            {isOpen && (
+              <ProfileUpdateCheckDialog
+                open={isOpen}
+                onClick={handleClickUpdate}
+              />
+            )}
+          </div>
+          <div>
+            <div>
+              <div style={{ display: "flex", marginBottom: "20px" }}>
+                <div style={{ marginRight: "20px" }}>
+                  <label htmlFor="name">Name</label>
+                  <br />
+                  <StyledInput
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={updateUserInfo.name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="gender">Gender</label>
+                  <br />
+                  <StyledInput
+                    type="text"
+                    id="gender"
+                    name="gender"
+                    value={updateUserInfo.gender}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
-              <div>
-                <label htmlFor="gender">Gender</label>
-                <br />
-                <input
-                  type="text"
-                  id="gender"
-                  name="gender"
-                  value={updateUserInfo.gender}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div style={{ display: "flex", marginBottom: "20px" }}>
-              <div>
-                <label htmlFor="propensity">Propensity</label>
-                <br />
-                <input
-                  type="text"
-                  id="propensity"
-                  name="propensity"
-                  value={updateUserInfo.propensity}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="needs">Needs</label>
-                <br />
-                <input
-                  type="text"
-                  id="needs"
-                  name="needs"
-                  value={updateUserInfo.needs}
-                  onChange={handleChange}
-                />
+              <div style={{ display: "flex", marginBottom: "20px" }}>
+                <div style={{ marginRight: "20px" }}>
+                  <label htmlFor="propensity">Propensity</label>
+                  <br />
+                  <StyledInput
+                    type="text"
+                    id="propensity"
+                    name="propensity"
+                    value={updateUserInfo.propensity}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="needs">Needs</label>
+                  <br />
+                  <StyledInput
+                    type="text"
+                    id="needs"
+                    name="needs"
+                    value={updateUserInfo.needs}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <Footer></Footer>
       </ModalContainer>
     </>
   );
