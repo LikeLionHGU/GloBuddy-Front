@@ -28,8 +28,8 @@ const UserImage = styled.img`
 `;
 
 const ModalContainer = styled.div`
-  width: 840.75px;
-  height: 516px;
+  width: 800.75px;
+  height: 460px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -45,12 +45,13 @@ const ModalContainer = styled.div`
   z-index: 9999;
 `;
 const CloseImage = styled.img`
-  width: 39px; /* 원하는 가로 크기로 설정 */
-  height: 36px; /* 원하는 세로 크기로 설정 */
+  width: 30px; /* 원하는 가로 크기로 설정 */
+  height: 27px; /* 원하는 세로 크기로 설정 */
+  margin-right: 30px;
 `;
 const StyledInput = styled.input`
   width: 243px;
-  height: 60px;
+  height: 44px;
   margin-bottom: 10px;
   background-color: #faeee0;
   border: none;
