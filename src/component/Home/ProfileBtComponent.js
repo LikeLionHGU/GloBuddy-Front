@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -46,10 +45,9 @@ function ProfileBtComponent() {
           src={UserpicImg}
           alt="사용자버튼"
           style={{
-            width: "69.32px",
-            height: "67.63px",
-            marginLeft: "130.18",
-            marginTop: "25.88",
+            width: "56px",
+            height: "56px",
+            marginRight: "30px",
           }}
         />
       </Button>

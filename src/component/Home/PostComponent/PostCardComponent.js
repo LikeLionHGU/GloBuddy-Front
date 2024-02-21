@@ -12,7 +12,7 @@ const CardImg = styled.img`
   margin-bottom: 15px;
 `;
 const TitleText = styled.p`
-  font-size: 30px;
+  font-size: 26px;
   margin: 0;
   font-family: Body2; // Global Style 적용해줘서 이렇게 사용 가능
 `;
@@ -88,6 +88,7 @@ const TagBox = styled.button`
 const IconImg = styled.img`
   width: 13px;
   height: 12px;
+  margin-left: 5px;
 `;
 const BackTextBox = styled.div`
   width: 360px;
@@ -137,7 +138,7 @@ function PostCardComponent({ postData }) {
                 <Horizontal>
                   <Font>Name: {data.name}</Font>
                   <Font2>
-                    | {data.gender} | {data.type}
+                    | {data.gender} | {data.nation}
                   </Font2>
                   <IconImg src={PostCardIconImg} alt="icon" />
                 </Horizontal>
@@ -146,8 +147,8 @@ function PostCardComponent({ postData }) {
                   <TagBox color={data.color}> {data.mbti}</TagBox>
                 </Horizontal>
                 <Horizontal>
-                  <Font>Needs: {data.needs}</Font>
-                  <TagBox color={data.color}> 추후 연결 </TagBox>
+                  <Font>Needs: </Font>
+                  <TagBox color={data.color}> {data.needs} </TagBox>
                 </Horizontal>
               </Front>
               <Back>
