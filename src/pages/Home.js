@@ -4,6 +4,7 @@ import MailBtComponent from "../component/Mailbox/MailBtComponent";
 import { Horizontal, Vertical } from "../styles/StyledComponents";
 import PostCardComponent from "../component/Home/PostComponent/PostCardComponent";
 import PostCreateBtComponent from "../component/Home/PostCreateComponent/PostCreateBtComponent";
+import FilterComponent from "../component/Home/FilterComponent";
 import axios from "axios";
 
 function Home() {
@@ -26,8 +27,17 @@ function Home() {
         <ProfileBtComponent />
         <MailBtComponent />
       </Horizontal>
+
       <PostCreateBtComponent />
-      <PostCardComponent postData={postData} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row-reverse",
+        }}
+      >
+        <PostCardComponent postData={postData} />
+        <FilterComponent></FilterComponent>
+      </div>
     </Vertical>
   );
 }
