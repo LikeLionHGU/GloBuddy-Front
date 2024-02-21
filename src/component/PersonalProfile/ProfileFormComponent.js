@@ -5,6 +5,8 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { Vertical } from "../../styles/StyledComponents";
 import ProfileUpdateCheckDialog from "../PersonalProfile/ProfileUpdateCheckDialog";
+import XButtonImg from "../../img/XButton.png";
+import UserPiconImg from "../../img/UserPicon.png";
 
 const UpdateButton = styled.button`
   border-radius: 8px;
@@ -13,9 +15,13 @@ const UpdateButton = styled.button`
   color: black;
   background: white;
 `;
+const UserImage = styled.img`
+  width: 164px; /* 원하는 가로 크기로 설정 */
+  height: 168px; /* 원하는 세로 크기로 설정 */
+`;
 
 const ModalContainer = styled.div`
-  width: 840px;
+  width: 840.75px;
   height: 516px;
   position: fixed;
   top: 50%;
@@ -27,19 +33,24 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   z-index: 9999;
 `;
+const CloseImage = styled.img`
+  width: 39px; /* 원하는 가로 크기로 설정 */
+  height: 36px; /* 원하는 세로 크기로 설정 */
+`;
 
 const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
+  width: 840.75px;
+  display: flex;
+  margin-top: 1px;
   right: 10px;
-  font-size: 1rem;
   border: none;
   background: transparent;
   cursor: pointer;
+  justify-content: flex-end;
 `;
 
 function ProfileFormComponent() {
@@ -89,12 +100,13 @@ function ProfileFormComponent() {
   return (
     <>
       <ModalContainer>
-        <CloseButton onClick={handleClickClose}>X</CloseButton>
-        <h2>프로필 수정 폼</h2>
+        <CloseButton onClick={handleClickClose}>
+          <CloseImage src={XButtonImg} alt="Close" />
+        </CloseButton>
 
         <Vertical>
           <input type="file" accept="image/*" onChange={handlePicture} />
-          {selectedImage && <img src={selectedImage} alt="Selected" />}
+          {selectedImage && <UserImage src={UserPiconImg} alt="Selected" />}
         </Vertical>
         <UpdateButton onClick={handleUpdate}>수정</UpdateButton>
 
