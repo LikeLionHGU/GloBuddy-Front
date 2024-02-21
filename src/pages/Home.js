@@ -10,6 +10,7 @@ import axios from "axios";
 function Home() {
   const [postData, setPostData] = useState([]);
   useEffect(() => {
+    //ToDo: post 글 불러오는 부분 백 500 에러 확인 필요
     axios
       .get(`${process.env.REACT_APP_HOST_URL}/posts`)
       .then(function (response) {

@@ -154,18 +154,20 @@ function PostCreateDialog({ open, setIsOpen }) {
   const postClickModal = () => {
     setOpenCheck(openCheck === 1 ? 2 : 1); // 확인 모달
     // ToDo: 멤버 아이디 받은거 가지고 있는 코드 작성 후 적용
-    // axios
-    //   .post(`${process.env.REACT_APP_HOST_URL}/posts`, {
-    //     memberId: memberId,
-    //     title: title,
-    //     content: content,
-    //   })
-    //   .then(function (response) {
-    //     console.log("response", response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .post(`${process.env.REACT_APP_HOST_URL}/posts`, {
+        memberId: memberId,
+        needs: needTag,
+        color: needColor,
+        title: title,
+        content: content,
+      })
+      .then(function (response) {
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     console.log(needTag, title, content);
   };
   const handleNeed = (needTag) => {
