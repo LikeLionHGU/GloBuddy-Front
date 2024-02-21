@@ -10,6 +10,7 @@ const MailButton = styled.button`
   border: none;
   background: white;
   cursor: pointer;
+  width: 100%;
 `;
 
 // inbox : 0은 미확인 , 1은 수락, 2는 거절 (ifMatched)
@@ -37,17 +38,13 @@ function MailBtComponent() {
   };
   return (
     <>
-      {" "}
       <img
         src={LogoImg}
         alt="로고"
         style={{
           marginLeft: "78px",
-          marginRight: "860.13px",
-          margintop: "6px",
-          marginBottom: "39px",
-          width: "180px",
-          height: "90px",
+          width: "150px",
+          height: "72px",
         }}
       />
       <MailButton onClick={handleNavigateAlarm}>
@@ -57,8 +54,8 @@ function MailBtComponent() {
           style={{
             width: "52.5px",
             height: "48.12px",
-            marginRight: "37.5px",
-            marginLeft: "37.5px",
+            marginLeft: "auto",
+            marginRight: "20px",
             display: "flex",
           }}
         />
