@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 
 const FilterComponent = () => {
-  const [selectedFilter, setSelectedFilter] = useState("");
+  const [selectedNationality, setSelectedNationality] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
+  const [selectedNeeds, setSelectedNeeds] = useState("");
 
-  const handleFilterChange = (event) => {
-    setSelectedFilter(event.target.value);
+  const handleNationalityChange = (event) => {
+    setSelectedNationality(event.target.value);
+  };
+  const handleGenderChange = (event) => {
+    setSelectedGender(event.target.value);
+  };
+  const handleNeedsChange = (event) => {
+    setSelectedNeeds(event.target.value);
   };
 
   return (
@@ -35,8 +43,8 @@ const FilterComponent = () => {
         >
           <h4 style={{ color: "black", fontSize: "14px" }}>Nationality</h4>
           <select
-            value={selectedFilter}
-            onChange={handleFilterChange}
+            value={selectedNationality}
+            onChange={handleNationalityChange}
             style={{
               width: "138px",
               height: "51px",
@@ -52,8 +60,8 @@ const FilterComponent = () => {
           </select>
           <h4 style={{ color: "black", fontSize: "14px" }}>Gender</h4>
           <select
-            value={selectedFilter}
-            onChange={handleFilterChange}
+            value={selectedGender}
+            onChange={handleGenderChange}
             style={{
               width: "138px",
               height: "51px",
@@ -68,8 +76,8 @@ const FilterComponent = () => {
           </select>
           <h4 style={{ color: "black", fontSize: "14px" }}>Needs</h4>
           <select
-            value={selectedFilter}
-            onChange={handleFilterChange}
+            value={selectedNeeds}
+            onChange={handleNeedsChange}
             style={{
               width: "138px",
               height: "51px",
@@ -94,6 +102,7 @@ const FilterComponent = () => {
               fontSize: "20px",
               border: "none",
               marginTop: "40px",
+              cursor: "pointer",
             }}
           >
             Find
