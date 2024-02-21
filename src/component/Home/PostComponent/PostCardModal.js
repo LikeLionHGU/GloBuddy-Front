@@ -1,16 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
+import MassageImg from "../../../img/Massage.png";
+import CloseButtonImg from "../../../img/CloseButton.png";
 
 const Popup = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 840.75px;
+  width: 516px;
   padding: 20px;
   background: white;
   border: 1px solid lightgray;
-  border-radius: 8px;
+  border-radius: 2px;
 `;
 const CloseButton = styled.button`
   position: absolute;
@@ -21,19 +24,50 @@ const CloseButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+const TitleImage = styled.img`
+  width: 63px;
+  height: 73px;
+`;
+const Textarea = styled.textarea`
+  width: 450px;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 4px;
+`;
 const RequestForm = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-top: 20px;
+  justify-content: center;
 `;
 const SubmitButton = styled.button`
   margin-top: 10px;
   border-radius: 8px;
   font-size: 1rem;
-  border: 1px solid lightgray;
+  border: 1px solid #ffce96;
   color: black;
-  background: white;
+  background: #ffce96;
+  width: 100px;
+  height: 40px;
+  margin-right: 7px;
+`;
+
+const CloseImage = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+const ChatLinkInput = styled.input`
+  cursor: pointer;
+  text-decoration: underline;
+  border: none;
+  width: 450px;
+
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 4px;
 `;
 
 function PostCardModal({ closePopup }) {
@@ -67,27 +101,48 @@ function PostCardModal({ closePopup }) {
       <Popup>
         {showCheckPopup ? (
           <>
-            <CloseButton onClick={closePopup}>X</CloseButton>
-            <h2>버디 요청하기</h2>
-            <p>텍스트를 입력하세요. ex) 가벼운 인사말을 적어보세요.</p>
-            <textarea
-              value={requestText}
-              onChange={handleRequestTextChange}
-              rows={4}
-              cols={30}
-            />
-            <p>오픈 카카오톡 링크를 삽입하세요.</p>
-            <input
-              type="text"
-              value={kakaoLink}
-              onChange={handleKakaoLinkChange}
-            />
-            {!isLinkValid && (
-              <p style={{ color: "red" }}>형식이 바르지 않습니다!</p>
-            )}
+            <CloseButton onClick={closePopup}>
+              <CloseImage src={CloseButtonImg} alt="Close" />
+            </CloseButton>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  marginBottom: "12px",
+                }}
+              >
+                <h2>Buddy Request</h2>
+                <TitleImage src={MassageImg} alt="Buddy Request" />
+              </div>
+              <Textarea
+                value={requestText}
+                onChange={handleRequestTextChange}
+                rows={4}
+                cols={30}
+                placeholder="Please type in EX) Write a lighthearted greeting."
+              />
+              <p>
+                <ChatLinkInput
+                  type="text"
+                  value={kakaoLink}
+                  onChange={handleKakaoLinkChange}
+                  placeholder="Insert your Open Chat room link."
+                />
+              </p>
+              {!isLinkValid && (
+                <p style={{ color: "red" }}>
+                  The link is not in the correct format, please enter it again.
+                </p>
+              )}
+            </div>
             <RequestForm>
-              <SubmitButton onClick={handleSubmit}>보내기</SubmitButton>
-              <button onClick={closePopup}>취소</button>
+              <SubmitButton onClick={handleSubmit}>Send</SubmitButton>
             </RequestForm>
           </>
         ) : (
