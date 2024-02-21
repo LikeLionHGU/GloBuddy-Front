@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import ProfileBtComponent from "../component/Home/ProfileBtComponent";
 import MailBtComponent from "../component/Mailbox/MailBtComponent";
-import { Vertical } from "../styles/StyledComponents";
 import PostCardComponent from "../component/Home/PostComponent/PostCardComponent";
 import PostCreateBtComponent from "../component/Home/PostCreateComponent/PostCreateBtComponent";
 import FilterComponent from "../component/Home/FilterComponent";
@@ -15,6 +14,14 @@ const NoHorizontal = styled.div`
   width: 100%;
   margin-top: 15px;
   margin-bottom: 25px;
+`;
+const Vertical = styled.div`
+  //세로 정렬
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 function Home() {

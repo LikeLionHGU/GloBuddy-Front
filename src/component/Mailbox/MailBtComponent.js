@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { MemberIdState } from "../../store/atom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import SolarLetterImg from "../../img/SolarLetter.png";
 import LogoImg from "../../img/Logo.png";
 
@@ -38,15 +39,17 @@ function MailBtComponent() {
   };
   return (
     <>
-      <img
-        src={LogoImg}
-        alt="로고"
-        style={{
-          marginLeft: "78px",
-          width: "150px",
-          height: "72px",
-        }}
-      />
+      <Link to="/Globuddy">
+        <img
+          src={LogoImg}
+          alt="로고"
+          style={{
+            marginLeft: "78px",
+            width: "150px",
+            height: "72px",
+          }}
+        />
+      </Link>
       <MailButton onClick={handleNavigateAlarm}>
         <img
           src={SolarLetterImg}

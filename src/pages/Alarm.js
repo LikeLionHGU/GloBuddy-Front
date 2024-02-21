@@ -6,6 +6,7 @@ import MailAlarmSentItemsComponent from "../component/Mailbox/MailAlarmSentItems
 import { Vertical, Horizontal } from "../styles/StyledComponents";
 import { IoMailOutline } from "react-icons/io5";
 import LetterBoxImg from "../img/LetterBox.png";
+import Header from "../component/Header";
 
 const BT = styled.button`
   border: none;
@@ -106,43 +107,46 @@ function Alarm() {
   const isEmptyInbox = state.every((data) => data.ifMatched === 0) && !show;
 
   return (
-    <Horizontal>
-      <Vertical>
-        <BT active={inboxActive} onClick={handleShowInbox}>
-          Inbox
-        </BT>
-        <DetailText>Who wants to meet me</DetailText>
-        <BT active={sentItemsActive} onClick={handleShowSentItems}>
-          Sent Items
-        </BT>
-        <DetailText>Who I want to meet</DetailText>
-      </Vertical>
-      <NoCenterVertical>
-        <NoCenterHorizontal>
-          <IoMailOutline
-            style={{ width: "47px", height: "35px", color: "#FF9571" }}
-          />
-          <LetterText>Letter</LetterText>
-          <WhoText>Who wants to meet me</WhoText>
-        </NoCenterHorizontal>
+    <>
+      <Header />
+      <Horizontal>
         <Vertical>
-          {isEmptyInbox ? (
-            <OrnageBox>
-              Your Letterbox is empty!
-              <LetterImg src={LetterBoxImg} alt="letterbox" />
-            </OrnageBox>
-          ) : show ? (
-            <OrnageMailBox>
-              <MailAlarmInboxComponent chatData={state} />
-            </OrnageMailBox>
-          ) : (
-            <OrnageMailBox>
-              <MailAlarmSentItemsComponent chatData={state} />
-            </OrnageMailBox>
-          )}
+          <BT active={inboxActive} onClick={handleShowInbox}>
+            Inbox
+          </BT>
+          <DetailText>Who wants to meet me</DetailText>
+          <BT active={sentItemsActive} onClick={handleShowSentItems}>
+            Sent Items
+          </BT>
+          <DetailText>Who I want to meet</DetailText>
         </Vertical>
-      </NoCenterVertical>
-    </Horizontal>
+        <NoCenterVertical>
+          <NoCenterHorizontal>
+            <IoMailOutline
+              style={{ width: "47px", height: "35px", color: "#FF9571" }}
+            />
+            <LetterText>Letter</LetterText>
+            <WhoText>Who wants to meet me</WhoText>
+          </NoCenterHorizontal>
+          <Vertical>
+            {isEmptyInbox ? (
+              <OrnageBox>
+                Your Letterbox is empty!
+                <LetterImg src={LetterBoxImg} alt="letterbox" />
+              </OrnageBox>
+            ) : show ? (
+              <OrnageMailBox>
+                <MailAlarmInboxComponent chatData={state} />
+              </OrnageMailBox>
+            ) : (
+              <OrnageMailBox>
+                <MailAlarmSentItemsComponent chatData={state} />
+              </OrnageMailBox>
+            )}
+          </Vertical>
+        </NoCenterVertical>
+      </Horizontal>
+    </>
   );
 }
 
