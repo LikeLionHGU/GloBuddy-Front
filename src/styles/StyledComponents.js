@@ -29,6 +29,13 @@ export const Horizontal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+`;
+
+export const headerv = styled.div`
+  display: flex;
+
+  width: 100%;
 `;
 
 export const Vertical = styled.div`
