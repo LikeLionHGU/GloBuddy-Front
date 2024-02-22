@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import PostCreateDialog from "./PostCreateDialog";
 import PostButtonImg from "../../../img/PostButton.png";
@@ -11,20 +10,9 @@ const PostButton = styled.button`
   width: 680px; /* 버튼의 너비 */
   height: 85px; /* 버튼의 높이 */
   cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+  margin-left: 20%;
 `;
-const RequestForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-`;
-function PostCreateBtComponent() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const createBtClick = () => {
-    setIsOpen(!isOpen);
-  };
-
+function PostCreateBtComponent({ createBtClick, isOpen, setIsOpen }) {
   return (
     <>
       <PostButton onClick={createBtClick} />

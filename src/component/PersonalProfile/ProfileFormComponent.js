@@ -10,10 +10,16 @@ import UserPiconImg from "../../img/UserPicon.png";
 
 const UpdateButton = styled.button`
   border-radius: 8px;
-  font-size: 1rem;
-  border: 1px solid lightgray;
-  color: black;
-  background: white;
+  font-size: 20px;
+  font-family: Body2;
+  border: none;
+  width: 100px;
+  height: 50px;
+  color: white;
+  margin-left: auto;
+  margin-right: 20px;
+  background-color: #ffa947ae;
+  cursor: pointer;
 `;
 const Footer = styled.div`
   height: 128px;
@@ -25,6 +31,7 @@ const Footer = styled.div`
 const UserImage = styled.img`
   width: 164px; /* 원하는 가로 크기로 설정 */
   height: 168px; /* 원하는 세로 크기로 설정 */
+  margin-right: 30px;
 `;
 
 const ModalContainer = styled.div`
@@ -69,7 +76,7 @@ const CloseButton = styled.button`
   justify-content: flex-end;
 `;
 
-function ProfileFormComponent() {
+function ProfileFormComponent({ isOpen, setIsOpen }) {
   const userToken = useRecoilValue(UserTokenState);
   const decodedToken = jwtDecode(userToken);
   const [updateUserInfo, setUpdateUserInfo] = useState({
@@ -80,17 +87,15 @@ function ProfileFormComponent() {
     needs: "더미데이터 니즈",
     picture: decodedToken.picture,
   });
-  const [selectedImage, setSelectedImage] = useState(updateUserInfo.picture);
-  const handlePicture = (picture) => {
-    const file = picture.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
-    setUpdateUserInfo((prevState) => ({
-      ...prevState,
-      picture: file.name,
-    }));
-  };
-
-  const [isOpen, setIsOpen] = useState(false);
+  // const [selectedImage, setSelectedImage] = useState(updateUserInfo.picture);
+  // const handlePicture = (picture) => {
+  //   const file = picture.target.files[0];
+  //   setSelectedImage(URL.createObjectURL(file));
+  //   setUpdateUserInfo((prevState) => ({
+  //     ...prevState,
+  //     picture: file.name,
+  //   }));
+  // };
 
   const handleClickClose = () => {
     setIsOpen(false);
@@ -122,10 +127,9 @@ function ProfileFormComponent() {
         <div style={{ display: "flex" }}>
           <div>
             <Vertical>
-              <input type="file" accept="image/*" onChange={handlePicture} />
-              {selectedImage && <UserImage src={UserPiconImg} alt="Selected" />}
+              {/* <input type="file" accept="image/*" onChange={handlePicture} /> */}
+              <UserImage src={UserPiconImg} alt="Selected" />
             </Vertical>
-            <UpdateButton onClick={handleUpdate}>수정</UpdateButton>
 
             {isOpen && (
               <ProfileUpdateCheckDialog
@@ -187,7 +191,9 @@ function ProfileFormComponent() {
             </div>
           </div>
         </div>
-        <Footer></Footer>
+        <Footer>
+          <UpdateButton onClick={handleUpdate}>Update</UpdateButton>
+        </Footer>
       </ModalContainer>
     </>
   );

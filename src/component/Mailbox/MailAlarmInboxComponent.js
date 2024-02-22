@@ -64,49 +64,27 @@ const RejectedBT = styled.button`
   font-family: Body1;
 `;
 
-function MailAlarmInboxComponent({ chatData }) {
-  const [isOpen, setIsOpen] = useState(false);
+function MailAlarmInboxComponent({ chatData, handleCancel, isOpen }) {
+  // const [isOpen, setIsOpen] = useState(false);
   const [selectedChatData, setSelectedChatData] = useState(null);
   const [kakao, setKakao] = useState(false);
   const memberId = useRecoilValue(MemberIdState);
 
-  // ToDo: 리렌더링 시 버튼 글자 적용 필요 (ERROR)
-  // useEffect(() => {
-  //   handleNavigateAlarm();
-  // }, [isOpen]); // 알림 api 리렌더링 시 호출
-  // const handleNavigateAlarm = () => {
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_HOST_URL}/matching/notification/receive/${memberId}`
-  //     )
-  //     .then((response) => {
-  //       console.log("response", response.data.receiveMailResponseList);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error", error);
-  //     });
-  // };
-
-  //Todo: sendId를 받아 그 사람의 신청 정보를 받는 api 연결
-
-  //ToDo: 메일 확인 api 요청 후 확인 버튼 ui 선택
   const handleCheck = (data) => {
     console.log(data);
     setSelectedChatData(data);
-    setIsOpen(!isOpen);
+    handleCancel();
     setKakao(false);
     console.log("lkaklago", kakao);
   };
   const handleAccept = (data) => {
     setSelectedChatData(data);
     //ToDo: 추후 카카오링크 모달 띄우는 곳으로 연결
-    setIsOpen(!isOpen);
+    handleCancel();
     setKakao(true);
     console.log("lkaklago", kakao);
   };
-  const handleCancel = () => {
-    setIsOpen(!isOpen);
-  };
+
   //ToDo: 버디 신청 요청 거절 시 api 요청
   const handleReject = (data) => {
     setSelectedChatData(data);
@@ -124,7 +102,7 @@ function MailAlarmInboxComponent({ chatData }) {
       .catch(function (error) {
         console.log(error);
       });
-    setIsOpen(!isOpen);
+    handleCancel();
     setKakao(false);
   };
 

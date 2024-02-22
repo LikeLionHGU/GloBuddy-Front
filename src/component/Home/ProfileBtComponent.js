@@ -1,16 +1,18 @@
 import * as React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import ProfileFormComponent from "../PersonalProfile/ProfileFormComponent";
 import LogoutDialog from "./LogoutDialog";
-
 import UserpicImg from "../../img/Userpic.png";
 
 function ProfileBtComponent() {
   const navigate = useNavigate();
 
   const [logout, setLogout] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,7 +23,7 @@ function ProfileBtComponent() {
   };
 
   const handleNavigateProfile = () => {
-    navigate("/GloBuddy/ProfileFrom");
+    setIsOpen(true);
   };
   const handleNavigateMyPost = () => {
     navigate("/GloBuddy/MyPost");
@@ -66,6 +68,7 @@ function ProfileBtComponent() {
       </Menu>
 
       {logout && <LogoutDialog logout={logout} setLogout={setLogout} />}
+      {isOpen && <ProfileFormComponent isOpen={isOpen} setIsOpen={setIsOpen} />}
     </div>
   );
 }

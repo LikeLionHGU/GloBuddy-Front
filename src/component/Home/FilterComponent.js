@@ -31,6 +31,7 @@ const FilterComponent = () => {
           display: "flex",
           padding: "10px",
           justifyContent: "space-around",
+          marginTop: "65px",
         }}
       >
         <div
@@ -54,9 +55,8 @@ const FilterComponent = () => {
             }}
           >
             <option value=""></option>
-            <option value="filter1">Korea</option>
-            <option value="filter2">Japan</option>
-            <option value="filter3">USA</option>
+            <option value="filter1">Korean</option>
+            <option value="filter2">International</option>
           </select>
           <h4 style={{ color: "black", fontSize: "14px" }}>Gender</h4>
           <select
@@ -71,8 +71,8 @@ const FilterComponent = () => {
             }}
           >
             <option value=""></option>
-            <option value="filter1">male</option>
-            <option value="filter2">female</option>
+            <option value="filter1">Male</option>
+            <option value="filter2">Femail</option>
           </select>
           <h4 style={{ color: "black", fontSize: "14px" }}>Needs</h4>
           <select
@@ -87,9 +87,12 @@ const FilterComponent = () => {
             }}
           >
             <option value=""></option>
-            <option value="filter1">conversation</option>
-            <option value="filter2">hobby</option>
-            <option value="filter3">study</option>
+            <option value="filter1">#Exercise</option>
+            <option value="filter2">#Friends</option>
+            <option value="filter3">#Information</option>
+            <option value="filter4">#Languege</option>
+            <option value="filter5">#Class</option>
+            <option value="filter6">#Culture</option>
           </select>
 
           <button
@@ -103,6 +106,7 @@ const FilterComponent = () => {
               border: "none",
               marginTop: "40px",
               cursor: "pointer",
+              fontFamily: "Subtitle2",
             }}
           >
             Find

@@ -77,8 +77,8 @@ const Back = styled.div`
   padding: 20px;
 `;
 const TagBox = styled.button`
-  width: 70px;
-  height: 30px;
+  width: 90px;
+  height: 38px;
   border-radius: 20px;
   border: none;
   background: ${({ color }) => color};
@@ -101,6 +101,8 @@ const BackTextBox = styled.div`
   align-items: center;
   justify-content: center;
   line-height: 3px;
+  line-height: 30px;
+  text-align: center;
 `;
 const RequestButton = styled.button`
   width: 120px;
@@ -116,8 +118,10 @@ const RequestButton = styled.button`
 
 function PostCardComponent({ postData }) {
   const [showPopup, setShowPopup] = useState(false);
+  const [postInfo, setPostInfo] = useState("");
 
-  const handleApplyClick = () => {
+  const handleApplyClick = (data) => {
+    setPostInfo(data);
     setShowPopup(true);
   };
 
@@ -130,7 +134,6 @@ function PostCardComponent({ postData }) {
       <CardContainer>
         {postData.map((data, index) => (
           <Flip key={index}>
-            {" "}
             <Cards>
               <Front>
                 <TitleText>TITLE: {data.title}</TitleText>
@@ -154,7 +157,7 @@ function PostCardComponent({ postData }) {
               <Back>
                 <TitleText>TITLE: {data.title}</TitleText>
                 <BackTextBox>{data.content}</BackTextBox>
-                <RequestButton onClick={handleApplyClick}>
+                <RequestButton onClick={() => handleApplyClick(data)}>
                   Request
                 </RequestButton>
               </Back>
@@ -162,7 +165,9 @@ function PostCardComponent({ postData }) {
           </Flip>
         ))}
       </CardContainer>
-      {showPopup && <PostCardModal closePopup={closePopup} />}
+      {showPopup && (
+        <PostCardModal closePopup={closePopup} postInfo={postInfo} />
+      )}
     </div>
   );
 }
