@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import MassageImg from "../../../img/Massage.png";
 import CloseButtonImg from "../../../img/CloseButton.png";
+import axios from "axios";
 
 const Popup = styled.div`
   position: fixed;
@@ -79,9 +80,11 @@ function PostCardModal({ closePopup }) {
 
   const handleRequestTextChange = (e) => {
     setRequestText(e.target.value);
+    console.log(e.target.value);
   };
   const handleKakaoLinkChange = (e) => {
     setKakaoLink(e.target.value);
+    console.log(e.target.value);
     setIsLinkValid(true);
   };
 
@@ -92,6 +95,11 @@ function PostCardModal({ closePopup }) {
     if (kakaoLink.startsWith("https://open.kakao.com/")) {
       setShowCheckPopup(false);
       //ToDo: API 호출
+      axios.post(`${process.env.REACT_APP_HOST_URL}/member`, {
+        memberId: 7,
+        message: requestText,
+        chatLink: kakaoLink,
+      });
     } else {
       setIsLinkValid(false);
     }
