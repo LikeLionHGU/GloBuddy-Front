@@ -77,8 +77,8 @@ const Back = styled.div`
   padding: 20px;
 `;
 const TagBox = styled.button`
-  width: 70px;
-  height: 30px;
+  width: 90px;
+  height: 38px;
   border-radius: 20px;
   border: none;
   background: ${({ color }) => color};
@@ -101,6 +101,8 @@ const BackTextBox = styled.div`
   align-items: center;
   justify-content: center;
   line-height: 3px;
+  line-height: 30px;
+  text-align: center;
 `;
 const RequestButton = styled.button`
   width: 120px;
@@ -130,7 +132,6 @@ function PostCardComponent({ postData }) {
       <CardContainer>
         {postData.map((data, index) => (
           <Flip key={index}>
-            {" "}
             <Cards>
               <Front>
                 <TitleText>TITLE: {data.title}</TitleText>

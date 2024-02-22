@@ -25,9 +25,12 @@ const Vertical = styled.div`
 `;
 
 function Home() {
+  const [isOpen, setIsOpen] = useState(false);
   const [postData, setPostData] = useState([]);
+  const createBtClick = () => {
+    setIsOpen(!isOpen);
+  };
   useEffect(() => {
-    //ToDo: post 글 불러오는 부분 백 500 에러 확인 필요
     axios
       .get(`${process.env.REACT_APP_HOST_URL}/posts`)
       .then(function (response) {
@@ -37,7 +40,7 @@ function Home() {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [isOpen]);
 
   return (
     <Vertical>
@@ -46,15 +49,18 @@ function Home() {
         <ProfileBtComponent />
       </NoHorizontal>
 
-      <PostCreateBtComponent />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row-reverse",
-        }}
-      >
-        <PostCardComponent postData={postData} />
-        <FilterComponent></FilterComponent>
+      <PostCreateBtComponent
+        createBtClick={createBtClick}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ flex: 1 }}>
+          <FilterComponent />
+        </div>
+        <div style={{ flex: 4.5 }}>
+          <PostCardComponent postData={postData} />
+        </div>
       </div>
     </Vertical>
   );

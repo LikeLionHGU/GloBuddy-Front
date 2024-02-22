@@ -64,7 +64,6 @@ function Profile() {
       );
       break;
     case 3:
-      // Todo: 여기서 api post 호출 '유저 정보 저장'
       currentComponent = null;
       break;
     default:

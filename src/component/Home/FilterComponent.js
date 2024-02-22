@@ -103,6 +103,7 @@ const FilterComponent = () => {
               border: "none",
               marginTop: "40px",
               cursor: "pointer",
+              fontFamily: "Subtitle2",
             }}
           >
             Find
