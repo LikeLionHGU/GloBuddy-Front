@@ -30,6 +30,11 @@ const TitleImage = styled.img`
   width: 63px;
   height: 73px;
 `;
+const containerStyle = {
+  display: "flex",
+  justifyContent: "space-around",
+};
+
 const Textarea = styled.textarea`
   width: 450px;
   height: 100px;
@@ -81,6 +86,14 @@ function PostCardModal({ closePopup }) {
   const handleRequestTextChange = (e) => {
     setRequestText(e.target.value);
     console.log(e.target.value);
+  };
+  const containerStyleS = {
+    display: "flex",
+    width: "360px",
+    height: "150px",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
   };
   const handleKakaoLinkChange = (e) => {
     setKakaoLink(e.target.value);
@@ -156,8 +169,32 @@ function PostCardModal({ closePopup }) {
           </>
         ) : (
           <>
-            <h2>완료되었습니다!</h2>
-            <button onClick={closePopup}>닫기</button>
+            <div style={containerStyle}>
+              <div style={containerStyleS}>
+                <h2
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  Your buddy request is complete !
+                </h2>
+
+                <button
+                  onClick={closePopup}
+                  style={{
+                    display: "flex",
+                    background: "#FFCE96",
+                    color: "black",
+                    border: "none",
+                    borderRadius: "8px",
+                    padding: "12px 24px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
           </>
         )}
       </Popup>
