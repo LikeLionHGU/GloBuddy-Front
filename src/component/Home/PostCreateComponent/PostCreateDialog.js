@@ -2,11 +2,9 @@ import { Fragment, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Paper from "@mui/material/Paper";
 import styled from "styled-components";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { MemberIdState } from "../../../store/atom";
 import { Vertical, Horizontal } from "../../../styles/StyledComponents";
@@ -23,6 +21,14 @@ const StyledPaper = styled(Paper)`
   padding-bottom: 40px;
   padding-top: 10px;
   border: 2px solid black;
+`;
+const StyledLastPaper = styled(Paper)`
+  display: flex;
+  align-items: center; //세로
+  justify-content: center; //세로
+  border: 2px solid black;
+  height: 120px;
+  padding: 50px;
 `;
 const CircleCancelBT = styled.button`
   width: 39px;
@@ -122,6 +128,15 @@ const WrapHorizontal = styled.div`
   width: 100%;
   flex-wrap: wrap;
 `;
+const ComfirmBT = styled.button`
+  width: 100px;
+  height: 45px;
+  border: none;
+  background: #ffce96;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: Subtitle3;
+`;
 
 const needTags = [
   { need: "#Culture", color: "#FBAD83" },
@@ -189,7 +204,11 @@ function PostCreateDialog({ open, setIsOpen }) {
   return (
     <>
       <Fragment>
-        <Dialog open={open} onClose={cancleClick} PaperComponent={StyledPaper}>
+        <Dialog
+          open={open}
+          onClose={cancleClick}
+          PaperComponent={openCheck === 2 ? StyledLastPaper : StyledPaper}
+        >
           {openCheck === 0 && (
             <Vertical>
               <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
@@ -258,14 +277,11 @@ function PostCreateDialog({ open, setIsOpen }) {
           )}
           {openCheck === 2 && (
             <Vertical>
-              <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
+              <DialogTitle style={{ fontFamily: "Subtitle3" }}>
                 Yout post is posted.
               </DialogTitle>
-              <DialogContent>
-                <DialogContentText></DialogContentText>
-              </DialogContent>
               <DialogActions>
-                <Button onClick={cancleClick}>Confirm</Button>
+                <ComfirmBT onClick={cancleClick}>Confirm</ComfirmBT>
               </DialogActions>
             </Vertical>
           )}
