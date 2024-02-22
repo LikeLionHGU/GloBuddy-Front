@@ -114,6 +114,15 @@ const NextTagBox = styled.button`
   margin-top: 10px;
   font-size: 12px;
 `;
+const WrapHorizontal = styled.div`
+  //가로 정렬
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+`;
+
 const needTags = [
   { need: "#Culture", color: "#FBAD83" },
   { need: "#Class", color: "#FED966" },
@@ -186,16 +195,18 @@ function PostCreateDialog({ open, setIsOpen }) {
               <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
               <QuestionText>What are your needs?</QuestionText>
               <DialogContent>
-                {needTags.map((item, index) => (
-                  <TagBox
-                    key={index}
-                    onClick={() => handleNeed(item)}
-                    active={needTag === item.need}
-                    color={item.color}
-                  >
-                    {item.need}
-                  </TagBox>
-                ))}
+                <WrapHorizontal>
+                  {needTags.map((item, index) => (
+                    <TagBox
+                      key={index}
+                      onClick={() => handleNeed(item)}
+                      active={needTag === item.need}
+                      color={item.color}
+                    >
+                      {item.need}
+                    </TagBox>
+                  ))}
+                </WrapHorizontal>
                 <ChooseText>Choose your own needs!</ChooseText>
               </DialogContent>
               <Horizontal>

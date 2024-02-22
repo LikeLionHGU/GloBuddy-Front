@@ -54,7 +54,7 @@ function Home() {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
         <div style={{ flex: 1 }}>
           <FilterComponent />
         </div>

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { MemberIdState } from "../store/atom";
 import MailAlarmInboxComponent from "../component/Mailbox/MailAlarmInboxComponent";
 import MailAlarmSentItemsComponent from "../component/Mailbox/MailAlarmSentItemsComponent";
 import { Vertical, Horizontal } from "../styles/StyledComponents";
 import { IoMailOutline } from "react-icons/io5";
 import LetterBoxImg from "../img/LetterBox.png";
 import Header from "../component/Header";
+import axios from "axios";
 
 const BT = styled.button`
   border: none;
@@ -73,8 +75,6 @@ const LetterImg = styled.img`
   width: 180px;
   height: 185px;
   margin-top: 27px;
-  margin-left: auto;
-  margin-right: 25px;
 `;
 export const NoCenterVertical = styled.div`
   //세로 정렬
@@ -88,10 +88,26 @@ export const NoCenterHorizontal = styled.div`
   margin-left: 150px;
 `;
 function Alarm() {
-  const { state } = useLocation();
+  // const { state } = useLocation();
+  const memberId = useRecoilValue(MemberIdState);
+  const [state, setState] = useState([]);
   const [show, setShow] = useState(true);
   const [inboxActive, setInboxActive] = useState(true);
   const [sentItemsActive, setSentItemsActive] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${process.env.REACT_APP_HOST_URL}/matching/notification/receive/${memberId}`
+      )
+      .then((response) => {
+        console.log("response", response.data.receiveMailResponseList);
+        setState(response.data.receiveMailResponseList);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, [show, inboxActive, sentItemsActive, memberId]);
 
   const handleShowInbox = () => {
     setShow(true); // Inbox 보이기
