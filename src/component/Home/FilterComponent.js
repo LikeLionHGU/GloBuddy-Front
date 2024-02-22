@@ -48,9 +48,9 @@ const FilterComponent = () => {
             style={{
               width: "138px",
               height: "51px",
-              border: "5px solid #FF9571",
+              border: "3px solid #FF9571",
               marginBottom: "10px",
-              padding: "5px",
+              padding: "6px",
             }}
           >
             <option value=""></option>
@@ -65,9 +65,9 @@ const FilterComponent = () => {
             style={{
               width: "138px",
               height: "51px",
-              border: "5px solid #FF9571",
+              border: "3px solid #FF9571",
               marginBottom: "10px",
-              padding: "5px",
+              padding: "6px",
             }}
           >
             <option value=""></option>
@@ -81,9 +81,9 @@ const FilterComponent = () => {
             style={{
               width: "138px",
               height: "51px",
-              border: "5px solid #FF9571",
+              border: "3px solid #FF9571",
               marginBottom: "10px",
-              padding: "5px",
+              padding: "6px",
             }}
           >
             <option value=""></option>
@@ -96,7 +96,7 @@ const FilterComponent = () => {
             style={{
               backgroundColor: "#FF9571",
               borderRadius: "8px",
-              width: "165px",
+              width: "150px",
               height: "60px",
               color: "black",
               fontSize: "20px",
