@@ -13,17 +13,10 @@ import { Vertical, Horizontal } from "../../../styles/StyledComponents";
 import UserPiconImg from "../../../img/UserPicon.png";
 import axios from "axios";
 
-const StyledPaper = styled(Paper)`
-  height: 516px;
-  display: flex;
-  align-items: center; //세로
-  justify-content: center; //세로
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-bottom: 40px;
-  padding-top: 10px;
-  border: 2px solid black;
-`;
+const StyledPaper = styled(Paper)``;
+
+const StyledPapers = styled(Paper)``;
+
 const CircleCancelBT = styled.button`
   width: 39px;
   height: 36px;
@@ -62,6 +55,25 @@ const ContentText = styled.input`
   border: 1px solid black;
   border-radius: 4px;
 `;
+
+const LastModalContainer = styled(Vertical)`
+  height: 200px;
+  width: 280px;
+  /* 추가적인 스타일링 */
+`;
+
+const ModalContainer = styled(Vertical)`
+  height: 516px;
+
+  display: flex;
+  align-items: center; //세로
+  justify-content: center; //세로
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  border: 2px solid black;
+`;
 const ChooseText = styled.p`
   font-size: 27px;
   font-family: Subtitle3;
@@ -92,6 +104,7 @@ const NoCenterHorizontal = styled.div`
   //가로 정렬
   display: flex;
 `;
+
 const TagBox = styled.button`
   width: 120px;
   height: 45px;
@@ -180,75 +193,82 @@ function PostCreateDialog({ open, setIsOpen }) {
   return (
     <>
       <Fragment>
-        <Dialog open={open} onClose={cancleClick} PaperComponent={StyledPaper}>
+        <Dialog open={open} onClose={cancleClick}>
           {openCheck === 0 && (
-            <Vertical>
-              <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
-              <QuestionText>What are your needs?</QuestionText>
-              <DialogContent>
-                {needTags.map((item, index) => (
-                  <TagBox
-                    key={index}
-                    onClick={() => handleNeed(item)}
-                    active={needTag === item.need}
-                    color={item.color}
+            <ModalContainer>
+              <Vertical PaperComponent={StyledPaper}>
+                <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
+                <QuestionText>What are your needs?</QuestionText>
+                <DialogContent>
+                  {needTags.map((item, index) => (
+                    <TagBox
+                      key={index}
+                      onClick={() => handleNeed(item)}
+                      active={needTag === item.need}
+                      color={item.color}
+                    >
+                      {item.need}
+                    </TagBox>
+                  ))}
+                  <ChooseText>Choose your own needs!</ChooseText>
+                </DialogContent>
+                <Horizontal>
+                  <CancelBT onClick={cancleClick}>Cancel</CancelBT>
+                  <NextBT
+                    onClick={handleNextStep}
+                    disabled={nextButtonDisabled}
                   >
-                    {item.need}
-                  </TagBox>
-                ))}
-                <ChooseText>Choose your own needs!</ChooseText>
-              </DialogContent>
-              <Horizontal>
-                <CancelBT onClick={cancleClick}>Cancel</CancelBT>
-                <NextBT onClick={handleNextStep} disabled={nextButtonDisabled}>
-                  Next
-                </NextBT>
-              </Horizontal>
-            </Vertical>
+                    Next
+                  </NextBT>
+                </Horizontal>
+              </Vertical>
+            </ModalContainer>
           )}
           {openCheck === 1 && (
-            <Vertical>
-              <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
-              <DialogContent>
-                <Horizontal>
-                  <UserImg src={UserPiconImg} alt="userIcon" />
-                  <TitleText
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Title"
-                    value={title}
-                    onChange={handleTitleChange}
-                    required
-                  />
-                </Horizontal>
-                <Horizontal>
-                  <NoCenterHorizontal>
-                    <NextTagBox color={needColor}>{needTag}</NextTagBox>
-                    <ContentText
+            <ModalContainer>
+              <Vertical PaperComponent={StyledPaper}>
+                <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
+                <DialogContent>
+                  <Horizontal>
+                    <UserImg src={UserPiconImg} alt="userIcon" />
+                    <TitleText
                       type="text"
-                      id="content"
-                      name="content"
-                      value={content}
-                      placeholder="Please type in"
-                      onChange={handleContentChange}
+                      id="title"
+                      name="title"
+                      placeholder="Title"
+                      value={title}
+                      onChange={handleTitleChange}
                       required
                     />
-                  </NoCenterHorizontal>
-                </Horizontal>
-              </DialogContent>
-              <DialogActions>
-                <CancelBT onClick={handlePreviousStep}>Before</CancelBT>
-                <NextBT onClick={postClickModal} disabled={!isFormValid()}>
-                  Post
-                </NextBT>
-              </DialogActions>
-            </Vertical>
+                  </Horizontal>
+                  <Horizontal>
+                    <NoCenterHorizontal>
+                      <NextTagBox color={needColor}>{needTag}</NextTagBox>
+                      <ContentText
+                        type="text"
+                        id="content"
+                        name="content"
+                        value={content}
+                        placeholder="Please type in"
+                        onChange={handleContentChange}
+                        required
+                      />
+                    </NoCenterHorizontal>
+                  </Horizontal>
+                </DialogContent>
+                <DialogActions>
+                  <CancelBT onClick={handlePreviousStep}>Before</CancelBT>
+                  <NextBT onClick={postClickModal} disabled={!isFormValid()}>
+                    Post
+                  </NextBT>
+                </DialogActions>
+              </Vertical>
+            </ModalContainer>
           )}
           {openCheck === 2 && (
-            <Vertical>
+            <LastModalContainer PaperComponent={StyledPapers}>
               <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
-                Yout post is posted.
+                Your post is posted.
               </DialogTitle>
               <DialogContent>
                 <DialogContentText></DialogContentText>
@@ -256,7 +276,7 @@ function PostCreateDialog({ open, setIsOpen }) {
               <DialogActions>
                 <Button onClick={cancleClick}>Confirm</Button>
               </DialogActions>
-            </Vertical>
+            </LastModalContainer>
           )}
         </Dialog>
       </Fragment>
