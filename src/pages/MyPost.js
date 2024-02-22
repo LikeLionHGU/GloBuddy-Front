@@ -23,7 +23,7 @@ function MyPost() {
   return (
     <>
       <Header />
-      <OrnageBox>내 게시물 페이지는 추후 업데이트될 예정입니다.</OrnageBox>
+      <OrnageBox>내 게시물 페이지는 추후 업데이트 될 예정입니다.</OrnageBox>
     </>
   );
 }

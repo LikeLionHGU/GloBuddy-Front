@@ -88,8 +88,8 @@ export const NoCenterHorizontal = styled.div`
   margin-left: 150px;
 `;
 function Alarm() {
-  // const { state } = useLocation();
   const memberId = useRecoilValue(MemberIdState);
+  const [isOpen, setIsOpen] = useState(false);
   const [state, setState] = useState([]);
   const [show, setShow] = useState(true);
   const [inboxActive, setInboxActive] = useState(true);
@@ -107,7 +107,11 @@ function Alarm() {
       .catch((error) => {
         console.log("error", error);
       });
-  }, [show, inboxActive, sentItemsActive, memberId]);
+  }, [show, inboxActive, sentItemsActive, memberId, isOpen]);
+
+  const handleCancel = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleShowInbox = () => {
     setShow(true); // Inbox 보이기
@@ -152,7 +156,11 @@ function Alarm() {
               </OrnageBox>
             ) : show ? (
               <OrnageMailBox>
-                <MailAlarmInboxComponent chatData={state} />
+                <MailAlarmInboxComponent
+                  chatData={state}
+                  handleCancel={handleCancel}
+                  isOpen={isOpen}
+                />
               </OrnageMailBox>
             ) : (
               <OrnageMailBox>
