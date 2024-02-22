@@ -16,14 +16,15 @@ import axios from "axios";
 const StyledPaper = styled(Paper)`
   height: 516px;
   display: flex;
-  align-items: center; //세로
-  justify-content: center; //세로
+  align-items: center;
+  justify-content: center;
   padding-left: 100px;
   padding-right: 100px;
   padding-bottom: 40px;
   padding-top: 10px;
   border: 2px solid black;
 `;
+
 const CircleCancelBT = styled.button`
   width: 39px;
   height: 36px;
@@ -36,6 +37,7 @@ const CircleCancelBT = styled.button`
   margin-left: auto;
   margin-right: -50px;
 `;
+
 const QuestionText = styled.p`
   font-size: 33px;
   font-family: Subtitle1;
@@ -43,11 +45,13 @@ const QuestionText = styled.p`
   padding: 0;
   margin: 0;
 `;
+
 const UserImg = styled.img`
   width: 70px;
   height: 70px;
   margin-right: 35px;
 `;
+
 const TitleText = styled.input`
   width: 470px;
   height: 40px;
@@ -56,12 +60,14 @@ const TitleText = styled.input`
   border: 1px solid black;
   border-radius: 4px;
 `;
+
 const ContentText = styled.input`
   width: 470px;
   height: 250px;
   border: 1px solid black;
   border-radius: 4px;
 `;
+
 const ChooseText = styled.p`
   font-size: 27px;
   font-family: Subtitle3;
@@ -79,6 +85,7 @@ const CancelBT = styled.button`
   font-family: Subtitle3;
   margin-right: 40px;
 `;
+
 const NextBT = styled.button`
   width: 100px;
   height: 45px;
@@ -88,10 +95,11 @@ const NextBT = styled.button`
   font-size: 24px;
   font-family: Subtitle3;
 `;
+
 const NoCenterHorizontal = styled.div`
-  //가로 정렬
   display: flex;
 `;
+
 const TagBox = styled.button`
   width: 120px;
   height: 45px;
@@ -103,6 +111,7 @@ const TagBox = styled.button`
   margin-right: 18px;
   margin-top: 36px;
 `;
+
 const NextTagBox = styled.button`
   width: 90px;
   height: 45px;
@@ -114,6 +123,7 @@ const NextTagBox = styled.button`
   margin-top: 10px;
   font-size: 12px;
 `;
+
 const needTags = [
   { need: "#Culture", color: "#FBAD83" },
   { need: "#Class", color: "#FED966" },
@@ -130,17 +140,19 @@ function PostCreateDialog({ open, setIsOpen }) {
   const [needColor, setNeedColor] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [isPostConfirmed, setIsPostConfirmed] = useState(false); // 등록 확인 모달 상태값
+
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
+
   const handleContentChange = (e) => {
     setContent(e.target.value);
   };
-  // 등록 확인 성공 모달
-  const [openCheck, setOpenCheck] = useState(0);
 
+  const [openCheck, setOpenCheck] = useState(0);
   const handlePreviousStep = () => {
-    setOpenCheck(0); // 이전 단계로 돌아갈 때는 openCheck를 0으로 설정
+    setOpenCheck(0);
   };
   const handleNextStep = () => {
     const num = openCheck + 1;
@@ -149,12 +161,14 @@ function PostCreateDialog({ open, setIsOpen }) {
   const cancleClick = () => {
     setIsOpen(false);
   };
+
   const isFormValid = () => {
     return title.trim() !== "" && content.trim() !== "";
   };
+
   const postClickModal = () => {
-    setOpenCheck(openCheck === 1 ? 2 : 1); // 확인 모달
-    // ToDo: 멤버 아이디 받은거 가지고 있는 코드 작성 후 적용
+    setOpenCheck(openCheck === 1 ? 2 : 1);
+    setIsPostConfirmed(false); // 등록 확인 모달 활성화
     axios
       .post(`${process.env.REACT_APP_HOST_URL}/posts`, {
         memberId: memberId,
@@ -169,8 +183,8 @@ function PostCreateDialog({ open, setIsOpen }) {
       .catch(function (error) {
         console.log(error);
       });
-    console.log(needTag, title, content);
   };
+
   const handleNeed = (needTag) => {
     setNeedTag(needTag.need);
     setNeedColor(needTag.color);
@@ -178,89 +192,93 @@ function PostCreateDialog({ open, setIsOpen }) {
   };
 
   return (
-    <>
-      <Fragment>
-        <Dialog open={open} onClose={cancleClick} PaperComponent={StyledPaper}>
-          {openCheck === 0 && (
-            <Vertical>
-              <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
-              <QuestionText>What are your needs?</QuestionText>
-              <DialogContent>
-                {needTags.map((item, index) => (
-                  <TagBox
-                    key={index}
-                    onClick={() => handleNeed(item)}
-                    active={needTag === item.need}
-                    color={item.color}
-                  >
-                    {item.need}
-                  </TagBox>
-                ))}
-                <ChooseText>Choose your own needs!</ChooseText>
-              </DialogContent>
+    <Fragment>
+      <Dialog open={open} onClose={cancleClick} PaperComponent={StyledPaper}>
+        {openCheck === 0 && (
+          <Vertical>
+            <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
+            <QuestionText>What are your needs?</QuestionText>
+            <DialogContent>
+              {needTags.map((item, index) => (
+                <TagBox
+                  key={index}
+                  onClick={() => handleNeed(item)}
+                  active={needTag === item.need}
+                  color={item.color}
+                >
+                  {item.need}
+                </TagBox>
+              ))}
+              <ChooseText>Choose your own needs!</ChooseText>
+            </DialogContent>
+            <Horizontal>
+              <CancelBT onClick={cancleClick}>Cancel</CancelBT>
+              <NextBT onClick={handleNextStep} disabled={nextButtonDisabled}>
+                Next
+              </NextBT>
+            </Horizontal>
+          </Vertical>
+        )}
+        {openCheck === 1 && (
+          <Vertical>
+            <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
+            <DialogContent>
               <Horizontal>
-                <CancelBT onClick={cancleClick}>Cancel</CancelBT>
-                <NextBT onClick={handleNextStep} disabled={nextButtonDisabled}>
-                  Next
-                </NextBT>
+                <UserImg src={UserPiconImg} alt="userIcon" />
+                <TitleText
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Title"
+                  value={title}
+                  onChange={handleTitleChange}
+                  required
+                />
               </Horizontal>
-            </Vertical>
-          )}
-          {openCheck === 1 && (
-            <Vertical>
-              <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
-              <DialogContent>
-                <Horizontal>
-                  <UserImg src={UserPiconImg} alt="userIcon" />
-                  <TitleText
+              <Horizontal>
+                <NoCenterHorizontal>
+                  <NextTagBox color={needColor}>{needTag}</NextTagBox>
+                  <ContentText
                     type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Title"
-                    value={title}
-                    onChange={handleTitleChange}
+                    id="content"
+                    name="content"
+                    value={content}
+                    placeholder="Please type in"
+                    onChange={handleContentChange}
                     required
                   />
-                </Horizontal>
-                <Horizontal>
-                  <NoCenterHorizontal>
-                    <NextTagBox color={needColor}>{needTag}</NextTagBox>
-                    <ContentText
-                      type="text"
-                      id="content"
-                      name="content"
-                      value={content}
-                      placeholder="Please type in"
-                      onChange={handleContentChange}
-                      required
-                    />
-                  </NoCenterHorizontal>
-                </Horizontal>
-              </DialogContent>
-              <DialogActions>
-                <CancelBT onClick={handlePreviousStep}>Before</CancelBT>
-                <NextBT onClick={postClickModal} disabled={!isFormValid()}>
-                  Post
-                </NextBT>
-              </DialogActions>
-            </Vertical>
-          )}
-          {openCheck === 2 && (
-            <Vertical>
-              <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
-                Yout post is posted.
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText></DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={cancleClick}>Confirm</Button>
-              </DialogActions>
-            </Vertical>
-          )}
-        </Dialog>
-      </Fragment>
-    </>
+                </NoCenterHorizontal>
+              </Horizontal>
+            </DialogContent>
+            <DialogActions>
+              <CancelBT onClick={handlePreviousStep}>Before</CancelBT>
+              <NextBT onClick={postClickModal} disabled={!isFormValid()}>
+                Post
+              </NextBT>
+            </DialogActions>
+          </Vertical>
+        )}
+      </Dialog>
+
+      <Dialog
+        open={isPostConfirmed} // 등록 확인 모달 활성화 여부에 따라 열림/닫힘 처리
+        onClose={() => setIsPostConfirmed(false)} // 모달 닫기
+        PaperComponent={StyledPaper}
+        PaperProps={{ style: { height: 190 } }}
+      >
+        <Vertical style={{ width: 220 }}>
+          <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
+            Your post is posted.
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText></DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setIsPostConfirmed(false)}>Confirm</Button>
+          </DialogActions>
+        </Vertical>
+      </Dialog>
+    </Fragment>
   );
 }
 
