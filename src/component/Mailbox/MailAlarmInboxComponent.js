@@ -98,11 +98,11 @@ function MailAlarmInboxComponent({ chatData, handleCancel, isOpen }) {
       )
       .then(function (response) {
         console.log("response", response);
+        handleCancel();
       })
       .catch(function (error) {
         console.log(error);
       });
-    handleCancel();
     setKakao(false);
   };
 
