@@ -81,13 +81,13 @@ function MailAlarmSentItemsComponent({ chatData }) {
               <MailAlarmBox key={index}>
                 {data.ifMatched === 1 ? (
                   <Text>
-                    Congrats ! You're now Global buddy with {data.name}, join
-                    your chat room to chat!
+                    Congrats ! You're now Global buddy with {data.senderName},
+                    join your chat room to chat!
                   </Text>
                 ) : data.ifMatched === 2 ? (
                   <Text>
-                    Sorry, you're not a global buddy with {data.name}, find
-                    another buddy for you !
+                    Sorry, you're not a global buddy with {data.senderName},
+                    find another buddy for you !
                   </Text>
                 ) : null}
                 {!data.ifChecked && ( // Check if data.ifChecked is false
