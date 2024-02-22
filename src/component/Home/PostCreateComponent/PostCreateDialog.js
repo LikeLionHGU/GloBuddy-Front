@@ -30,6 +30,7 @@ const LastModalContainer = styled(Vertical)`
 `;
 const ModalContainer = styled(Vertical)`
   height: 516px;
+  width: 100%;
 `;
 const CircleCancelBT = styled.button`
   width: 39px;
@@ -187,8 +188,8 @@ function PostCreateDialog({ open, setIsOpen }) {
   return (
     <>
       <Fragment>
-        <Dialog open={open} onClose={cancleClick}>
-          {openCheck === 0 && (
+        {openCheck === 0 && (
+          <Dialog open={open} onClose={cancleClick} maxWidth="md">
             <ModalContainer>
               <Vertical>
                 <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
@@ -216,9 +217,11 @@ function PostCreateDialog({ open, setIsOpen }) {
                   </NextBT>
                 </Horizontal>
               </Vertical>
-            </ModalContainer>
-          )}
-          {openCheck === 1 && (
+            </ModalContainer>{" "}
+          </Dialog>
+        )}
+        {openCheck === 1 && (
+          <Dialog open={open} onClose={cancleClick} maxWidth="xl">
             <ModalContainer>
               <Vertical>
                 <CircleCancelBT onClick={cancleClick}>X</CircleCancelBT>
@@ -258,8 +261,10 @@ function PostCreateDialog({ open, setIsOpen }) {
                 </DialogActions>
               </Vertical>
             </ModalContainer>
-          )}
-          {openCheck === 2 && (
+          </Dialog>
+        )}
+        {openCheck === 2 && (
+          <Dialog open={open} onClose={cancleClick} maxWidth="xs">
             <LastModalContainer>
               <Vertical>
                 <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
@@ -273,8 +278,8 @@ function PostCreateDialog({ open, setIsOpen }) {
                 </DialogActions>
               </Vertical>
             </LastModalContainer>
-          )}
-        </Dialog>
+          </Dialog>
+        )}
       </Fragment>
     </>
   );

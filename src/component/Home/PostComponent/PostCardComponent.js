@@ -115,7 +115,7 @@ const RequestButton = styled.button`
 `;
 
 function PostCardComponent({ postData }) {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
   const handleApplyClick = () => {
     setShowPopup(true);
