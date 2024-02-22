@@ -118,8 +118,10 @@ const RequestButton = styled.button`
 
 function PostCardComponent({ postData }) {
   const [showPopup, setShowPopup] = useState(false);
+  const [postInfo, setPostInfo] = useState("");
 
-  const handleApplyClick = () => {
+  const handleApplyClick = (data) => {
+    setPostInfo(data);
     setShowPopup(true);
   };
 
@@ -155,7 +157,7 @@ function PostCardComponent({ postData }) {
               <Back>
                 <TitleText>TITLE: {data.title}</TitleText>
                 <BackTextBox>{data.content}</BackTextBox>
-                <RequestButton onClick={handleApplyClick}>
+                <RequestButton onClick={() => handleApplyClick(data)}>
                   Request
                 </RequestButton>
               </Back>
@@ -163,7 +165,9 @@ function PostCardComponent({ postData }) {
           </Flip>
         ))}
       </CardContainer>
-      {showPopup && <PostCardModal closePopup={closePopup} />}
+      {showPopup && (
+        <PostCardModal closePopup={closePopup} postInfo={postInfo} />
+      )}
     </div>
   );
 }

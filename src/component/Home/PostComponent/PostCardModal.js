@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import MassageImg from "../../../img/Massage.png";
 import CloseButtonImg from "../../../img/CloseButton.png";
+import { MemberIdState } from "../../../store/atom";
 import axios from "axios";
 
 const Popup = styled.div`
@@ -72,7 +74,8 @@ const ChatLinkInput = styled.input`
   border-radius: 4px;
 `;
 
-function PostCardModal({ closePopup }) {
+function PostCardModal({ closePopup, postInfo }) {
+  const memberId = useRecoilValue(MemberIdState);
   const [requestText, setRequestText] = useState("");
   const [kakaoLink, setKakaoLink] = useState("");
   const [isLinkValid, setIsLinkValid] = useState(true);
@@ -91,15 +94,19 @@ function PostCardModal({ closePopup }) {
   const handleSubmit = () => {
     console.log("요청 내용:", requestText);
     console.log("카카오톡 링크:", kakaoLink);
+    console.log("postInfo", postInfo);
 
     if (kakaoLink.startsWith("https://open.kakao.com/")) {
       setShowCheckPopup(false);
       //ToDo: API 호출
-      axios.post(`${process.env.REACT_APP_HOST_URL}/member`, {
-        memberId: 7,
-        message: requestText,
-        chatLink: kakaoLink,
-      });
+      axios.post(
+        `${process.env.REACT_APP_HOST_URL}/matching/${postInfo.postId}`,
+        {
+          memberId: memberId,
+          message: requestText,
+          chatLink: kakaoLink,
+        }
+      );
     } else {
       setIsLinkValid(false);
     }
