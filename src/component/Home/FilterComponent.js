@@ -83,7 +83,7 @@ const FilterComponent = () => {
           >
             <option value=""></option>
             <option value="filter1">Male</option>
-            <option value="filter2">Femail</option>
+            <option value="filter2">Female</option>
           </select>
           <h4 style={{ color: "black", fontSize: "18px" }}>Needs</h4>
           <select
