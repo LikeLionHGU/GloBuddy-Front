@@ -136,7 +136,11 @@ function PostCardComponent({ postData }) {
           <Flip key={index}>
             <Cards>
               <Front>
-                <TitleText>TITLE: {data.title}</TitleText>
+                <TitleText>
+                  {data.title.length >= 19
+                    ? `${data.title.slice(0, 19)}..`
+                    : data.title}
+                </TitleText>
                 <CardImg src={PostCardImg} alt="defalut" />
                 <Horizontal>
                   <Font>Name: {data.name}</Font>
@@ -155,7 +159,11 @@ function PostCardComponent({ postData }) {
                 </Horizontal>
               </Front>
               <Back>
-                <TitleText>TITLE: {data.title}</TitleText>
+                <TitleText>
+                  {data.title.length >= 19
+                    ? `${data.title.slice(0, 19)}..`
+                    : data.title}
+                </TitleText>
                 <BackTextBox>{data.content}</BackTextBox>
                 <RequestButton onClick={() => handleApplyClick(data)}>
                   Request
