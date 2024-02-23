@@ -44,10 +44,12 @@ const CheckBT = styled.button`
 `;
 
 function MailAlarmSentItemsComponent({ chatData }) {
-  // useState사용을 통해 ifChecked 값이 바뀔때마다 리렌더링
-  const [chatDataState, setChatDataState] = useState(chatData);
-  //ToDo: 메일 확인 api 요청 후 확인 버튼 ui 선택
   const memberId = useRecoilValue(MemberIdState);
+  const filteredData = chatData.filter((data) => data.senderId === memberId);
+  // useState사용을 통해 ifChecked 값이 바뀔때마다 리렌더링
+  const [chatDataState, setChatDataState] = useState(filteredData);
+  //ToDo: 메일 확인 api 요청 후 확인 버튼 ui 선택
+
   const handleCheck = (index) => {
     // ToDo: 확인 버튼 누르면 확인되었다고 api 연결
     setChatDataState((prevState) => {
@@ -70,10 +72,13 @@ function MailAlarmSentItemsComponent({ chatData }) {
         console.log(error);
       });
   };
+  const sortedData = chatDataState.sort(
+    (a, b) => new Date(b.createdTime) - new Date(a.createdTime)
+  );
 
   return (
     <>
-      {chatDataState.map(
+      {sortedData.map(
         (data, index) =>
           (data.ifMatched === 1 || data.ifMatched === 2) && (
             <Horizontal>

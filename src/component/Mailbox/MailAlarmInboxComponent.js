@@ -105,10 +105,14 @@ function MailAlarmInboxComponent({ chatData, handleCancel, isOpen }) {
       });
     setKakao(false);
   };
+  const filteredData = chatData.filter((data) => data.receiverId === memberId);
+  const sortedData = filteredData.sort(
+    (a, b) => new Date(b.createdTime) - new Date(a.createdTime)
+  );
 
   return (
     <>
-      {chatData.map((data, index) => (
+      {sortedData.map((data, index) => (
         <Horizontal>
           <UserImg src={UserPiconImg} alt="userIcon" />
           <MailAlarmBox key={index}>
