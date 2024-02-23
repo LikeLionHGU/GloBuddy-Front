@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
+
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -9,8 +9,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Horizontal } from "../../styles/StyledComponents";
 import { UserTokenState } from "../../store/atom";
 import { useSetRecoilState } from "recoil";
-
-import styled from "styled-components";
 
 function LogoutModal({ logout, setLogout }) {
   const navigate = useNavigate();
