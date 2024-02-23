@@ -22,6 +22,7 @@ import {
   Horizontal,
 } from "../../styles/StyledComponents";
 import GoogleLoginButton from "./LoginComponent";
+import LoginJoinButton from "./LoginLogout";
 
 const Header = styled.div`
   display: flex;
@@ -125,16 +126,8 @@ export default function AuthStyleComponent() {
             height: "90px",
           }}
         />
-        <p
-          style={{
-            marginRight: "100px",
-            fontSize: "18px",
-            fontFamily: "Body2",
-            textAlign: "center",
-          }}
-        >
-          Login/Join
-        </p>
+
+        <LoginJoinButton />
       </Header>
       <Vertical>
         <p

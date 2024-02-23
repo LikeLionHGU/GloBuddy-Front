@@ -122,7 +122,7 @@ function MailAlarmInboxComponent({ chatData, handleCancel, isOpen }) {
                   Accepted
                 </AcceptedBT>
               ) : data.ifMatched === 2 ? (
-                <RejectedBT>Rejected</RejectedBT>
+                <RejectedBT>Rejected</RejectedBT> //1,2 텍스트 거절, 수락시 변경
               ) : (
                 <ConfirmBT onClick={() => handleCheck(data)}>Confirm</ConfirmBT>
               )}

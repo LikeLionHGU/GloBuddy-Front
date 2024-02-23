@@ -74,30 +74,31 @@ function MailAlarmSentItemsComponent({ chatData }) {
   return (
     <>
       {chatDataState.map(
-        (data, index) =>
-          (data.ifMatched === 1 || data.ifMatched === 2) && (
-            <Horizontal>
-              <UserImg src={UserPiconImg} alt="userIcon" />
-              <MailAlarmBox key={index}>
-                {data.ifMatched === 1 ? (
-                  <Text>
-                    Congrats ! You're now Global buddy with {data.senderName},
-                    join your chat room to chat!
-                  </Text>
-                ) : data.ifMatched === 2 ? (
-                  <Text>
-                    Sorry, you're not a global buddy with {data.senderName},
-                    find another buddy for you !
-                  </Text>
-                ) : null}
-                {!data.ifChecked && ( // Check if data.ifChecked is false
-                  <ButtonWrapper>
-                    <CheckBT onClick={() => handleCheck(index)}>Read</CheckBT>
-                  </ButtonWrapper>
-                )}
-              </MailAlarmBox>
-            </Horizontal>
-          )
+        (data, index) => (
+          //  (data.ifMatched === 1 || data.ifMatched === 2) && (
+          <Horizontal>
+            <UserImg src={UserPiconImg} alt="userIcon" />
+            <MailAlarmBox key={index}>
+              {data.ifMatched === 1 ? (
+                <Text>
+                  Congrats ! You're now Global buddy with {data.senderName},
+                  join your chat room to chat!
+                </Text>
+              ) : data.ifMatched === 2 ? (
+                <Text>
+                  Sorry, you're not a global buddy with {data.senderName}, find
+                  another buddy for you !
+                </Text>
+              ) : null}
+              {!data.ifChecked && ( // Check if data.ifChecked is false
+                <ButtonWrapper>
+                  <CheckBT onClick={() => handleCheck(index)}>Read</CheckBT>
+                </ButtonWrapper>
+              )}
+            </MailAlarmBox>
+          </Horizontal>
+        )
+        //  )
       )}
     </>
   );
