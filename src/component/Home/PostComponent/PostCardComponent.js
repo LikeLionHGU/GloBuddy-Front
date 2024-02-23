@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PostCardIconImg from "../../../img/PostCardIcon.png";
-import PostCardImg from "../../../img/PostCard.png";
+import PostCardImg1 from "../../../img/CardImage1.png";
+import PostCardImg2 from "../../../img/CardImage2.png";
+import PostCardImg3 from "../../../img/CardImage3.png";
 import PostCardModal from "./PostCardModal";
 
 const CardImg = styled.img`
@@ -129,49 +131,63 @@ function PostCardComponent({ postData }) {
     setShowPopup(false);
   };
 
+  const getRandomImageByPostId = (postId) => {
+    // 이미지 배열 정의
+    const imageUrls = [PostCardImg1, PostCardImg2, PostCardImg3];
+    // 포스트 아이디를 기반으로 랜덤한 인덱스 생성
+    const randomIndex = parseInt(postId, 10) % imageUrls.length;
+    // 해당 인덱스에 해당하는 이미지 URL 반환
+    return imageUrls[randomIndex];
+  };
+
   return (
     <div>
       <CardContainer>
-        {postData.map((data, index) => (
-          <Flip key={index}>
-            <Cards>
-              <Front>
-                <TitleText>
-                  {data.title.length >= 19
-                    ? `${data.title.slice(0, 19)}..`
-                    : data.title}
-                </TitleText>
-                <CardImg src={PostCardImg} alt="defalut" />
-                <Horizontal>
-                  <Font>Name: {data.name}</Font>
-                  <Font2>
-                    | {data.gender} | {data.nation}
-                  </Font2>
-                  <IconImg src={PostCardIconImg} alt="icon" />
-                </Horizontal>
-                <Horizontal>
-                  <Font>MBTI:</Font>
-                  <TagBox color={data.color}> {data.mbti}</TagBox>
-                </Horizontal>
-                <Horizontal>
-                  <Font>Needs: </Font>
-                  <TagBox color={data.color}> {data.needs} </TagBox>
-                </Horizontal>
-              </Front>
-              <Back>
-                <TitleText>
-                  {data.title.length >= 19
-                    ? `${data.title.slice(0, 19)}..`
-                    : data.title}
-                </TitleText>
-                <BackTextBox>{data.content}</BackTextBox>
-                <RequestButton onClick={() => handleApplyClick(data)}>
-                  Request
-                </RequestButton>
-              </Back>
-            </Cards>
-          </Flip>
-        ))}
+        {postData
+          .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate))
+          .map((data, index) => (
+            <Flip key={index}>
+              <Cards>
+                <Front>
+                  <TitleText>
+                    {data.title.length >= 18
+                      ? `${data.title.slice(0, 18)}..`
+                      : data.title}
+                  </TitleText>
+                  <CardImg
+                    src={getRandomImageByPostId(data.postId)}
+                    alt="defalut"
+                  />
+                  <Horizontal>
+                    <Font>Name: {data.name}</Font>
+                    <Font2>
+                      | {data.gender} | {data.nation}
+                    </Font2>
+                    <IconImg src={PostCardIconImg} alt="icon" />
+                  </Horizontal>
+                  <Horizontal>
+                    <Font>MBTI:</Font>
+                    <TagBox color={data.color}> {data.mbti}</TagBox>
+                  </Horizontal>
+                  <Horizontal>
+                    <Font>Needs: </Font>
+                    <TagBox color={data.color}> {data.needs} </TagBox>
+                  </Horizontal>
+                </Front>
+                <Back>
+                  <TitleText>
+                    {data.title.length >= 19
+                      ? `${data.title.slice(0, 19)}..`
+                      : data.title}
+                  </TitleText>
+                  <BackTextBox>{data.content}</BackTextBox>
+                  <RequestButton onClick={() => handleApplyClick(data)}>
+                    Request
+                  </RequestButton>
+                </Back>
+              </Cards>
+            </Flip>
+          ))}
       </CardContainer>
       {showPopup && (
         <PostCardModal closePopup={closePopup} postInfo={postInfo} />
