@@ -10,6 +10,8 @@ import { Horizontal } from "../../styles/StyledComponents";
 import { UserTokenState } from "../../store/atom";
 import { useSetRecoilState } from "recoil";
 
+import styled from "styled-components";
+
 function LogoutModal({ logout, setLogout }) {
   const navigate = useNavigate();
   const setUserToken = useSetRecoilState(UserTokenState);
@@ -26,30 +28,42 @@ function LogoutModal({ logout, setLogout }) {
     <Fragment>
       <Dialog open={logout} onClose={cancleClick}>
         <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
-          로그아웃
+          Logout
         </DialogTitle>
         <DialogContent>
           <Horizontal>
             <DialogContentText>
-              <p>로그아웃하시겠습니까?</p>
+              <p>Do you want to log out ?</p>
             </DialogContentText>
           </Horizontal>
         </DialogContent>
         <DialogActions>
-          <Button
+          <div
             onClick={cancleClick}
-            color="secondary"
-            style={{ fontFamily: "TheJamsilRegular" }}
+            style={{
+              fontFamily: "TheJamsilRegular",
+              backgroundColor: "#FFE2C1",
+              borderRadius: "8px",
+              color: "white",
+              padding: "5px",
+            }}
           >
-            취소
-          </Button>
-          <Button
+            cancel
+          </div>
+          <div
             onClick={logoutClickModal}
             color="warning"
-            style={{ fontFamily: "TheJamsilRegular" }}
+            style={{
+              fontFamily: "TheJamsilRegular",
+
+              backgroundColor: "#FFCE96",
+              borderRadius: "8px",
+              color: "white",
+              padding: "5px",
+            }}
           >
-            로그아웃
-          </Button>
+            logout
+          </div>
         </DialogActions>
       </Dialog>
     </Fragment>
