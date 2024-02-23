@@ -50,7 +50,7 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  /* z-index: 9999; */
+  z-index: 9999;
 `;
 const CloseImage = styled.img`
   width: 30px; /* 원하는 가로 크기로 설정 */
@@ -77,7 +77,7 @@ const CloseButton = styled.button`
   justify-content: flex-end;
 `;
 
-function ProfileFormComponent({ isOpen, setIsOpen }) {
+function ProfileFormComponent({ isOpen, setIsOpen, clickUpdate }) {
   const memberId = useRecoilValue(MemberIdState);
   const userToken = useRecoilValue(UserTokenState);
   const decodedToken = jwtDecode(userToken);
@@ -118,7 +118,7 @@ function ProfileFormComponent({ isOpen, setIsOpen }) {
   };
 
   const handleUpdate = () => {
-    console.log("수정된 정보들 확인", gender, mbti, nation);
+    // console.log("수정된 정보들 확인", gender, mbti, nation);
     axios
       .patch(`${process.env.REACT_APP_HOST_URL}/memberDetail/${memberId}`, {
         gender: gender,
@@ -127,6 +127,7 @@ function ProfileFormComponent({ isOpen, setIsOpen }) {
       })
       .then(function (response) {
         console.log("response", response);
+        clickUpdate();
       })
       .catch(function (error) {
         console.log(error);

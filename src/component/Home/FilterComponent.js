@@ -50,7 +50,7 @@ const FilterComponent = () => {
             style={{
               width: "56px",
               height: "56px",
-              marginLeft: "0px",
+              marginLeft: "auto",
             }}
           />
           <h4 style={{ color: "black", fontSize: "18px" }}>Nationality</h4>
@@ -59,7 +59,7 @@ const FilterComponent = () => {
             onChange={handleNationalityChange}
             style={{
               width: "138px",
-              height: "51px",
+              height: "60px",
               border: "3.5px solid #FF9571",
               marginBottom: "5px",
               padding: "6px",
@@ -75,7 +75,7 @@ const FilterComponent = () => {
             onChange={handleGenderChange}
             style={{
               width: "138px",
-              height: "51px",
+              height: "60px",
               border: "3.5px solid #FF9571",
               marginBottom: "5px",
               padding: "6px",
@@ -91,7 +91,7 @@ const FilterComponent = () => {
             onChange={handleNeedsChange}
             style={{
               width: "138px",
-              height: "51px",
+              height: "60px",
               border: "3.5px solid #FF9571",
               marginBottom: "5px",
               padding: "6px",

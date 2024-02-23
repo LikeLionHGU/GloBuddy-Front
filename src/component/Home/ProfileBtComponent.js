@@ -75,6 +75,8 @@ function ProfileBtComponent() {
           isOpen={isOpen}
           setIsOpen={(newState) => {
             setIsOpen(newState);
+          }}
+          clickUpdate={(newState) => {
             setCheckIsOpen(!newState);
           }}
         />
