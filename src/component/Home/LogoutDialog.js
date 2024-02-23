@@ -44,6 +44,7 @@ function LogoutModal({ logout, setLogout }) {
               borderRadius: "8px",
               color: "white",
               padding: "5px",
+              cursor: "pointer",
             }}
           >
             cancel
@@ -53,7 +54,7 @@ function LogoutModal({ logout, setLogout }) {
             color="warning"
             style={{
               fontFamily: "TheJamsilRegular",
-
+              cursor: "pointer",
               backgroundColor: "#FFCE96",
               borderRadius: "8px",
               color: "white",
