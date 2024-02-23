@@ -11,12 +11,11 @@ export default function ProfileUpdateCheckDialog({ open, onClick }) {
     <Fragment>
       <Dialog open={open} onClose={onClick}>
         <DialogTitle style={{ fontFamily: "TheJamsilRegular" }}>
-          프로필 정보가 수정되었습니다!
+          프로필 정보가 수정되었습니다.
         </DialogTitle>
         <DialogContent>
           <DialogContentText style={{ fontFamily: "TheJamsilLight" }}>
-            본인 정보들 수정 됨. 추후 api 연결 예정. 지금 수정된 데이터 잘
-            찍히는거 확인함.
+            수정된 프로필로 버디 신청을 해보세요!
           </DialogContentText>
         </DialogContent>
         <DialogActions>

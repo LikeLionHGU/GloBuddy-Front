@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserTokenState } from "../../store/atom";
 import jwtDecode from "jwt-decode";
 import { useRecoilValue } from "recoil";
+import { MemberIdState } from "../../store/atom";
+import axios from "axios";
 import styled from "styled-components";
 import { Vertical } from "../../styles/StyledComponents";
-import ProfileUpdateCheckDialog from "../PersonalProfile/ProfileUpdateCheckDialog";
 import XButtonImg from "../../img/XButton.png";
 import UserPiconImg from "../../img/UserPicon.png";
 
@@ -49,7 +50,7 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  z-index: 9999;
+  /* z-index: 9999; */
 `;
 const CloseImage = styled.img`
   width: 30px; /* 원하는 가로 크기로 설정 */
@@ -77,45 +78,61 @@ const CloseButton = styled.button`
 `;
 
 function ProfileFormComponent({ isOpen, setIsOpen }) {
+  const memberId = useRecoilValue(MemberIdState);
   const userToken = useRecoilValue(UserTokenState);
   const decodedToken = jwtDecode(userToken);
-  const [updateUserInfo, setUpdateUserInfo] = useState({
-    name: decodedToken.name,
-    type: "더미데이터 타입",
-    gender: "더미데이터 성별",
-    propensity: "더미데이터 성격",
-    needs: "더미데이터 니즈",
-    picture: decodedToken.picture,
-  });
-  // const [selectedImage, setSelectedImage] = useState(updateUserInfo.picture);
-  // const handlePicture = (picture) => {
-  //   const file = picture.target.files[0];
-  //   setSelectedImage(URL.createObjectURL(file));
-  //   setUpdateUserInfo((prevState) => ({
-  //     ...prevState,
-  //     picture: file.name,
-  //   }));
-  // };
+  const [gender, setGender] = useState();
+  const [mbti, setMbti] = useState();
+  const [nation, setNation] = useState();
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_HOST_URL}/memberDetail/${memberId}`)
+      .then((response) => {
+        console.log("개인 정보 디테일 response", response.data);
+        setGender(response.data.gender);
+        setMbti(response.data.mbti);
+        setNation(response.data.nation);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, [memberId]);
 
   const handleClickClose = () => {
     setIsOpen(false);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUpdateUserInfo((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const handleGenderChange = (e) => {
+    const { value } = e.target;
+    setGender(value);
   };
 
-  const handleClickUpdate = () => {
-    setIsOpen(!isOpen);
+  const handleMbtiChange = (e) => {
+    const { value } = e.target;
+    setMbti(value);
+  };
+
+  const handleNationChange = (e) => {
+    const { value } = e.target;
+    setNation(value);
   };
 
   const handleUpdate = () => {
-    console.log("수정된 정보들 확인", updateUserInfo);
+    console.log("수정된 정보들 확인", gender, mbti, nation);
+    axios
+      .patch(`${process.env.REACT_APP_HOST_URL}/memberDetail/${memberId}`, {
+        gender: gender,
+        nation: nation,
+        mbti: mbti,
+      })
+      .then(function (response) {
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     setIsOpen(!isOpen);
+    // setCheckIsOpen;
   };
 
   return (
@@ -130,13 +147,6 @@ function ProfileFormComponent({ isOpen, setIsOpen }) {
               {/* <input type="file" accept="image/*" onChange={handlePicture} /> */}
               <UserImage src={UserPiconImg} alt="Selected" />
             </Vertical>
-
-            {isOpen && (
-              <ProfileUpdateCheckDialog
-                open={isOpen}
-                onClick={handleClickUpdate}
-              />
-            )}
           </div>
           <div>
             <div>
@@ -148,8 +158,8 @@ function ProfileFormComponent({ isOpen, setIsOpen }) {
                     type="text"
                     id="name"
                     name="name"
-                    value={updateUserInfo.name}
-                    onChange={handleChange}
+                    value={decodedToken.name}
+                    disabled
                   />
                 </div>
                 <div>
@@ -159,32 +169,32 @@ function ProfileFormComponent({ isOpen, setIsOpen }) {
                     type="text"
                     id="gender"
                     name="gender"
-                    value={updateUserInfo.gender}
-                    onChange={handleChange}
+                    value={gender}
+                    onChange={handleGenderChange}
                   />
                 </div>
               </div>
               <div style={{ display: "flex", marginBottom: "20px" }}>
                 <div style={{ marginRight: "20px" }}>
-                  <label htmlFor="propensity">Propensity</label>
+                  <label htmlFor="mbti">Mbti</label>
                   <br />
                   <StyledInput
                     type="text"
-                    id="propensity"
-                    name="propensity"
-                    value={updateUserInfo.propensity}
-                    onChange={handleChange}
+                    id="mbti"
+                    name="mbti"
+                    value={mbti}
+                    onChange={handleMbtiChange}
                   />
                 </div>
                 <div>
-                  <label htmlFor="needs">Needs</label>
+                  <label htmlFor="nation">Nation</label>
                   <br />
                   <StyledInput
                     type="text"
-                    id="needs"
-                    name="needs"
-                    value={updateUserInfo.needs}
-                    onChange={handleChange}
+                    id="nation"
+                    name="nation"
+                    value={nation}
+                    onChange={handleNationChange}
                   />
                 </div>
               </div>
