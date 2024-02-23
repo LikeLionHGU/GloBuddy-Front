@@ -67,6 +67,7 @@ const ContentText = styled.input`
   height: 250px;
   border: 1px solid black;
   border-radius: 4px;
+  font-size: 16px;
 `;
 const ChooseText = styled.p`
   font-size: 27px;
