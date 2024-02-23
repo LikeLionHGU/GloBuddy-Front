@@ -7,7 +7,8 @@ import PostCardImg3 from "../../../img/CardImage3.png";
 import PostCardModal from "./PostCardModal";
 
 const CardImg = styled.img`
-  width: 370px;
+  // width: 370px;
+  width: 100%;
   height: 158px;
   margin-left: -5px;
   margin-top: 10px;
@@ -37,19 +38,20 @@ const Cards = styled.div`
 `;
 const Flip = styled.div`
   width: 360px;
-  height: 352px;
+  height: 415px;
   position: relative;
-
   perspective: 1100px;
   &:hover ${Cards} {
     transform: rotateY(180deg);
   }
-  margin: 4rem;
+  // margin: 4rem;
+  margin: 32px;
 `;
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 33px;
 `;
 const Horizontal = styled.div`
   //가로 정렬
@@ -66,6 +68,7 @@ const Front = styled.div`
   background: white;
   border: 1px solid black;
   padding: 20px;
+  box-sizing: border-box;
 `;
 const Back = styled.div`
   position: absolute;
@@ -77,6 +80,7 @@ const Back = styled.div`
   border: 1px solid black;
   transform: rotateY(180deg);
   padding: 20px;
+  box-sizing: border-box;
 `;
 const TagBox = styled.button`
   width: 90px;
@@ -93,7 +97,7 @@ const IconImg = styled.img`
   margin-left: 5px;
 `;
 const BackTextBox = styled.div`
-  width: 360px;
+  // width: 360px;
   height: 219px;
   background-color: #ffe2c1;
   margin-top: 16px;

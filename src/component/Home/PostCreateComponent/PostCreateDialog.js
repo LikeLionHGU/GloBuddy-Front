@@ -62,7 +62,7 @@ const TitleText = styled.input`
   border: 1px solid black;
   border-radius: 4px;
 `;
-const ContentText = styled.input`
+const ContentText = styled.textarea`
   width: 470px;
   height: 250px;
   border: 1px solid black;
