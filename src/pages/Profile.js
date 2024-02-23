@@ -20,7 +20,7 @@ function Profile() {
   });
   const [pageNumber, setPageNumber] = useState(1);
   const handleNext = (userInfo) => {
-    console.log(userInfo);
+    // console.log(userInfo);
     setSelectedUserInfo((prevInfo) => ({ ...prevInfo, ...userInfo }));
     setPageNumber((prevNumber) => prevNumber + 1);
   };

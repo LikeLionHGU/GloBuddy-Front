@@ -194,7 +194,7 @@ function PostCreateDialog({ open, setIsOpen }) {
       .catch(function (error) {
         console.log(error);
       });
-    console.log(needTag, title, content);
+    // console.log(needTag, title, content);
   };
   const handleNeed = (needTag) => {
     setNeedTag(needTag.need);

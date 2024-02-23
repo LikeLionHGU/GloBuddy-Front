@@ -7,12 +7,14 @@ import MenuItem from "@mui/material/MenuItem";
 import ProfileFormComponent from "../PersonalProfile/ProfileFormComponent";
 import LogoutDialog from "./LogoutDialog";
 import UserpicImg from "../../img/Userpic.png";
+import ProfileUpdateCheckDialog from "../PersonalProfile/ProfileUpdateCheckDialog";
 
 function ProfileBtComponent() {
   const navigate = useNavigate();
 
   const [logout, setLogout] = React.useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [checkIsOpen, setCheckIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -68,7 +70,21 @@ function ProfileBtComponent() {
       </Menu>
 
       {logout && <LogoutDialog logout={logout} setLogout={setLogout} />}
-      {isOpen && <ProfileFormComponent isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {isOpen && (
+        <ProfileFormComponent
+          isOpen={isOpen}
+          setIsOpen={(newState) => {
+            setIsOpen(newState);
+            setCheckIsOpen(!newState);
+          }}
+        />
+      )}
+      {checkIsOpen && (
+        <ProfileUpdateCheckDialog
+          open={checkIsOpen}
+          onClick={() => setCheckIsOpen(false)}
+        />
+      )}
     </div>
   );
 }
