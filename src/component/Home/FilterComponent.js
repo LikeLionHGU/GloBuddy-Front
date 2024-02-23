@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import FilterImg from "../../img/Filter.png";
+import GlassImg from "../../img/Glass.png";
 
 const FilterComponent = () => {
   const [selectedNationality, setSelectedNationality] = useState("");
@@ -42,15 +44,24 @@ const FilterComponent = () => {
             flexDirection: "column",
           }}
         >
-          <h4 style={{ color: "black", fontSize: "14px" }}>Nationality</h4>
+          <img
+            src={FilterImg}
+            alt="사용자버튼"
+            style={{
+              width: "56px",
+              height: "56px",
+              marginLeft: "0px",
+            }}
+          />
+          <h4 style={{ color: "black", fontSize: "18px" }}>Nationality</h4>
           <select
             value={selectedNationality}
             onChange={handleNationalityChange}
             style={{
               width: "138px",
               height: "51px",
-              border: "3px solid #FF9571",
-              marginBottom: "10px",
+              border: "3.5px solid #FF9571",
+              marginBottom: "5px",
               padding: "6px",
             }}
           >
@@ -58,31 +69,31 @@ const FilterComponent = () => {
             <option value="filter1">Korean</option>
             <option value="filter2">International</option>
           </select>
-          <h4 style={{ color: "black", fontSize: "14px" }}>Gender</h4>
+          <h4 style={{ color: "black", fontSize: "18px" }}>Gender</h4>
           <select
             value={selectedGender}
             onChange={handleGenderChange}
             style={{
               width: "138px",
               height: "51px",
-              border: "3px solid #FF9571",
-              marginBottom: "10px",
+              border: "3.5px solid #FF9571",
+              marginBottom: "5px",
               padding: "6px",
             }}
           >
             <option value=""></option>
             <option value="filter1">Male</option>
-            <option value="filter2">Femail</option>
+            <option value="filter2">Female</option>
           </select>
-          <h4 style={{ color: "black", fontSize: "14px" }}>Needs</h4>
+          <h4 style={{ color: "black", fontSize: "18px" }}>Needs</h4>
           <select
             value={selectedNeeds}
             onChange={handleNeedsChange}
             style={{
               width: "138px",
               height: "51px",
-              border: "3px solid #FF9571",
-              marginBottom: "10px",
+              border: "3.5px solid #FF9571",
+              marginBottom: "5px",
               padding: "6px",
             }}
           >
@@ -94,22 +105,31 @@ const FilterComponent = () => {
             <option value="filter5">#Class</option>
             <option value="filter6">#Culture</option>
           </select>
-
           <button
             style={{
               backgroundColor: "#FF9571",
               borderRadius: "8px",
-              width: "150px",
+              width: "140px",
               height: "60px",
               color: "black",
-              fontSize: "20px",
+              fontSize: "23px",
               border: "none",
               marginTop: "40px",
               cursor: "pointer",
               fontFamily: "Subtitle2",
+              marginBottom: "19px",
             }}
           >
             Find
+            <img
+              src={GlassImg}
+              alt="사용자버튼"
+              style={{
+                width: "16px",
+                height: "19px",
+                marginLeft: "6px",
+              }}
+            />
           </button>
         </div>
       </div>
