@@ -26,7 +26,7 @@
 - 現 **lSU**(International Student Union)와의 협력 사업 계획 : 국제/국내 학생 교류 사업에 서비스 제공 (Language buddy program, Chingu Program)
 
 ## 🖥️ 배포 주소
-[GloBuddy 방문하기📂](#)
+[GloBuddy 방문하기📂](https://globuddy.netlify.app/)
 
 ## 🕰️ 개발 기간
 24.02.8일 ~ 24.02.24 (1.ver 배포)
