@@ -153,45 +153,41 @@ function PostCardComponent({ postData }) {
             <Flip key={index}>
               <Cards>
                 <Front>
-                  <div className="card-container">
-                    <TitleText>
-                      {data.title.length >= 18
-                        ? `${data.title.slice(0, 18)}..`
-                        : data.title}
-                    </TitleText>
-                    <CardImg
-                      src={getRandomImageByPostId(data.postId)}
-                      alt="defalut"
-                    />
-                    <Horizontal>
-                      <Font>Name: {data.name}</Font>
-                      <Font2>
-                        | {data.gender} | {data.nation}
-                      </Font2>
-                      <IconImg src={PostCardIconImg} alt="icon" />
-                    </Horizontal>
-                    <Horizontal>
-                      <Font>MBTI:</Font>
-                      <TagBox color={data.color}> {data.mbti}</TagBox>
-                    </Horizontal>
-                    <Horizontal>
-                      <Font>Needs: </Font>
-                      <TagBox color={data.color}> {data.needs} </TagBox>
-                    </Horizontal>
-                  </div>
+                  <TitleText>
+                    {data.title.length >= 18
+                      ? `${data.title.slice(0, 18)}..`
+                      : data.title}
+                  </TitleText>
+                  <CardImg
+                    src={getRandomImageByPostId(data.postId)}
+                    alt="defalut"
+                  />
+                  <Horizontal>
+                    <Font>Name: {data.name}</Font>
+                    <Font2>
+                      | {data.gender} | {data.nation}
+                    </Font2>
+                    <IconImg src={PostCardIconImg} alt="icon" />
+                  </Horizontal>
+                  <Horizontal>
+                    <Font>MBTI:</Font>
+                    <TagBox color={data.color}> {data.mbti}</TagBox>
+                  </Horizontal>
+                  <Horizontal>
+                    <Font>Needs: </Font>
+                    <TagBox color={data.color}> {data.needs} </TagBox>
+                  </Horizontal>
                 </Front>
                 <Back>
-                  <div className="card-container">
-                    <TitleText>
-                      {data.title.length >= 19
-                        ? `${data.title.slice(0, 19)}..`
-                        : data.title}
-                    </TitleText>
-                    <BackTextBox>{data.content}</BackTextBox>
-                    <RequestButton onClick={() => handleApplyClick(data)}>
-                      Request
-                    </RequestButton>
-                  </div>
+                  <TitleText>
+                    {data.title.length >= 19
+                      ? `${data.title.slice(0, 19)}..`
+                      : data.title}
+                  </TitleText>
+                  <BackTextBox>{data.content}</BackTextBox>
+                  <RequestButton onClick={() => handleApplyClick(data)}>
+                    Request
+                  </RequestButton>
                 </Back>
               </Cards>
             </Flip>
