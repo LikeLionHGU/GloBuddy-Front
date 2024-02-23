@@ -88,7 +88,7 @@ function ProfileFormComponent({ isOpen, setIsOpen }) {
     axios
       .get(`${process.env.REACT_APP_HOST_URL}/memberDetail/${memberId}`)
       .then((response) => {
-        console.log("개인 정보 디테일 response", response.data);
+        // console.log("개인 정보 디테일 response", response.data);
         setGender(response.data.gender);
         setMbti(response.data.mbti);
         setNation(response.data.nation);

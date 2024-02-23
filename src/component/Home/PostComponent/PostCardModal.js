@@ -88,7 +88,7 @@ function PostCardModal({ closePopup, postInfo }) {
 
   const handleRequestTextChange = (e) => {
     setRequestText(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
   const containerStyleS = {
     display: "flex",
@@ -100,14 +100,14 @@ function PostCardModal({ closePopup, postInfo }) {
   };
   const handleKakaoLinkChange = (e) => {
     setKakaoLink(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setIsLinkValid(true);
   };
 
   const handleSubmit = () => {
-    console.log("요청 내용:", requestText);
-    console.log("카카오톡 링크:", kakaoLink);
-    console.log("postInfo", postInfo);
+    // console.log("요청 내용:", requestText);
+    // console.log("카카오톡 링크:", kakaoLink);
+    // console.log("postInfo", postInfo);
 
     if (kakaoLink.startsWith("https://open.kakao.com/")) {
       setShowCheckPopup(false);

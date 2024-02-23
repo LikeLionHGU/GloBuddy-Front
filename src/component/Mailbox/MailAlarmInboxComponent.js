@@ -71,24 +71,24 @@ function MailAlarmInboxComponent({ chatData, handleCancel, isOpen }) {
   const memberId = useRecoilValue(MemberIdState);
 
   const handleCheck = (data) => {
-    console.log(data);
+    // console.log(data);
     setSelectedChatData(data);
     handleCancel();
     setKakao(false);
-    console.log("lkaklago", kakao);
+    // console.log("lkaklago", kakao);
   };
   const handleAccept = (data) => {
     setSelectedChatData(data);
     //ToDo: 추후 카카오링크 모달 띄우는 곳으로 연결
     handleCancel();
     setKakao(true);
-    console.log("lkaklago", kakao);
+    // console.log("lkaklago", kakao);
   };
 
   //ToDo: 버디 신청 요청 거절 시 api 요청
   const handleReject = (data) => {
     setSelectedChatData(data);
-    console.log(selectedChatData, "data");
+    // console.log(selectedChatData, "data");
     axios
       .patch(
         `${process.env.REACT_APP_HOST_URL}/matching/notification/receive/${memberId}/choice/${selectedChatData.matchingId}`,

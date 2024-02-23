@@ -57,7 +57,7 @@ function MailAlarmSentItemsComponent({ chatData }) {
       updatedChatData[index].ifChecked = true;
       return updatedChatData; // setChatDataSate 함수 내 updatedChatData 배열을 반환 -> React는 상태가 업데이트되었음을 감지하고 해당 컴포넌트를 리렌더링
     });
-    console.log("wlrma dlwjdofijwoeijf;lw kjf;lw", chatDataState[index]);
+    // console.log("chatDataState", chatDataState[index]);
     axios
       .patch(
         `${process.env.REACT_APP_HOST_URL}/matching/notification/sent/${memberId}/check/${chatDataState[index].matchingId}`,
